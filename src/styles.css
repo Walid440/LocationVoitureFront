@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+.img-style {
+    margin-left: auto;
+    margin-right: auto;
+   height: 250px;
+   width: 250px;
+  }
+
+  @media(max-width:992)
+  {
+.img-style{
+
+margin-left: 10px;
+margin-right: 10px;
+}
+
+
+  }
