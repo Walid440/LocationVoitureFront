@@ -9,13 +9,15 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { BrowserModule } from '@angular/platform-browser';
 import { PrincipalComponent } from './principal/principal.component';
 import { ReservationComponent } from './reservation/reservation.component';
+import { PaiementComponent } from './paiement/paiement.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     IndexComponent,
     PrincipalComponent,
-    ReservationComponent
+    ReservationComponent,
+    PaiementComponent
   ],
   imports: [
     BrowserModule,
