@@ -1,1 +1,57 @@
-<p>reservation works!</p>
+
+
+<div class="container">
+    <div class="modal-header">
+      <div class="mat-h2">Add FeedBack</div>
+      <a class="text-body" data-dismiss="modal" aria-label="Close"
+      ><i data-feather="x" style="color:red; bottom:blue;"><button type="button" class="btn-close" aria-label="Close">X</button></i
+    ></a>
+    </div>
+     <h6>Please Select Rate To Verif Satisfaction</h6>
+  
+   
+  
+  
+  <!-- Display an array of star/star_border buttons -->
+  <div class="form-group" >
+  <button mat-icon-button color="accent" 
+  formControlName="rate" name="rate" id="rate">
+     
+     
+  </button> 
+  </div>
+  
+          <div class="form-group" >
+              <label>Passenger</label>
+        
+    <select  name="passenger" formControlName="passenger" 
+    id="passenger" class="form-control mx-25"         >
+                
+                <option [value]=""></option>
+              
+              </select>
+                  
+            </div> 
+            <div class="form-group" >
+              <label>Ferry</label>
+        
+    <select  name="ferry" formControlName="ferry" 
+    id="ferry" class="form-control mx-25"         >
+                
+                <option ></option>
+              
+              </select>
+                  
+            </div> 
+            <div class="form-group" width="200" height="300" >
+                    <label>Message  </label>
+                     <textarea class="form-control"  id="message" name="message" formControlName="message"  rows="3" required=""></textarea>         </div> 
+                    <div class="form-group">    <div class="modal-body" >
+                                  
+                             
+                      <button   type="submit" class="btn btn-dark"    ><i class="fa fa-database"></i> Submit 
+                       
+                      </button>
+                 
+                   
+                 </div>

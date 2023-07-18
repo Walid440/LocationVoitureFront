@@ -6,7 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
        <!-- loader -->
-  
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+       <style>
+           
+   
+           .image-text {
+               position: absolute;
+               top: 9%;
+               left: 6%;
+               transform: rotate(35deg) ;
+               color: white;
+               font-size: 24px;
+               text-align: center;
+           }
+       </style>
+
 
   </head>
   <body>
@@ -134,19 +148,26 @@
     		<div class="row justify-content-center">
           <div class="col-12 heading-section text-center animate__animated animate__fadeInUp mb-5">
           	<span class="subheading">What we offer</span>
-            <h2 class="mb-2">Featured Vehicles</h2>
-<div  class="text-center"></div>
+            <h2 class="mb-2">Liste des Vehicles</h2>
+<div  class="text-center"></div> <div mat-dialog-actions >
             <ngx-slick-carousel class="carousel" #slickModal="slick-carousel"
-            [config]="carouselConfig">
-            
-                <div ngxSlickItem class="carousel-item" *ngFor="let item of slides">
-               <td>   <img src="{{ item.img }}" alt="" class="img-fluid" width="300px" height="300px">
-               
-                <div class="text" width="100px">
-                  <h5 class="mb-11"><a href="#">Mercedes Grand Sedan</a></h5>
+            [config]="carouselConfig" >
+             
+     <div ngxSlickItem class="carousel-item"   *ngFor="let p of listOffre">
+               <td> 
+                <div>
+                <img   src="assets/images/{{p.photo}}" alt="" class="img-fluid" width="300px" height="300px">
+              <div class="image-text">
+
+<img src="assets/images/location.png" width="180px">
+              </div>
+              
+              </div>
+                <div class="text" width="100px"  >
+                  <h5 class="mb-11"><a href="#">{{p.nomOffre}}</a></h5>
                   <div class="align-items-left" width="500px" >
                     <tr><td class="align-item-right" [width]="150">
-                    <span class="cat">Cheverolet</span></td>
+                    <span class="cat">{{p.adresse}}</span></td>
                   <td  class="align-items-right">	<h6 class="" ><a>$500</a> <span>/day</span></h6></td>
                  </tr> 	</div>
                  
@@ -154,16 +175,16 @@
                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                 <td>
                   
-                   <p class=""><a href="#" class="btn btn-primary py-2 mr-1">Book now</a>
+                   <p class=""><a (click)="open()" class="btn btn-primary py-2 mr-1" >Book now</a>
                      <a href="#" class="btn btn-secondary py-2 ml-1">Details</a></p>
                 </td>
                </tr>
                 </div>
               
               </div>   
-             
+            
               </ngx-slick-carousel>
-     
+     </div>
                       </div>
         </div>
         
@@ -539,5 +560,12 @@
 		</div>
      
 	</div>
+  <div mat-dialog-actions>
+    
+
+    <table border="1">
+        <tr><td>Nom
+<td><img src="assets/bg_1.jpg" (click)="open()" width="1000px">
+</td></tr></table></div>
 </body>
 </html>

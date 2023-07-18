@@ -1,0 +1,12 @@
+.cursor-pointer{
+    cursor: pointer;
+  }
+
+  .mat-dialog-container {
+    z-index: 10555;
+  }
+  .center-dialog {
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }

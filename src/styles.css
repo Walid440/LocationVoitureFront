@@ -1,20 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
 
-
-.img-style {
-    margin-left: auto;
-    margin-right: auto;
-   height: 250px;
-   width: 250px;
-  }
-
-  @media(max-width:992)
-  {
-.img-style{
-
-margin-left: 10px;
-margin-right: 10px;
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+	font-family: montserrat;
 }
+ 
+ 
+ 
+.navbar-toggler {
+	padding: 1px 5px;
+	font-size: 18px;
+	line-height: 0.3;
+	background: #fff;
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+	.navbar-nav {
+		text-align: center;
+	}
+	.navbar-collapse {
+		background: #fff;
+	}
+	.navbar-collapse .nav-item .nav-link {
+		color: #000;
+	}
+	 
+}
+ 
 
 
-  }
+	@import "@angular/material/prebuilt-themes/indigo-pink.css";
+	@import "~@fortawesome/fontawesome-free/css/all.css";
