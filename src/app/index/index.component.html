@@ -148,7 +148,7 @@
     		<div class="row justify-content-center">
           <div class="col-12 heading-section text-center animate__animated animate__fadeInUp mb-5">
           	<span class="subheading">What we offer</span>
-            <h2 class="mb-2">Liste des Vehicles</h2>
+            <h2 class="mb-2">NOS OFFRES DU MOMENT</h2>
 <div  class="text-center"></div> <div mat-dialog-actions >
             <ngx-slick-carousel class="carousel" #slickModal="slick-carousel"
             [config]="carouselConfig" >
@@ -176,8 +176,12 @@
                 <td>
                   
                    <p class=""><a (click)="open()" class="btn btn-primary py-2 mr-1" >Book now</a>
-                     <a href="#" class="btn btn-secondary py-2 ml-1">Details</a></p>
+                     <a (click)="detail()" class="btn btn-secondary py-2 ml-1">Details</a></p>
                 </td>
+               </tr>
+               <tr>
+
+                
                </tr>
                 </div>
               

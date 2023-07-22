@@ -22,6 +22,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
  
 import { BookComponent } from './book/book.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ProduitComponent } from './produit/produit.component';
+import { LocationComponent } from './offre/location/location.component';
+import { EchangeComponent } from './offre/echange/echange.component';
+import { VenteComponent } from './offre/vente/vente.component';
  
 
 @NgModule({
@@ -35,6 +39,10 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
     BookComponent,
+      ProduitComponent,
+      LocationComponent,
+      EchangeComponent,
+      VenteComponent,
    
   ],
   imports: [

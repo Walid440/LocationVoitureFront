@@ -6,6 +6,8 @@ import { FrontsComponent } from '../fronts/fronts.component';
  
 import { BookComponent } from '../book/book.component';
 import { OffresService } from '../services/offres.service';
+import { ProduitComponent } from '../produit/produit.component';
+import { LocationComponent } from '../offre/location/location.component';
  
  @Component({
   selector: 'app-index',
@@ -42,9 +44,9 @@ listOffre:any;
   };
 
   open(){
-    this.dial.open(BookComponent,{
-      width:'500px',
-      height:'300px'
+    this.dial.open(LocationComponent,{
+      width:'600px',
+      height:'350px'
     });
    
   }
@@ -57,6 +59,12 @@ getAllOffre(){
 
 this.listOffre=res;
 console.log("res"+res);
+  });
+}
+detail(){
+  this.dial.open(ProduitComponent,{
+    width:'550px',
+    height:'350px'
   });
 }
 }
