@@ -1,1 +1,104 @@
-<p>paiement works!</p>
+<div class="image-container">
+    &nbsp;
+<h2>Paiement en ligne</h2>
+<hr class="continuous-line">
+<table  >
+    <tr>
+        <td>
+<img src="assets/images/carte-visa.jpg" width="40px"> &nbsp;&nbsp;
+<img src="assets/images/carteVisa1.jpg" width="50px"> &nbsp;&nbsp;
+<img src="assets/images/MasterCard.png" width="50px">
+&nbsp;&nbsp;
+<img src="assets/images/nickel.png" width="50px">
+&nbsp;&nbsp;
+<img src="assets/images/Zero.jpg" width="50px">
+&nbsp;&nbsp;
+<img src="assets/images/Ing.jpg" width="50px">
+</td></tr>
+<tr>
+    <tr>
+        <td> 
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="far fa-euro-sign"></i></span>
+                </div>
+            <label class="mont">Montant de transaction : 2000</label>   
+            </div>
+<tr>
+    <td> 
+          <div class="input-group">
+            <div class="input-group-prepend">
+            
+                <span class="input-group-text"><i class=" fa fa-credit-card"></i></span>
+            </div>
+            <input type="text" class="transparent-input" placeholder="Saisir numéro du carte" height="40px" formControlName="numeroCarte">
+            
+            </div>
+    </tr>
+    <tr>
+        <td> 
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="far fa-calendar"></i></span>
+                </div>
+                <input type="text" class="transparent-input" height="40px" formControlName="heure_debut" placeholder="Selectionner date expiration"  onfocus="(this.type='date')">
+            </div>
+        
+            
+     <tr  >
+        
+    <td> <p></p>   <button class="btn btn-danger" ><i class="fas fa-times" style="width:15px;height:22px;"></i> Annuler</button> 
+    <button class="btn btn-primary" ><i class="fas fa-check" style="width:15px;height:22px;"></i> Valider</button> 
+</td>
+<tr >
+
+ 
+        <td  >  <p></p>
+            <img src="assets/images/info.png" width="20px"><span class="textColor"> pour annuler votre paiement cliquer sur Annuler</span></td>
+</tr>
+     </tr>
+        
+   
+     
+      
+
+
+
+<style>
+    .mont{
+        color:#e05017;
+        font-weight:bold;
+    } 
+       .textColor{
+      color: red;
+    font-weight: bold;
+    }
+.continuous-line {
+    border: none;
+    border-top: 5px solid #969796;
+  }
+   
+   
+  .image-container {
+        background-image: url('assets/images/Arriere.png'); /* Chemin vers votre image */
+        background-size: cover; /* Pour que l'image couvre tout le conteneur */
+        width: 400px; /* Largeur de l'image */
+        height: 370px; /* Hauteur de l'image */
+    }
+ 
+    .transparent-input {
+            background-color: transparent ;
+            border: 1px solid #080202; /* Ajoutez une bordure si nécessaire */
+            padding: 5px; /* Ajoutez un espacement interne pour améliorer l'apparence */
+       color:rgb(14, 13, 13);
+      font-weight: bold;
+      
+      
+       }
+  ::placeholder{
+    color:rgb(12, 12, 14)
+  }
+</style>
+
+</table>
+</div>

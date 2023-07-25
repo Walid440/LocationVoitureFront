@@ -8,7 +8,7 @@ import { OwlModule } from 'ngx-owl-carousel';
 import { BrowserModule } from '@angular/platform-browser';
 import { PrincipalComponent } from './principal/principal.component';
 import { ReservationComponent } from './reservation/reservation.component';
-import { PaiementComponent } from './paiement/paiement.component';
+ 
 import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { FrontsComponent } from './fronts/fronts.component';
@@ -25,8 +25,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ProduitComponent } from './produit/produit.component';
 import { LocationComponent } from './offre/location/location.component';
 import { EchangeComponent } from './offre/echange/echange.component';
+
 import { VenteComponent } from './offre/vente/vente.component';
- 
+import { PaiementComponent } from './paiement/paiement.component';
 
 @NgModule({
   declarations: [
@@ -34,10 +35,10 @@ import { VenteComponent } from './offre/vente/vente.component';
   IndexComponent,
     PrincipalComponent,
     ReservationComponent,
-    PaiementComponent,
+  
     FrontsComponent,
 
-
+PaiementComponent,
     BookComponent,
       ProduitComponent,
       LocationComponent,

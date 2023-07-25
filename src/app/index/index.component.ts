@@ -46,7 +46,7 @@ listOffre:any;
   open(){
     this.dial.open(LocationComponent,{
       width:'600px',
-      height:'350px'
+      height:'370px'
     });
    
   }
