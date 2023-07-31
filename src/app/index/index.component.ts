@@ -81,7 +81,7 @@ else   if(   this.selectedElement =="vente.png")
 
     this.dial.open(EchangeComponent,{
       width:'600px',
-      height:'370px'
+      height:'500px'
     });
    
   }
