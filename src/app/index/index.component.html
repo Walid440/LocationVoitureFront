@@ -12,8 +12,8 @@
    
            .image-text {
                position: absolute;
-               top: 9%;
-               left: 6%;
+               top: 5%;
+               left: 1%;
                transform: rotate(35deg) ;
                color: white;
                font-size: 24px;
@@ -153,13 +153,13 @@
             <ngx-slick-carousel class="carousel" #slickModal="slick-carousel"
             [config]="carouselConfig" >
              
-     <div ngxSlickItem class="carousel-item"   *ngFor="let p of listOffre">
+     <div ngxSlickItem class="carousel-item"   *ngFor="let p of listOffre;let i=index">
                <td> 
                 <div>
                 <img   src="assets/images/{{p.photo}}" alt="" class="img-fluid" width="300px" height="300px">
               <div class="image-text">
 
-<img src="assets/images/location.png" width="180px">
+<img src="assets/images/{{p.photo2}}"  class="img-fluid" width="180px">
               </div>
               
               </div>
@@ -175,7 +175,7 @@
                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                 <td>
                   
-                   <p class=""><a (click)="open()" class="btn btn-primary py-2 mr-1" >Book now</a>
+                   <p class=""><a (click)="open(i,p.photo2,$event)" class="btn btn-primary py-2 mr-1" >Book now</a>
                      <a (click)="detail()" class="btn btn-secondary py-2 ml-1">Details</a></p>
                 </td>
                </tr>
@@ -379,7 +379,7 @@
           </div>
           <div class="col-md-4 d-flex ftco-animate">
           	<div class="blog-entry justify-content-end">
-              <a href="blog-single.html" class="block-20" style="background-image: url('images/image_2.jpg');">
+              <a href="blog-single.html" class="block-20" style="background-image: url('');">
               </a>
               <div class="text pt-4">
               	<div class="meta mb-3">
@@ -394,7 +394,7 @@
           </div>
           <div class="col-md-4 d-flex ftco-animate">
           	<div class="blog-entry">
-              <a href="blog-single.html" class="block-20" style="background-image: url('images/image_3.jpg');">
+              <a href="blog-single.html" class="block-20" style="background-image: url('');">
               </a>
               <div class="text pt-4">
               	<div class="meta mb-3">
@@ -570,9 +570,6 @@
   <div mat-dialog-actions>
     
 
-    <table border="1">
-        <tr><td>Nom
-<td><img src="assets/bg_1.jpg" (click)="open()" width="1000px">
-</td></tr></table></div>
+  </div>
 </body>
 </html>

@@ -8,6 +8,11 @@ import { BookComponent } from '../book/book.component';
 import { OffresService } from '../services/offres.service';
 import { ProduitComponent } from '../produit/produit.component';
 import { LocationComponent } from '../offre/location/location.component';
+import { offre } from '../Model/offre';
+import { VenteComponent } from '../offre/vente/vente.component';
+import { Router } from '@angular/router';
+import { elementAt } from 'rxjs';
+import { EchangeComponent } from '../offre/echange/echange.component';
  
  @Component({
   selector: 'app-index',
@@ -16,15 +21,17 @@ import { LocationComponent } from '../offre/location/location.component';
 })
 export class IndexComponent implements OnInit{
 
-  constructor(private dial:MatDialog,private offre:OffresService){ }    
+  constructor(private dial:MatDialog,private offre:OffresService,private rout:Router){ }    
       
-    
-listOffre:any;
+  pers!:offre;
 
+listOffre:any;
+id!:number;
 
 
     ngOnInit(): void {
-      this.getAllOffre();
+       this.getAllOffre();
+       //this.id=this.rout.snapshot.params['id'];
 
     }
 
@@ -42,23 +49,57 @@ listOffre:any;
     dots: true,
     arrows: true
   };
+ 
+  selectedElement: string | null = null;
 
-  open(){
+   
+  open(i: number,s:any,event:any){
+
+
+    this.selectedElement = s;
+   
+     if(   this.selectedElement =="location.png")
+  {
+
     this.dial.open(LocationComponent,{
       width:'600px',
       height:'370px'
     });
    
   }
+else   if(   this.selectedElement =="vente.png")
+  {
+
+    this.dial.open(VenteComponent,{
+      width:'600px',
+      height:'370px'
+    });
+   
+  }
+  else   if(   this.selectedElement =="echange.png")
+  {
+
+    this.dial.open(EchangeComponent,{
+      width:'600px',
+      height:'370px'
+    });
+   
+  }
+}
   
- 
+  result:any;
 getAllOffre(){
 
   this.offre.getAll().subscribe(res=>{
 
 
 this.listOffre=res;
-console.log("res"+res);
+
+   
+console.log("res"+this.listOffre['photo2'])
+
+  
+ 
   });
 }
 detail(){
