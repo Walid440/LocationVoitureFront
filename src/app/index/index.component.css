@@ -64,11 +64,17 @@ width:350px;
   scroll-behavior: smooth;
   hyphens: auto;
 }
+.input-box{
+width:270px;
+border-radius: 5px 6px 0ppx 0px;
+padding: 5px 5px 10px 10px;
+border:1px solid white;
+}
 
 .chat-bar-input-block{
 display: flex;
 float:left;
-background-color:rgb(86, 89, 92);
+background-color:whitesmoke;
 padding: 10px 0px 10px 10px;
 align-items: center;
 border-radius: 10px 10px 0ppx 0px;
@@ -89,11 +95,18 @@ width:350px;
 }
 #user-input{
   width: 75%;
+ 
 }
 .bot-Text{
   color:black;
   font-size: 16px;
   text-align: left;
+  font-family: Helvetica;
+}
+.bot-Text span{
+
+  display: inline;
+  background-color: aqua;
 }
 .userText{
   color:white;

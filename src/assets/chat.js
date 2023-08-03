@@ -9,9 +9,35 @@ for (let i=0;i<coll.length;i++)
     content.style.maxHeight = null;   
      }
     else  {  
-     
+       
 content.style.maxHeight = content.scrollHeight + 'px';
+  
+ const day=new Date();
+ const hours=day.getHours();
+ const minutes=day.getMinutes();
+ const secondes=day.getSeconds();
+ if(hours<10)
+ {
+  hours="0"+hours;
+ }if(minutes<10)
+ {
+  minutes="0"+minutes;
+ }
+  
+let times=hours+":"+minutes;
+  let ch="your first Message !";
+  document.getElementById("msgStart").innerHTML='<p class="botText"><span>'+ch+'</span><p>';
+ 
 
+ 
+$("#chat-timestamp").append(times);
+document.getElementById("userInput").scrollIntoView(false);
+       
     }
+  
   })
+
+  
 }
+
+
