@@ -1,0 +1,16 @@
+<div class="chat-container">
+    <div class="chat-history" *ngFor="let message of messages">
+      <div class="message" [ngClass]="{'user-message': message.fromUser}">
+        {{ message.content }}
+      </div>
+    </div>
+  </div>
+  <div class="chat-input">
+    <input type="text" [(ngModel)]="userMessage" (keyup.enter)="sendMessage()" placeholder="Tapez votre message...">
+    <button (click)="sendMessage()">Envoyer</button>
+  </div>
+  <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+  
+    </script>
+    <!--End of Tawk.to Script-->

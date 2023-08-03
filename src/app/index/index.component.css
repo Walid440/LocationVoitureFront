@@ -1,12 +1,117 @@
-.cursor-pointer{
-    cursor: pointer;
-  }
+.cursor-pointer {
+  cursor: pointer;
+}
 
-  .mat-dialog-container {
-    z-index: 10555;
-  }
-  .center-dialog {
-    top: 80%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+.mat-dialog-container {
+  z-index: 10555;
+}
+
+.center-dialog {
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.collapsible{
+background-color: rgb(82, 151, 255);
+color:white;
+cursor:pointer;
+padding: 18px;
+font-size: 18px;
+border-radius: 10px 10px 0px 0px;
+border:3px solid white;
+text-align: left;
+width:350px;
+}
+
+.chat-bar-collapsible {
+  position: fixed;
+  bottom: 0;
+  right: 50px;
+  box-shadow: 0 8px 16px rgba(red, green, blue, alpha);
+}
+
+.content{
+  max-height: 0 ;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: azure;
+}
+
+.full-chat-block {
+  width: 350px;
+  background:rgb(239, 241, 235);
+  text-align: center;
+  overflow: auto;
+  scrollbar-width: none;
+  height: max-content;
+  transition: max-height 0.2 ease-out;
+  border: 15px;
+}
+
+.outer-container {
+  min-height: 500px;
+  bottom: 0%;
+  position: relative;
+}
+
+.chat-container {
+  
+  max-height: 500px;
+  max-width: 200px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  scroll-behavior: smooth;
+  hyphens: auto;
+}
+
+.chat-bar-input-block{
+display: flex;
+float:left;
+background-color:rgb(86, 89, 92);
+padding: 10px 0px 10px 10px;
+align-items: center;
+border-radius: 10px 10px 0ppx 0px;
+width:350px;
+
+}
+.chat-bar-icons{
+  display: flex;
+  justify-content: space-evenly;
+  box-sizing: border-box;
+  width:25%;
+  float: right;
+  font-size: 20px;
+  
+}
+#chat-icon:hover{
+  opacity: .7;
+}
+#user-input{
+  width: 75%;
+}
+.bot-Text{
+  color:black;
+  font-size: 16px;
+  text-align: left;
+}
+.userText{
+  color:white;
+  font-family: Helvetica;
+  font-size: 16px;
+  font-weight: normal;
+  text-align: right;
+  clear: both;
+}
+.bot-Text span{
+
+  line-height: 1.5em;
+  display: inline;
+  background: white;
+  padding: 10px;
+  border-radius: 8px;
+  max-width: 80%;
+  margin-left: 10px;
+  animation: floatup .5s forwards;
+}
+

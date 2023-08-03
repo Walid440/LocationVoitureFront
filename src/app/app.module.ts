@@ -28,6 +28,7 @@ import { EchangeComponent } from './offre/echange/echange.component';
 
 import { VenteComponent } from './offre/vente/vente.component';
 import { PaiementComponent } from './paiement/paiement.component';
+import { ChatbotComponent } from './chatbot/chatbot.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ PaiementComponent,
       LocationComponent,
       EchangeComponent,
       VenteComponent,
+      ChatbotComponent,
    
   ],
   imports: [

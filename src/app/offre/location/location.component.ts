@@ -22,5 +22,8 @@ constructor(private dial:MatDialog){}
     });
   
   }
-  
+  closeCompose(){
+
+    this.dial.closeAll();
+  }
 }
