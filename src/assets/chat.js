@@ -12,6 +12,30 @@ for (let i=0;i<coll.length;i++)
        
 content.style.maxHeight = content.scrollHeight + 'px';
   
+
+
+
+
+var coll1=document.getElementsByClassName("textInput");
+
+for (let i=0;i<coll1.length;i++)
+{
+  coll1[i].addEventListener("keypress",function(e){
+    this.classList.toggle("active");
+    const content = document.querySelector('.content');
+  
+   
+    if(e.key=="Enter")
+    { 
+   sendButton();
+    }
+  })}
+
+
+
+
+
+
  const day=new Date();
  const hours=day.getHours();
  const minutes=day.getMinutes();
@@ -25,19 +49,47 @@ content.style.maxHeight = content.scrollHeight + 'px';
  }
   
 let times=hours+":"+minutes;
-  let ch="your first Message !";
-  document.getElementById("msgStart").innerHTML='<p class="botText"><span>'+ch+'</span><p>';
  
 
  
 $("#chat-timestamp").append(times);
 document.getElementById("userInput").scrollIntoView(false);
-       
+     
     }
   
   })
+ 
 
+ 
+function sendButton(){
+  let ch="your first Message !";
   
+let val= $("#textInput").val(); 
+if(val=="hello")
+{
+ ch= "Hiiiiiiii!";
+}
+else if(val=="cv"){
+  ch="vous etes les bienvenue!!!"
+
+}
+let UserHtml='<p class="botText"><span>'+val+'</span></p>';
+ 
+
+ 
+$("#chatbox").append(UserHtml);
+$("#chatbox").append(ch); 
+$("#textInput").val(""); 
+ //document.getElementById("chat-bar-bottom").scrollIntoView(true);
+
+ 
+
+    
+  
+  
+// document.getElementById("chat-bar-bottom").scrollIntoView(true);
+
+ //document.getElementById("userInput").scrollIntoView(true);
 }
 
-
+}

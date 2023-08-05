@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"  >
+<html lang="en" ng-app="myApp" >
   <head>
 
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -104,7 +104,7 @@ padding: 18px 12px;
   
   
   
-  <body >
+  <body ng-controller="MyController">
     
    
      
@@ -299,7 +299,7 @@ padding: 18px 12px;
   
 
 <i id="chat-icon" style="color: white;" class="far fa-comment"></i>
-
+<script src="path/to/bootstrap.min.js"></script>
    </button>
    <td></td>
   </tr></table>
@@ -308,24 +308,27 @@ padding: 18px 12px;
 <!---messge container-->
 <div class="outer-container">
 <div class="chat-container">
-<div id="chatbox">
+<div id="chatbox" class="chat">
 
   <h5 id="chat-timestamp"></h5>
   <p class="botText" id="msgStart">
     
-    <span>loading ...</span></p>
-</div>
+    <span> Bienvenue sur site agence de location  😄  
+    </span>
+  </div>
+ 
+ 
 <!--user input box-->
 <div class="chat-bar-input-block">
-  <div id="
-  ">
-<input type="text" class="input-box" name="msg" placeholder="Tap 'enter' to send a message">
+  <div class="">
+<input type="text" class="textInput" id="textInput" ng-keypress="onKeyPress($event)" placeholder="Tap 'enter' to send a message">
 </div>
 
 <div class="chat-bar-icons">
   <i id="chat-heart" style="color: crimson;" class="fas fa-heart" onclick="heartButton()"></i>
   <i id="chat-send" style="color: blue;" class="fa fa-fw fa-send" onclick="sendButton()"></i>
 </div></div>
+
 </div>
  
 </div>
