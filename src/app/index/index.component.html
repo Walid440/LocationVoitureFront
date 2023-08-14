@@ -7,7 +7,8 @@
 
     <script src="src\app\angular.min.js"></script>
 
- 
+    <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://unpkg.com/slick-carousel@1.6.0/slick/slick.js"></script>
     <script type="text/javascript" src="src\assets\chat.js"></script>
 
 
@@ -266,15 +267,17 @@ padding: 18px 12px;
                
                 </div>
                </td>
+
+  
+               
      </div>
-            
+    
               </ngx-slick-carousel>
              
                          
 
               </div>
-              
-    
+             
      </div>
                       </div>
          
@@ -282,9 +285,98 @@ padding: 18px 12px;
        
       </div>
       
-    </section>
-    
+    </section> 
+   
+      <div class="rating">
+        
+      <form  [formGroup]="ratingForm">
+       
+         <table  >   
+          <tr >
+            <td >
+      
+        <label    id="s1" >
+        <input type="radio"  [hidden]="isHidden3" onclick="c()"  [(ngModel)]="star1" id="star1" name="star1"  class="ratin"    value="1" (change)="rating(1)" >
+     
+        
+        <i class="fas fa-star" ></i></label>
+             
+            
+           <label    id="s2" >
+            <input type="radio"  [hidden]="isHidden3" onclick="c()"  [(ngModel)]="star2" id="star2" name="star2"  class="ratin"    value="2" (change)="rating(2)" >
+         
+            
+            <i class="fas fa-star"  ></i></label>
 
+            <label    id="s3" >
+              <input type="radio"  [hidden]="isHidden3" onclick="c()"  [(ngModel)]="star3" id="star3" name="star3"  class="ratin"    value="3" (change)="rating(3)" >
+           
+              
+              <i class="fas fa-star" ></i></label>
+              <label    id="s4" >
+                <input type="radio"  [hidden]="isHidden3" onclick="c()"  [(ngModel)]="star4" id="star4" name="star4"  class="ratin"    value="4" (change)="rating(4)" >
+             
+                
+                 
+                <i class="fas fa-star" ></i></label>
+                <label    id="s5" >
+                  <input type="radio"  [hidden]="isHidden3" onclick="c()"  [(ngModel)]="star4" id="star5" name="star5"  class="ratin"    value="4" (change)="rating(5)" >
+               
+                  
+                  <i class="fas fa-star" ></i></label>
+                   
+           </td>
+           
+
+            <td colspan="2"><p class="date">{{DateAujou}}</p></td>
+    </tr>
+    <tr><td> 
+      <form>
+        <div class="form-group">
+          
+          <input type="text" class="form-control" placeholder="username"
+                 required
+                 [(ngModel)]="username" name="name">
+        </div> 
+        <div class="form-group">
+          
+          <input type="text" class="form-control" placeholder="Commentaire"
+                 required
+                 [(ngModel)]="commenTex" name="name">
+        </div>
+        
+        <!-- ... autres champs de formulaire -->
+      
+        <button type="submit" class="btn btn-primary" (click)="AddCom()">Publier</button>
+      </form>
+      
+        
+        <!-- ... autres champs de formulaire -->
+      
+          
+      </td>
+    </tr>
+         </table>
+      </form>
+        </div>
+
+
+      
+      
+ 
+     
+      <div *ngFor="let comment of userlist">
+        <div class="rating">
+          <span class="star" *ngFor="let i of getStarArray(comment.rating)">&#9733;</span>
+        </div>
+        <p>Username: {{ comment.username }}</p>
+        <p>Commentaire: {{ comment.commentText }}</p>
+      
+       
+       
+      </div>
+     
+       
 <div class="chat-bar-collapsible">
 <table>
   <tr>
@@ -623,6 +715,8 @@ padding: 18px 12px;
 	</div>
   <div mat-dialog-actions>
   
+ 
+ 
 
   </div>
   </body>

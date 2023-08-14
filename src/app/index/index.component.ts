@@ -14,10 +14,18 @@ import { Router } from '@angular/router';
 import { elementAt } from 'rxjs';
 import { EchangeComponent } from '../offre/echange/echange.component';
 import { ChatbotComponent } from '../chatbot/chatbot.component';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+ 
+import { MatSnackBar } from '@angular/material/snack-bar'; // Importez le service
+import { CommentService } from '../services/comment.service';
+import { comment } from '../Model/Comment';
  
 
 declare const myFunction: any;
  
+export interface Rating {
+  value: number;
+}
  
  @Component({
   selector: 'app-index',
@@ -28,9 +36,32 @@ declare const myFunction: any;
 })
 export class IndexComponent implements OnInit{
 myscriptElemnt!:HTMLScriptElement;
+DateAujou:any;
+Comm:comment=new comment();
+star:number[]=[5,4,2,3,1];
 
- 
-  constructor(private renderer: Renderer2,private dial:MatDialog,private offre:OffresService,private rout:Router)  
+response = [
+  '',
+  'Very unsatisfied',
+  'Neutral',
+  'Satisfied',
+  'Very Satisfied'
+]
+resp=[0,1,2,3,4,5];
+getStarArray(value: number): number[] {
+  return Array(value).fill(0);
+}
+userlist!:any;
+username: string = '';
+commenTex:string='';
+star1:number=0;
+star2:number=0;
+star3:number=0;
+star4:number=0;
+star5:number=0;
+
+ ratingForm!: FormGroup ;
+  constructor(public comService : CommentService,private snackbar:MatSnackBar,private fb: FormBuilder,private renderer: Renderer2,private dial:MatDialog,private offre:OffresService,private rout:Router)  
       {
         this.myscriptElemnt=document.createElement("script");
         this.myscriptElemnt.src="src/assets/chat.js";
@@ -39,13 +70,36 @@ myscriptElemnt!:HTMLScriptElement;
       }
   pers!:offre;
   isHidden: boolean = false;
+   rate:number=0;
   isHidden2: boolean = false;
 listOffre:any;
 id!:number;
+isHidden3: boolean = true;
+isBackgroundActive: boolean = false;
+     ngOnInit(): void {
 
+      this.ratingForm = this.fb.group({
+        username:new FormControl(),
+       commentText:new FormControl(),
+       star1:new FormControl(),
+       star2:new FormControl(),
+       star3:new FormControl(),
+       star4:new FormControl(),
+       star5:new FormControl(),
+  
+   });
+     this.getAllComments();
 
-    ngOnInit(): void {
+      this.DateCommentaire();
+
+      this.ratingForm = this.fb.group({
+        rating: ['rating'], // Contrôle pour le bouton radio
+      });
        this.getAllOffre();
+
+this.rating(this.id);
+
+
 
 
        this.loadScript('assets/chat.js').then(() => {
@@ -75,7 +129,13 @@ id!:number;
   
   
   
-  
+  getAllComments(){
+    this.comService.getAll().subscribe(response => {
+      this.userlist = response;
+      console.log("resss"+this.userlist)
+     
+    });
+  }
   
   
      
@@ -145,6 +205,8 @@ else   if(   this.selectedElement =="vente.png")
    
   }
 }
+ 
+
   
   result:any;
 getAllOffre(){
@@ -163,10 +225,42 @@ console.log("res"+this.listOffre['photo2'])
 }
 detail(){
   this.dial.open(ChatbotComponent,{
-    width:'550px',
-    height:'350px'
+    width:'500px',
+    height:'400'
   });
 }
+ 
+
+DateCommentaire()
+{
+  const currentDate = new Date();
+  this.DateAujou=currentDate.toLocaleDateString();
+  
+}
+rat = 0;
+returnStar(i: number) {
+  if (this.rat >= i + 1) {
+    return 'star';
+  } else {
+    return 'star_border';
+  }
+}
+
+rating(i :number){
+ 
+let y:any;
+ 
+this.snackbar.open(this.response[i], '', {
+   panelClass: ['snack-bar']
+});
+   this.rate=this.resp[i];
+
+ 
+
+}
+ 
+
+ 
 /*sendMessage() {
   if (this.userMessage.trim() === '') return;
 
@@ -184,4 +278,20 @@ detail(){
   const botResponse = responses[randomIndex];
   this.messages.push({ content: botResponse, fromUser: false });
 }*/
+
+
+AddCom(){
+ 
+  this.Comm.rating=this.rate;
+    this.Comm.commentText=this.commenTex;
+    this.Comm.username=this.username;
+    if(this.ratingForm.value.username=="")
+    {
+      Swal.fire("Selectionner user!!")
+    }
+    else{
+  this.comService.AddComment(this.Comm).subscribe();
+  
+     }
+}
 }

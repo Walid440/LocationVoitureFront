@@ -10,7 +10,7 @@ import { PrincipalComponent } from './principal/principal.component';
 import { ReservationComponent } from './reservation/reservation.component';
  
 import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { SlickCarouselModule } from 'ngx-slick-carousel';
+ 
 import { FrontsComponent } from './fronts/fronts.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -29,7 +29,18 @@ import { EchangeComponent } from './offre/echange/echange.component';
 import { VenteComponent } from './offre/vente/vente.component';
 import { PaiementComponent } from './paiement/paiement.component';
 import { ChatbotComponent } from './chatbot/chatbot.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+ import { SlickCarouselModule } from 'ngx-slick-carousel';
+ import { environment } from 'environments/environment';
+ import { NgMapsCoreModule } from '@ng-maps/core'; 
+import { GoogleMapsModule } from '@angular/google-maps';
+ 
+  
+       
+ 
+ 
 
+    
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +60,8 @@ PaiementComponent,
    
   ],
   imports: [
+   
+  GoogleMapsModule,
     BrowserModule,
     AppRoutingModule,
     SlickCarouselModule,
@@ -57,10 +70,11 @@ HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-
+    MatSnackBarModule,
     MatButtonModule,
     MatIconModule,
-MatInputModule
+MatInputModule,
+SlickCarouselModule
   ],
  
   

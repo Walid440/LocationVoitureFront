@@ -6,3 +6,5 @@
     width: 100%;
     height: auto;
   }
+  @import "~ngx-slick-carousel/slick/slick.scss";
+@import "~ngx-slick-carousel/slick/slick-theme.scss";
