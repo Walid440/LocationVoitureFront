@@ -30,6 +30,16 @@
                font-size: 24px;
                text-align: center;
            }
+           
+           .scroll {
+               position: absolute;
+               top: 18%;
+               left: 1%;
+               
+               color: white;
+              width: 1320px;
+               text-align: center;
+           }
            .wrapper{
 background-color:rgb(247, 243, 243);
 font-weight: 10px;
@@ -320,7 +330,7 @@ padding: 18px 12px;
                  
                 <i class="fas fa-star" ></i></label>
                 <label    id="s5" >
-                  <input type="radio"  [hidden]="isHidden3" onclick="c()"  [(ngModel)]="star4" id="star5" name="star5"  class="ratin"    value="4" (change)="rating(5)" >
+                  <input type="radio"  [hidden]="isHidden3" onclick="c()"  [(ngModel)]="star4" id="star5" name="star5"  class="ratin"    value="5" (change)="rating(5)" >
                
                   
                   <i class="fas fa-star" ></i></label>
@@ -331,7 +341,8 @@ padding: 18px 12px;
             <td colspan="2"><p class="date">{{DateAujou}}</p></td>
     </tr>
     <tr><td> 
-      <form>
+      <form  class="border p-4 shadow">
+        <div class="container mt-5">
         <div class="form-group">
           
           <input type="text" class="form-control" placeholder="username"
@@ -339,16 +350,18 @@ padding: 18px 12px;
                  [(ngModel)]="username" name="name">
         </div> 
         <div class="form-group">
-          
-          <input type="text" class="form-control" placeholder="Commentaire"
-                 required
-                 [(ngModel)]="commenTex" name="name">
+          <textarea class="form-control" id="commenTex" placeholder="Commentaire"  name="commenTex"  required
+          [(ngModel)]="commenTex" name="name" required></textarea>
+
+     
+                
         </div>
         
         <!-- ... autres champs de formulaire -->
       
-        <button type="submit" class="btn btn-primary" (click)="AddCom()">Publier</button>
-      </form>
+        <button type="submit" class="btn btn-primary" (click)="AddCom()">Soumettre l'Avis</button>
+     
+        </div> </form>
       
         
         <!-- ... autres champs de formulaire -->
@@ -357,26 +370,31 @@ padding: 18px 12px;
       </td>
     </tr>
          </table>
+         
       </form>
         </div>
-
-
-      
-      
- 
-     
-      <div *ngFor="let comment of userlist">
-        <div class="rating">
-          <span class="star" *ngFor="let i of getStarArray(comment.rating)">&#9733;</span>
-        </div>
-        <p>Username: {{ comment.username }}</p>
-        <p>Commentaire: {{ comment.commentText }}</p>
-      
-       
-       
+        <div class="carousel-inner" >
+            <ngx-slick-carousel class="carousel" #slick="slick-carousel" [config]="carouselConfig2">
+          <div ngxSlickItem class="carousel-item" *ngFor="let comment of userlist">
+            <div class="rating">
+              <span class="star" *ngFor="let i of getStarArray(comment.rating)">&#9733;</span>
+            </div>
+            <p >Username: {{ comment.username }}</p>
+            <p>Commentaire: {{ comment.commentText }}</p>
+          </div>
+        </ngx-slick-carousel>
+        <div class="scroll" >
+          <div>everger</div>
+           <span class="carousel-control-prev" type="button" (click)="slick.slickPrev()" data-bs-target="#demo" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </span>
+          <span class="carousel-control-next"  (click)="slick.slickNext()"type="button" data-bs-target="#demo" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </span>
+            </div>
       </div>
-     
        
+         
 <div class="chat-bar-collapsible">
 <table>
   <tr>

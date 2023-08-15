@@ -1,7 +1,7 @@
-import { Component, OnInit,Renderer2  } from '@angular/core';
+import { Component, OnInit,Renderer2, ViewChild  } from '@angular/core';
 import { ReservationComponent } from '../reservation/reservation.component';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
-import Swal from 'sweetalert2';
+ 
 import { FrontsComponent } from '../fronts/fronts.component';
  
 import { BookComponent } from '../book/book.component';
@@ -19,9 +19,16 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatSnackBar } from '@angular/material/snack-bar'; // Importez le service
 import { CommentService } from '../services/comment.service';
 import { comment } from '../Model/Comment';
+import { SlickCarouselComponent } from 'ngx-slick-carousel';
+import Swal from 'sweetalert2';
+ 
+
+
+ 
  
 
 declare const myFunction: any;
+
  
 export interface Rating {
   value: number;
@@ -40,6 +47,8 @@ DateAujou:any;
 Comm:comment=new comment();
 star:number[]=[5,4,2,3,1];
 
+@ViewChild('slik') slickModal!: SlickCarouselComponent ;
+
 response = [
   '',
   'Very unsatisfied',
@@ -48,6 +57,7 @@ response = [
   'Very Satisfied'
 ]
 resp=[0,1,2,3,4,5];
+   hoveredComment: any;
 getStarArray(value: number): number[] {
   return Array(value).fill(0);
 }
@@ -68,14 +78,22 @@ star5:number=0;
         document.body.appendChild(this.myscriptElemnt);
 
       }
+
+  
+    
+  
+    
+    
+    
+    
   pers!:offre;
   isHidden: boolean = false;
-   rate:number=0;
+  rate:number=0;
   isHidden2: boolean = false;
-listOffre:any;
-id!:number;
-isHidden3: boolean = true;
-isBackgroundActive: boolean = false;
+  listOffre:any;
+  id!:number;
+  isHidden3: boolean = true; 
+  isBackgroundActive: boolean = false;
      ngOnInit(): void {
 
       this.ratingForm = this.fb.group({
@@ -168,7 +186,15 @@ this.rating(this.id);
     arrows: true
   };
  
-
+  carouselConfig2 = {
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: false,
+    autoplaySpeed: 3000,
+    dots: true,
+    arrows: true
+  };
+ 
   selectedElement: string | null = null;
 
    
@@ -230,6 +256,10 @@ detail(){
   });
 }
  
+ 
+
+
+
 
 DateCommentaire()
 {
@@ -279,18 +309,34 @@ this.snackbar.open(this.response[i], '', {
   this.messages.push({ content: botResponse, fromUser: false });
 }*/
 
+navigatePrev() {
+  this.slickModal.slickPrev();
+}
+
+navigateNext() {
+  this.slickModal.slickNext();
+}
 
 AddCom(){
  
   this.Comm.rating=this.rate;
     this.Comm.commentText=this.commenTex;
     this.Comm.username=this.username;
-    if(this.ratingForm.value.username=="")
+    if(this.rate==null)
     {
-      Swal.fire("Selectionner user!!")
+      Swal.fire("Selectionner rate!!")
+    }else if(this.username=="")
+    {
+      Swal.fire("veuillez saisir un username")
     }
+    else if(this.commenTex=="")
+    {
+      Swal.fire("veuillez saisir un commentaire")
+    }
+    
     else{
   this.comService.AddComment(this.Comm).subscribe();
+  Swal.fire("Element ajouté avec sucées !!!")
   
      }
 }

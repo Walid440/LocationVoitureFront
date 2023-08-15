@@ -210,3 +210,30 @@ width: 400px;
   color: rgb(194, 47, 47);
   cursor: pointer;
  }
+ .comment-cont ainer {
+  transition: background-color 0.3s;
+}
+
+.comment-container:hover {
+  background-color: #f5f5f5;
+  /* Autres styles de survol */
+}
+ 
+ 
+
+
+ .carousel-control-next-icon {
+  color:#3498db;
+  background-color: rgb(42, 42, 150);
+  
+ }
+ .carousel-control-prev-icon{
+  color:#3498db;
+  background-color: rgb(42, 42, 150);
+ }
+.carousel-inner{
+
+  background-color: white;
+}
+ 
+ 

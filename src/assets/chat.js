@@ -6,25 +6,29 @@ function c() {
   var coll3 = document.getElementById("s3");
   var coll4 = document.getElementById("s4");
   var coll5 = document.getElementById("s5");
-  var isChecked = document.getElementById("star1").checked;
-  if (isChecked) {
+
+ 
+  
     coll.addEventListener("click", function() {
 
+  var isChecked1 = document.getElementById("star1").checked;
  
- 
-
+ if (isChecked1) {
+   
     document.getElementById("s1").style.color = "yellow";
-    
+
+    }
   
-});}  
+});
 coll2.addEventListener("click", function() {
  
   var isChecked1 = document.getElementById("star2").checked;
  
   if (isChecked1) {
-    document.getElementById("s1").style.color = "yellow";
+    
     document.getElementById("s2").style.color = "yellow";
-  }  
+   document.getElementById("s1").style.color = "yellow";
+}
 });
 
 coll3.addEventListener("click", function() {
@@ -49,8 +53,21 @@ coll4.addEventListener("click", function() {
   }  
 });
  
+ 
+coll5.addEventListener("click", function() {
+ 
+  var isChecked5 = document.getElementById("star5").checked;
+ 
+  if (isChecked5) {
+    document.getElementById("s1").style.color = "yellow";
+    document.getElementById("s2").style.color = "yellow";
+    document.getElementById("s3").style.color = "yellow";
+    document.getElementById("s4").style.color = "yellow";
+document.getElementById("s5").style.color = "yellow";
+  }  
+});
+ 
  }
-
 var coll=document.getElementsByClassName("collapsible");
 
 for (let i=0;i<coll.length;i++)
