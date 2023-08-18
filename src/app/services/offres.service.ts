@@ -15,4 +15,9 @@ export class OffresService {
 
     return this.http.get<offre>("http://localhost:8090/AllOffre");
   }
+
+  public search(dat:string,type:string,ville:string){
+    return this.http.get<offre>("http://localhost:8090/search/"+dat+"/"+type+"/"+ville);
+
+  }
 }

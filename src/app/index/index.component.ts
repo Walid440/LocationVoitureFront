@@ -62,6 +62,7 @@ getStarArray(value: number): number[] {
   return Array(value).fill(0);
 }
 userlist!:any;
+heure!:any;
 username: string = '';
 commenTex:string='';
 star1:number=0;
@@ -69,7 +70,10 @@ star2:number=0;
 star3:number=0;
 star4:number=0;
 star5:number=0;
-
+ville:string='Select';
+Resultat:any;
+menu!:'Select Offre';
+date!:string;
  ratingForm!: FormGroup ;
   constructor(public comService : CommentService,private snackbar:MatSnackBar,private fb: FormBuilder,private renderer: Renderer2,private dial:MatDialog,private offre:OffresService,private rout:Router)  
       {
@@ -104,6 +108,9 @@ star5:number=0;
        star3:new FormControl(),
        star4:new FormControl(),
        star5:new FormControl(),
+       ville:new FormControl(),
+       menu:new FormControl(),
+       date:new FormControl()
   
    });
      this.getAllComments();
@@ -236,18 +243,27 @@ else   if(   this.selectedElement =="vente.png")
   
   result:any;
 getAllOffre(){
-
-  this.offre.getAll().subscribe(res=>{
-
-
-this.listOffre=res;
-
-   
-console.log("res"+this.listOffre['photo2'])
-
-  
  
-  });
+  if (this.ville === 'Select') {
+    this.offre.getAll().subscribe(res=>{
+
+
+      this.listOffre=res;
+      
+   }); } else {
+    
+  
+    
+      this.offre.search(this.date,this.menu,this.ville).subscribe(res=>{
+   this.listOffre=res;
+    
+     });
+   
+ 
+     
+ 
+
+  }
 }
 detail(){
   this.dial.open(ChatbotComponent,{
@@ -258,8 +274,7 @@ detail(){
  
  
 
-
-
+ 
 
 DateCommentaire()
 {

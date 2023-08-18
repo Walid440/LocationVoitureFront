@@ -37,7 +37,7 @@
                left: 1%;
                
                color: white;
-              width: 1320px;
+              width: 1250px;
                text-align: center;
            }
            .wrapper{
@@ -164,38 +164,127 @@ padding: 18px 12px;
     </div>
 
      <section class="ftco-section ftco-no-pt bg-light">
-    	<div class="container">
+    	<div class="container" >
     		<div class="row no-gutters">
     			<div class="col-md-12	featured-top">
     				<div class="row no-gutters">
 	  					<div class="col-md-4 d-flex align-items-center">
 	  						<form action="#" class="request-form animated bg-primary">
 		          		<h2>Make your trip</h2>
-			    				<div class="form-group">
-			    					<label for="" class="label">Pick-up location</label>
-			    					<input type="text" class="form-control" placeholder="City, Airport, Station, etc">
-			    				</div>
-			    				<div class="form-group">
-			    					<label for="" class="label">Drop-off location</label>
-			    					<input type="text" class="form-control" placeholder="City, Airport, Station, etc">
-			    				</div>
-			    				<div class="d-flex">
-			    					<div class="form-group mr-2">
-			                <label for="" class="label">Pick-up date</label>
-			                <input type="text" class="form-control" id="book_pick_date" placeholder="Date">
-			              </div>
-			              <div class="form-group ml-2">
-			                <label for="" class="label">Drop-off date</label>
-			                <input type="text" class="form-control" id="book_off_date" placeholder="Date">
-			              </div>
+                 
+
+			    			 
+			    				<div class="form-group" >
+                    <div class="form-group ml-2"  >
+                      <i class="fa-solid fa-city"></i>
+
+
+                      <label for="" class="label">&nbsp;Ville&nbsp;</label>
+                      <select  placeholder="Ville" [(ngModel)]="ville" id="ville" name="ville"   >
+                        <option>Select</option>
+                        <option>Aix-en-Provence</option>
+                        <option>Ajaccio</option>
+                        <option>Amiens</option>
+                        <option>Angers</option>
+                        <option>Argenteuil</option>
+                        <option>Asnières-sur-Seine</option>
+                        <option>Aulnay-sous-Bois</option>
+                        <option>Avignon</option>
+                        <option>Besançon</option>
+                        <option>Bordeaux</option>
+                        <option>Boulogne-Billancourt</option>
+                        <option>Brest</option>
+                        <option>Caen</option>
+                        <option>Cannes</option>
+                        <option>Champigny-sur-Marne</option>
+                        <option>Clermont-Ferrand</option>
+                        <option>Colombes</option>
+                        <option>Courbevoie</option>
+                        <option>Créteil</option>
+                        <option>Dijon</option>
+                        <option>Dunkerque</option>
+                        <option>Fort-de-France</option>
+                        <option>Grenoble</option>
+                        <option>Issy-les-Moulineaux</option>
+                        <option>Le Havre</option>
+                        <option>Le Mans</option>
+                        <option>Le Tampon</option>
+                        <option>Lille</option>
+                        <option>Limoges</option>
+                        <option>Lyon</option>
+                        <option>Marseille</option>
+                        <option>Metz</option>
+                        <option>Montpellier</option>
+                        <option>Montreuil</option>
+                        <option>Mulhouse</option>
+                        <option>Nancy</option>
+                        <option>Nanterre</option>
+                        <option>Nantes</option>
+                        <option>Neuilly-sur-Seine</option>
+                        <option>Nice</option>
+                        <option>Nîmes</option>
+                        <option>Niort</option>
+                        <option>Noisy-le-Grand</option>
+                        <option>Orléans</option>
+                        <option>Paris</option>
+                        <option>Pau</option>
+                        <option>Perpignan</option>
+                        <option>Poitiers</option>
+                        <option>Reims</option>
+                        <option>Rennes</option>
+                        <option>Roubaix</option>
+                        <option>Rouen</option>
+                        <option>Saint-Denis</option>
+                        <option>Saint-Étienne</option>
+                        <option>Saint-Maur-des-Fossés</option>
+                        <option>Saint-Nazaire</option>
+                        <option>Saint-Quentin</option>
+                        <option>Sarcelles</option>
+                        <option>Strasbourg</option>
+                        <option>Toulon</option>
+                        <option>Toulouse</option>
+                        <option>Tourcoing</option>
+                        <option>Tours</option>
+                        <option>Troyes</option>
+                        <option>Valence</option>
+                        <option>Versailles</option>
+                        <option>Villejuif</option>
+                        <option>Villeneuve-d'Ascq</option>
+                        <option>Vitry-sur-Seine</option>
+                      </select>  
+                    </div>
+                  </div>
+                  <div class="d-flex">
+			    					<div class="input-group">
+                      <div class="input-group-prepend">
+                      
+                  <div class="form-group" width="80px" name="date" >
+			    					 <label for="" class="label">&nbsp;Pick-up Date&nbsp;</label>
+                    <i class="far fa-calendar"></i> <input type="text" class="transparent-input" height="40px" [(ngModel)]="date" name="date" placeholder="Selectionner date "  onfocus="(this.type='date')">
+                   
+                  </div>
+                </div>
+                      </div>
+		              
+			             
 		              </div>
-		              <div class="form-group">
-		                <label for="" class="label">Pick-up time</label>
-		                <input type="text" class="form-control" id="time_pick" placeholder="Time">
+		              
+                  <div class="form-group">
+		                <label for="" class="label">&nbsp; Selectionner Type D'offre &nbsp; </label>
+		                <select name="menu" [(ngModel)]="menu" id="menu">
+                      <option>Select Offre</option>
+                      <option>echange</option>
+                      <option>location</option>
+                      <option>vente</option>
+                    </select>
 		              </div>
 			            <div class="form-group">
-			              <input type="submit" value="Rent A Car Now" class="btn btn-secondary py-3 px-4">
-			            </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <a href="#ng" class="btn btn-success" (click)="getAllOffre()">&nbsp;&nbsp;&nbsp;Rechercher</a>
+                      </div>
+                    </div>  
+                  </div>
 			    			</form>
 	  					</div>
 	  					<div class="col-md-8 data-stellar-background-ratio">
@@ -238,7 +327,7 @@ padding: 18px 12px;
 
 
     <section class="ftco-section ftco-no-pt bg-light">
-    	<div class="container">
+    	<div class="container" id="ng">
     		<div class="row justify-content-center">
           <div class="col-12 heading-section text-center animate__animated animate__fadeInUp mb-5">
           	<span class="subheading">What we offer</span>
@@ -247,7 +336,7 @@ padding: 18px 12px;
             <ngx-slick-carousel class="carousel" #slickModal="slick-carousel"
             [config]="carouselConfig" >
              
-     <div ngxSlickItem class="carousel-item"   *ngFor="let p of listOffre;let i=index">
+     <div   ngxSlickItem class="carousel-item"   *ngFor="let p of listOffre;let i=index">
                <td> 
                 <div>
                 <img   src="assets/images/{{p.photo}}" alt="" class="img-fluid" width="300px" height="300px">
