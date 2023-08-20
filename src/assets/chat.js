@@ -1,3 +1,57 @@
+const { execute } = require("@angular-devkit/build-angular/src/builders/extract-i18n");
+
+ 
+document.getElementsByClassName("carousel").hidden=true;
+
+
+function load() {
+ 
+  var searching = document.getElementById("search");
+  var searchItems = document.getElementsByClassName("progress-bar");
+  searching.addEventListener("click", function() {
+    for (var i = 0; i < searchItems.length; i++) {
+      searchItems[i].style.width = "1200px";
+      searchItems[i].style.secondes = "2s";
+      document.getElementsByClassName("carousel").hidden=false;
+
+      // Crée un nouvel intervalle et stocke son ID dans un attribut de données
+   
+  setTimeout(function(){
+ 
+        document.getElementById("bar").hidden=true;
+        document.getElementById("carousel").hidden=false;
+        searchItems.style.width = "300px";
+
+    
+
+   },1000);
+
+   
+     }
+  });
+  
+
+function load() {
+
+  var searching = document.getElementById("search");
+  var searchItems = document.getElementsByClassName("progress-bar");
+  searching.addEventListener("click", function() {
+    for (var i = 0; i < searchItems.length; i++) {
+      searchItems[i].style.width = "1200px";
+      searchItems[i].style.secondes = "3s";
+      document.getElementById("ng").hidden=true;
+
+      // Crée un nouvel intervalle et stocke son ID dans un attribut de données
+ 
+
+      
+     }
+  });
+  
+ 
+  
+   
+}
 
 
 function c() {
@@ -168,7 +222,7 @@ $("#textInput").val("");
  
 
     
-  
+ 
   
 // document.getElementById("chat-bar-bottom").scrollIntoView(true);
 
@@ -176,5 +230,5 @@ $("#textInput").val("");
 }
 
 
-
+}
 }

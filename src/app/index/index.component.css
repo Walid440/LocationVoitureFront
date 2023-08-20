@@ -220,7 +220,10 @@ width: 400px;
 }
  
  
+.progress-bar{
 
+  width:0%;height:25px
+}
 
  .carousel-control-next-icon {
   color:#3498db;

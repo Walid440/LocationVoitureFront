@@ -30,7 +30,14 @@
                font-size: 24px;
                text-align: center;
            }
-           
+           .pro{
+            top: 5%;
+               left: 99%;
+               transform: rotate(35deg) ;
+               color: rgb(182, 55, 55);
+               font-size: 24px;
+               text-align: right;
+           }
            .scroll {
                position: absolute;
                top: 18%;
@@ -176,7 +183,7 @@ padding: 18px 12px;
 			    			 
 			    				<div class="form-group" >
                     <div class="form-group ml-2"  >
-                      <i class="fa-solid fa-city"></i>
+                     
 
 
                       <label for="" class="label">&nbsp;Ville&nbsp;</label>
@@ -251,7 +258,8 @@ padding: 18px 12px;
                         <option>Villejuif</option>
                         <option>Villeneuve-d'Ascq</option>
                         <option>Vitry-sur-Seine</option>
-                      </select>  
+                      </select> 
+                      <i class="fa-solid fa-city"></i> 
                     </div>
                   </div>
                   <div class="d-flex">
@@ -259,9 +267,11 @@ padding: 18px 12px;
                       <div class="input-group-prepend">
                       
                   <div class="form-group" width="80px" name="date" >
-			    					 <label for="" class="label">&nbsp;Pick-up Date&nbsp;</label>
-                    <i class="far fa-calendar"></i> <input type="text" class="transparent-input" height="40px" [(ngModel)]="date" name="date" placeholder="Selectionner date "  onfocus="(this.type='date')">
-                   
+                  
+			    					 <label for="" class="label">&nbsp;Date&nbsp;</label>
+                     <input type="text" class="transparent-input" height="40px" [(ngModel)]="date" name="date" placeholder="Selectionner date "  onfocus="(this.type='date')">
+                     
+                   <i class="far fa-calendar"></i>  <div class="input-group-prepend">  </div>
                   </div>
                 </div>
                       </div>
@@ -277,11 +287,13 @@ padding: 18px 12px;
                       <option>location</option>
                       <option>vente</option>
                     </select>
+                    <i class="fas fa-handshake"></i> 
 		              </div>
 			            <div class="form-group">
                     <div class="row">
                       <div class="col-md-6">
-                        <a href="#ng" class="btn btn-success" (click)="getAllOffre()">&nbsp;&nbsp;&nbsp;Rechercher</a>
+                        <a href="#ng" class="btn btn-success"  is  id="search"  onclick="load()" (click)="getAllOffre()">&nbsp;&nbsp;&nbsp;Rechercher</a>
+
                       </div>
                     </div>  
                   </div>
@@ -332,15 +344,25 @@ padding: 18px 12px;
           <div class="col-12 heading-section text-center animate__animated animate__fadeInUp mb-5">
           	<span class="subheading">What we offer</span>
             <h2 class="mb-2">NOS OFFRES DU MOMENT</h2>
-<div  class="text-center"></div> <div mat-dialog-actions >
-            <ngx-slick-carousel class="carousel" #slickModal="slick-carousel"
+            <div class="prog">
+              <div id="bar">
+          
+                <div class="progress-bar"  >
+          
+                 
+                </div>
+              </div>
+          </div>
+<div   class ="carousel" id="carousel">
+
+            <ngx-slick-carousel  #slickModal="slick-carousel" 
             [config]="carouselConfig" >
              
      <div   ngxSlickItem class="carousel-item"   *ngFor="let p of listOffre;let i=index">
                <td> 
                 <div>
                 <img   src="assets/images/{{p.photo}}" alt="" class="img-fluid" width="300px" height="300px">
-              <div class="image-text">
+              <div class="image-text" >
 
 <img src="assets/images/{{p.photo2}}"  class="img-fluid" width="180px">
               </div>
@@ -357,7 +379,8 @@ padding: 18px 12px;
                <tr>
                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                 <td>
-                  
+                 
+                              
                    <p class=""><a (click)="open(i,p.photo2,$event)" class="btn btn-primary py-2 mr-1" >Book now</a>
                      <a (click)="detail()" class="btn btn-secondary py-2 ml-1">Details</a></p>
                 </td>
@@ -376,14 +399,14 @@ padding: 18px 12px;
                          
 
               </div>
-             
+          
      </div>
+        </div>
                       </div>
          
         
        
-      </div>
-      
+       
     </section> 
    
       <div class="rating">

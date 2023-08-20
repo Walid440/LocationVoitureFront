@@ -58,7 +58,7 @@ response = [
 ]
 resp=[0,1,2,3,4,5];
    hoveredComment: any;
-getStarArray(value: number): number[] {
+ getStarArray(value: number): number[] {
   return Array(value).fill(0);
 }
 userlist!:any;
@@ -74,6 +74,8 @@ ville:string='Select';
 Resultat:any;
 menu!:'Select Offre';
 date!:string;
+isHidden4: boolean = true;
+
  ratingForm!: FormGroup ;
   constructor(public comService : CommentService,private snackbar:MatSnackBar,private fb: FormBuilder,private renderer: Renderer2,private dial:MatDialog,private offre:OffresService,private rout:Router)  
       {
@@ -98,8 +100,9 @@ date!:string;
   id!:number;
   isHidden3: boolean = true; 
   isBackgroundActive: boolean = false;
-     ngOnInit(): void {
 
+     ngOnInit(): void {
+  
       this.ratingForm = this.fb.group({
         username:new FormControl(),
        commentText:new FormControl(),
@@ -242,25 +245,24 @@ else   if(   this.selectedElement =="vente.png")
 
   
   result:any;
-getAllOffre(){
- 
-  if (this.ville === 'Select') {
+getAllOffre(  ){
+   if (this.ville === 'Select') {
     this.offre.getAll().subscribe(res=>{
-
-
-      this.listOffre=res;
       
-   }); } else {
-    
+
+       this.listOffre=res;
+        
+    }); } else {
   
-    
-      this.offre.search(this.date,this.menu,this.ville).subscribe(res=>{
-   this.listOffre=res;
-    
-     });
    
  
-     
+      this.offre.search(this.date,this.menu,this.ville).subscribe(res=>{
+   this.listOffre=res;
+      });
+   
+
+  
+
  
 
   }
