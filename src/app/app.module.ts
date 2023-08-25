@@ -34,6 +34,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
  import { environment } from 'environments/environment';
  import { NgMapsCoreModule } from '@ng-maps/core'; 
 import { GoogleMapsModule } from '@angular/google-maps';
+import { CalendarComponent } from './calendar/calendar.component';
  
   
        
@@ -57,6 +58,7 @@ PaiementComponent,
       EchangeComponent,
       VenteComponent,
       ChatbotComponent,
+      CalendarComponent,
    
   ],
   imports: [

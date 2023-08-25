@@ -5,7 +5,10 @@
 .mat-dialog-container {
   z-index: 10555;
 }
+.calendar{
+cursor:pointer;
 
+}
 .center-dialog {
   top: 80%;
   left: 50%;

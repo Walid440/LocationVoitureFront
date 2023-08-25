@@ -21,6 +21,7 @@ import { CommentService } from '../services/comment.service';
 import { comment } from '../Model/Comment';
 import { SlickCarouselComponent } from 'ngx-slick-carousel';
 import Swal from 'sweetalert2';
+import { CalendarComponent } from '../calendar/calendar.component';
  
 
 
@@ -91,7 +92,7 @@ isHidden4: boolean = true;
     
     
     
-    
+  IsLoading:boolean=false;
   pers!:offre;
   isHidden: boolean = false;
   rate:number=0;
@@ -333,7 +334,13 @@ navigatePrev() {
 navigateNext() {
   this.slickModal.slickNext();
 }
+AfficherCalendar(){
+  this.dial.open(CalendarComponent,{
+    width:'600px',
+    height:'470px'
+  });
 
+}
 AddCom(){
  
   this.Comm.rating=this.rate;
@@ -351,10 +358,16 @@ AddCom(){
       Swal.fire("veuillez saisir un commentaire")
     }
     
-    else{
-  this.comService.AddComment(this.Comm).subscribe();
-  Swal.fire("Element ajouté avec sucées !!!")
+    else{    this.IsLoading=true;
+
   
+  this.comService.AddComment(this.Comm).subscribe();
+  setTimeout(()=>{    
+    this.IsLoading=false;
+
+    Swal.fire("Element ajouté avec sucées !!!")
+
+   },500);
      }
 }
 }
