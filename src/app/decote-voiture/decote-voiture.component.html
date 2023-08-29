@@ -1,0 +1,19 @@
+<div>
+    <form [formGroup]="form">
+    <h2>Estimation de Coût de Voiture</h2>
+    <table> <div class="chat-bar-input-block">
+       <tr><td> <div> <i class="fas fa-euro-sign"></i></div></td>
+    <td> <input type="text" class="form-control" formControlName="prix"  placeholder="Ancien Prix d'achat de voiture">
+      </td>  </div>
+      <div class="chat-bar-input-block">
+     
+        <tr><td> <div> <i class="fas fa-calendar"></i></div></td>
+            <td> <input type="text" class="form-control" formControlName="circulation"    onfocus="(this.type='date')"placeholder="Date de mise en circulation">
+              </td>  </div>         
+   
+              <button type="submit" class="btn btn-primary" (click)="calculateEstimatedCost()"><img *ngIf="IsLoading" src="assets/images/loading.gif" style="width: 24px;">Cout Estimé</button>
+ 
+    <p *ngIf="estimatedCost">Coût Estimé: {{ estimatedCost | number: '1.2-2' }} EUR</p>
+ 
+</table></form>
+   </div>

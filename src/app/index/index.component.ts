@@ -22,6 +22,9 @@ import { comment } from '../Model/Comment';
 import { SlickCarouselComponent } from 'ngx-slick-carousel';
 import Swal from 'sweetalert2';
 import { CalendarComponent } from '../calendar/calendar.component';
+import { CarPriceComparisonComponent } from '../car-price-comparison/car-price-comparison.component';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { DecoteVoitureComponent } from '../decote-voiture/decote-voiture.component';
  
 
 
@@ -78,7 +81,7 @@ date!:string;
 isHidden4: boolean = true;
 
  ratingForm!: FormGroup ;
-  constructor(public comService : CommentService,private snackbar:MatSnackBar,private fb: FormBuilder,private renderer: Renderer2,private dial:MatDialog,private offre:OffresService,private rout:Router)  
+  constructor(private http:HttpClient,public comService : CommentService,private snackbar:MatSnackBar,private fb: FormBuilder,private renderer: Renderer2,private dial:MatDialog,private offre:OffresService,private rout:Router)  
       {
         this.myscriptElemnt=document.createElement("script");
         this.myscriptElemnt.src="src/assets/chat.js";
@@ -335,12 +338,21 @@ navigateNext() {
   this.slickModal.slickNext();
 }
 AfficherCalendar(){
-  this.dial.open(CalendarComponent,{
+  this.dial.open(CarPriceComparisonComponent,{
     width:'600px',
     height:'470px'
   });
 
 }
+PrixVoitureAvantVente()
+{
+  this.dial.open(DecoteVoitureComponent,{
+    width:'600px',
+    height:'470px'
+  });
+
+}
+
 AddCom(){
  
   this.Comm.rating=this.rate;

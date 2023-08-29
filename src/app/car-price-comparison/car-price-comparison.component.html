@@ -1,0 +1,27 @@
+<div>
+    <form [formGroup]="form" (ngSubmit)="compareCars()">
+    <h2>Comparaison de Voitures</h2>
+   
+  
+    <label>Caractéristiques de la Voiture 1:</label>
+    <textarea formControlName="car1Features" rows="5" class="form-control"></textarea>
+
+    <label>Caractéristiques de la Voiture 2:</label>
+    <textarea formControlName="car2Features" rows="5" class="form-control"></textarea>
+  
+    <button >Comparer</button>
+
+   <div  class="alert alert-success" *ngIf="comparisonResult">
+    <ul class="list-group">
+    
+      <h3>Résultat de la Comparaison:</h3>
+     <li class="list-group-item" *ngFor="let choice of comparisonResult.choices">
+      <p>{{ choice.message.content }}</p>
+    
+    
+    </li>
+    
+</ul>
+    </div></form>
+  </div>
+  

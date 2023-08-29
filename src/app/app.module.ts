@@ -35,6 +35,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
  import { NgMapsCoreModule } from '@ng-maps/core'; 
 import { GoogleMapsModule } from '@angular/google-maps';
 import { CalendarComponent } from './calendar/calendar.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { CarPriceComparisonComponent } from './car-price-comparison/car-price-comparison.component';
+import { DecoteVoitureComponent } from './decote-voiture/decote-voiture.component';
  
   
        
@@ -50,7 +53,7 @@ import { CalendarComponent } from './calendar/calendar.component';
     ReservationComponent,
   
     FrontsComponent,
-
+CarPriceComparisonComponent,
 PaiementComponent,
     BookComponent,
       ProduitComponent,
@@ -59,10 +62,12 @@ PaiementComponent,
       VenteComponent,
       ChatbotComponent,
       CalendarComponent,
-   
+      DecoteVoitureComponent,
+  
   ],
   imports: [
-   
+    ReactiveFormsModule,
+   FullCalendarModule,
   GoogleMapsModule,
     BrowserModule,
     AppRoutingModule,
@@ -76,8 +81,8 @@ HttpClientModule,
     MatButtonModule,
     MatIconModule,
 MatInputModule,
-SlickCarouselModule
-  ],
+SlickCarouselModule,
+   ],
  
   
   providers: [{provide: MAT_DIALOG_DEFAULT_OPTIONS,
