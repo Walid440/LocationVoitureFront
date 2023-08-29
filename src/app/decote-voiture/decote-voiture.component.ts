@@ -9,10 +9,12 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class DecoteVoitureComponent implements OnInit {
   prix:any;
   circulation:any;
+  km:any;
 constructor(private fb:FormBuilder){}
   ngOnInit(): void {
 this.form = this.fb.group({
   prix:this.fb.control(""),
+  km:this.fb.control(""),
   circulation:this.fb.control(new Date())
 
 
@@ -39,10 +41,18 @@ this.form = this.fb.group({
   
          const formattedDate = new Date(`${circ[0]}-${circ[1]}-${circ[1]}`);
          const age = (new Date().getFullYear() - formattedDate.getFullYear()) || 1;
-        const mileageFactor = Math.max(1 - (age * 0.1), 0.5);
+        let mileageFactor = Math.max(1 - (age * 0.1), 0.5);
      
-        this.estimatedCost = baseCost * mileageFactor;
-       },1000);
+        const km = parseFloat(this.form.value.km) || 0; // Get the entered kilometers
+    
+        // Adjust the mileageFactor based on kilometers driven
+        // Example: If km > 50000, decrease mileageFactor
+        if (km > 50000) {
+          mileageFactor -= 0.1; // Decrease mileageFactor instead of increasing
+        }
+        
+        this.estimatedCost = (baseCost * mileageFactor) + (km * 0.01); // Adjusted formula
+      }, 1000);
          
     }
   

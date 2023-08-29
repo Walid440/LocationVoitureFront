@@ -273,23 +273,20 @@ export class ChatbotComponent implements OnInit {
       )
   
      
-      const ville: string = 'Toulouse';
-
-      fetch(`https://nominatim.openstreetmap.org/search?q=${ville}&format=json`)
+      const adresse: string = '10 Rue du Père Legris';
+let lat:any;
+let long:any;
+      fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(adresse)}&format=json`)
+        
         .then((response: Response) => response.json())
         .then((data: any[]) => {
           if (data.length > 0) {
             const latitude: number = parseFloat(data[0].lat);
             const longitude: number = parseFloat(data[0].lon);
-      
-            console.log(`Les coordonnées de ${ville} sont : Latitude = ${latitude}, Longitude = ${longitude}`);
-          } else {
-            console.error('Aucun résultat trouvé.');
-          }
-        })
-        .catch((error: Error) => {
-          console.error('Erreur :', error);
-        });
+      lat=latitude;
+      long=longitude;
+            console.log(`Les coordonnées de ${adresse} sont : Latitude = ${latitude}, Longitude = ${longitude}`);
+         
       
 
 
@@ -297,7 +294,7 @@ export class ChatbotComponent implements OnInit {
 
 
       const marker2= new google.maps.Marker({
-        position: {lat: 48.68333, lng: 2.38333 },
+        position: {lat:lat, lng: long },
         map: this.map,
       });
       const marker3= new google.maps.Marker({
@@ -329,7 +326,13 @@ export class ChatbotComponent implements OnInit {
       polyline.setMap(this.map);
        
       
-      
+    } else {
+      console.error('Aucun résultat trouvé.');
+    }
+  })
+  .catch((error: Error) => {
+    console.error('Erreur :', error);
+  });
       
       
       

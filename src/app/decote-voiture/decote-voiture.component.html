@@ -9,8 +9,14 @@
      
         <tr><td> <div> <i class="fas fa-calendar"></i></div></td>
             <td> <input type="text" class="form-control" formControlName="circulation"    onfocus="(this.type='date')"placeholder="Date de mise en circulation">
-              </td>  </div>         
-   
+              </td>  </tr></div>   
+              <div class="chat-bar-input-block">
+     
+                <tr><td> <div> <i class="fas fa-tachometer-alt"></i></div></td>
+                    <td> <input type="text" class="form-control" formControlName="km"  placeholder="Entrer Dernier KM">
+                      </td>  </tr></div> 
+            
+    
               <button type="submit" class="btn btn-primary" (click)="calculateEstimatedCost()"><img *ngIf="IsLoading" src="assets/images/loading.gif" style="width: 24px;">Cout Estimé</button>
  
     <p *ngIf="estimatedCost">Coût Estimé: {{ estimatedCost | number: '1.2-2' }} EUR</p>
