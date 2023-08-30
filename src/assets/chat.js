@@ -9,6 +9,7 @@
 
   }
   
+
  
 function sendButton(){
   let ch="";
@@ -22,15 +23,23 @@ else if(val=="cv"){
   ch="vous etes les bienvenue!!!"
 
 }
-let UserHtml='<p class="botText"><span>'+val+'</span></p>';
- 
+else{
+  ch="Verifie rvoo"
+}
+let value='<p  style="background-color:blue; color:black;border-radius:2px  5px 5px 5px;"><span>'+val+'</span></p>';
+let ch1='<p  style="background-color:gray; color:white;border-radius:2px  5px 5px 5px;"><span>'+ch+'</span></p>';
+let ch2='<p  style="background-color:gray;  animation: blink 0.7s step-end infinite ;color:white;border-radius:2px  5px 5px 5px;"><span>'+"..."+'</span></p>';
 
+
+$("#chatbox").append(value); 
+
+ setTimeout(() => {
+  $("#chatbox").append(ch1);
+  
+ }, 2000);
  
-$("#chatbox").append(UserHtml);
-$("#chatbox").append(ch); 
 $("#textInput").val(""); 
- //document.getElementById("chat-bar-bottom").scrollIntoView(true);
-
+  
  
 
     

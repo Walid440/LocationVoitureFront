@@ -60,6 +60,7 @@ width:350px;
   bottom: 0%;
   position: relative;
   background-color: azure;
+ 
 }
 
 .chat-container {
@@ -120,13 +121,16 @@ justify-content:space-between;
   width:max-content;
 }
 .chat {
-
+ 
+   
+  line-height: 1.5em;
   display: inline;
-  background-color: aqua;
-  border: 0.5px solid  azure;
-  border-radius: 30px;
-  font-size: 19px;
-}
+  background: yellow;
+  padding: 0px;
+  border-radius: 8px;
+  max-width: 300px;
+  margin-left: 10px;
+ }
 
 .userText{
   color:red;
