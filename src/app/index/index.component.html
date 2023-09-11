@@ -19,7 +19,7 @@
        <!-- loader -->
        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
        <style>
-           
+       
    
            .image-text {
                position: absolute;
@@ -74,6 +74,7 @@ border:1px solid lightblue;
                display: flex;
               align-items: baseline;
             }
+            
             .wrapper .form .inbox .icon{
 
 height:30px;
@@ -361,18 +362,20 @@ padding: 18px 12px;
      <div   ngxSlickItem class="carousel-item"   *ngFor="let p of listOffre;let i=index">
                <td> 
                 <div>
-                <img   src="assets/images/{{p.photo}}" alt="" class="img-fluid" width="300px" height="300px">
+                <img   src="assets/images/{{p.photo}}" id="main-img" alt="" class="img-fluid" width="300px" height="300px">
               <div class="image-text" >
 
-<img src="assets/images/{{p.photo2}}"  class="img-fluid" width="180px">
+<img src="assets/images/{{p.photo2}}"  id ="main-img" class="img-fluid" width="180px">
               </div>
               
               </div>
+           
+              
                 <div class="text" width="100px"  >
                   <h5 class="mb-11"><a href="#">{{p.nomOffre}}</a></h5>
                   <div class="align-items-left" width="500px" >
                     <tr><td class="align-item-right" [width]="150">
-                    <span class="cat">{{p.adresse}}</span></td>
+                    <span class="cat"> <i class="fas fa-map-marker"></i> {{p.adresse}}</span></td>
                   <td  class="align-items-right">	<h6 class="" ><a>$500</a> <span>/day</span></h6></td>
                  </tr> 	</div>
                  
@@ -536,9 +539,10 @@ padding: 18px 12px;
 
   <h5 id="chat-timestamp"></h5>
   <p class="botText" id="msgStart">
-    
-    <span> Bienvenue sur site agence de location  😄  
+   
+    <span >  Bienvenue sur site agence de location  😄  
     </span>
+    
   <div>
     
   </div>
@@ -847,12 +851,7 @@ padding: 18px 12px;
 		</div>
      
 	</div>
-  <div mat-dialog-actions>
   
- 
- 
-
-  </div>
   </body>
 </html> 
   

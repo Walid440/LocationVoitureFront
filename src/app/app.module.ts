@@ -38,6 +38,8 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { CarPriceComparisonComponent } from './car-price-comparison/car-price-comparison.component';
 import { DecoteVoitureComponent } from './decote-voiture/decote-voiture.component';
+import { BsModalRef, ModalModule } from 'ngx-bootstrap/modal';
+import { BootstrapModalModule } from 'ngx-bootstrap-modal';
  
   
        
@@ -82,6 +84,7 @@ HttpClientModule,
     MatIconModule,
 MatInputModule,
 SlickCarouselModule,
+ ModalModule.forRoot()
    ],
  
   

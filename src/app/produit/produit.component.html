@@ -15,12 +15,19 @@
        <!-- loader -->
        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
        <style>
-           
+           .small-img-col{
+flex-basis:85%;
+cursor: pointer;
+            }
+            .img-small-group{
+              display: flex;
+              justify-content:space-between;
+            }
    
-           .image-text {
+            .image-text {
                position: absolute;
                top: 25%;
-               left: 60%;
+               right: 16%;
               
                color:rgb(32, 70, 197);
                font-size: 17px;
@@ -53,6 +60,15 @@
                font-size: 17px;
                
            }
+           .image6-text {
+               position: absolute;
+               top: 65%;
+               right: 16%;
+              
+               color:rgb(32, 70, 197);
+               font-size: 17px;
+               
+           }
        </style>
 <table>
     <tr>
@@ -67,10 +83,8 @@
       <div class="image-text">       
         <tr>
             <td>
-        <i class="fa flaticon-car">&nbsp;2012
-            
-               
-             </i> </td>   </tr> 
+        <i class="fa fa-road">&nbsp;2012
+             </i> </td></tr> 
             </div>
             <div class="image2-text">
             <tr> 
@@ -87,7 +101,7 @@
            <div class="image4-text">
             <tr> 
                 <td>
-                <i class="fas fa-tachometer-alt">&nbsp;Diesel
+                <i class="fas fa-gas-pump">&nbsp;Diesel
                   
                 </i>
 
@@ -99,7 +113,7 @@
            <div class="image5-text">
             <tr> 
                 <td>
-                <i class="fas fa-cog">&nbsp;Auto
+                <i class="fas fa-gears">&nbsp;Auto
                   
                 </i>
 
@@ -108,8 +122,19 @@
                       </td></tr>
     
            </div>
-<img src="assets/images/car-1.jpg" width="250px" height="255px">
-</td>
+           <div class="image6-text">
+            <tr> 
+                <td>
+                <i class="fas fa-calendar">&nbsp;2012
+                  
+                </i>
+
+                
+                       
+                      </td></tr>
+    
+           </div>
+ </td>
 
 <td class="ftco-degree-bg">
 
@@ -119,3 +144,160 @@
 </td>
 </tr>
 </table>
+<head>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+ <title>Carbook - Free Bootstrap 4 Template by Colorlib</title>
+ <meta charset="utf-8" content="text/html" type="text/html">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- loader -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+     .smal-img{
+       cursor: pointer;
+       opacity:0.6;
+     }
+     .active{
+      opacity: 1;
+      border: 2px solid  rgb(23, 37, 233);
+     }
+        .img-small-group{
+         display: flex;
+         justify-content: space-between;
+        }
+
+        .image-text {
+            position: absolute;
+            top: 5%;
+            left: 1%;
+            transform: rotate(35deg) ;
+            color: white;
+            font-size: 24px;
+            text-align: center;
+        }
+        .pro{
+         top: 5%;
+            left: 99%;
+            transform: rotate(35deg) ;
+            color: rgb(182, 55, 55);
+            font-size: 24px;
+            text-align: right;
+        }
+        .scroll {
+            position: absolute;
+            top: 18%;
+            left: 1%;
+            
+            color: white;
+           width: 1250px;
+            text-align: center;
+        }
+        .wrapper{
+background-color:rgb(247, 243, 243);
+font-weight: 10px;
+font-size: 20px;
+place-items:right;
+width: 550px;
+
+border-top: 0;
+border-radius: 5px;
+border:1px solid lightblue;
+         }
+         .wrapper .title{
+           background-color: blue;
+           font-size: 20px;
+           color: white;
+         }
+         .wrapper .form{
+           padding: 20px 15px;
+           min-height: 400px;
+           max-height: 400px;
+          
+         }
+         .wrapper .form .inbox{
+           width:100%;
+            display: flex;
+           align-items: baseline;
+         }
+         .wrapper .form .inbox .icon{
+
+height:30px;
+width: 30px;
+color:white;
+text-align: center;
+line-height: 40px;
+background:rgb(23, 37, 233);
+font-size: 19px;
+border-radius: 50%;
+
+         }
+
+         .form .inbox .msg-header{
+margin-left: 10px;
+padding: 18px 12px;
+         }
+         .wrapper .typing-field{
+           display: flex;
+           width:100%;
+           height: 120px;
+           background-color: rgb(192, 177, 177);
+           border-top:0px solid;
+           border-radius:0px 0px 5px 5px;
+           align-items: center;
+           justify-content:space-evenly ;
+         }
+         .wrapper .input-data{
+           width: 340px;
+           height: 40px; 
+           display: flex;   
+         }
+         .wrapper .typing-field .input-data input{
+           width: 340px;
+           height: 100%;
+           border-radius: 5px;
+           font-size: 15px;
+      }
+    </style>
+<!-- Inclusion de Font Amarwesome -->
+
+
+</head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script src="src\app\angular.min.js"></script>
+
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://unpkg.com/slick-carousel@1.6.0/slick/slick.js"></script>
+<script type="text/javascript" src="src\assets\chat.js"></script>
+
+
+<body>
+
+ 
+
+
+  <div class="container">
+  <div class="mt-5">
+<div class="col-lg-5 col-md-12 col-12">
+<img class="img-fluid w100" src="assets/images/car-1.jpg" id="main" alt="">
+<div class="img-small-group">
+  <div class="small-img-col">
+  <img  src="assets/images/car-2.jpg" class="img-fluid" width="100%" class="smal-img" >
+</div>
+<div class="small-img-col">
+  <img  src="assets/images/car-3.jpg" class="img-fluid" width="100%" class="smal-img" alt="">
+
+</div>
+<div class="small-img-col">
+  <img  src="assets/images/car-4.jpg" class="img-fluid" width="100%" class="smal-img" alt="">
+
+</div>
+</div></div></div>
+ 
+  </div>
+</body>

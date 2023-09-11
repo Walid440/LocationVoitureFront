@@ -1,21 +1,114 @@
+<div class="image-container">
+  <form  [formGroup]="form">
+  &nbsp;
+<h3>Verifier Disponibilité des voitures de location</h3>
+<hr class="continuous-line">
+<table  >
+  <tr>
+      <td>
+ 
+<p></p>
+</td></tr>
+ 
+   
+          <tr>
+            <td> 
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="far fa-calendar"></i></span>
+                    </div>
+                    <input type="text" class="transparent-input" height="40px" [(ngModel)]="date_debut" name="date_debut"  formControlName="date_debut" placeholder="Selectionner date debut"  onfocus="(this.type='date')">
+                </div>
+  </tr>
+  <tr>
+      <td> 
+          <div class="input-group">
+              <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="far fa-calendar"></i></span>
+              </div>
+              <input type="text" class="transparent-input" height="40px" [(ngModel)]="date_fin" name="date_fin" formControlName="date_fin" placeholder="Selectionner date fin"  onfocus="(this.type='date')">
+          </div>
+      
+          
+   <tr  >
+      
+  <td> <p></p>   
+  <button class="btn btn-primary" (click)="RechercheCalen()"><img *ngIf="IsLoading" src="assets/images/loading.gif" style="width: 24px;"><i class="fas fa-check" style="width:15px;height:22px;" ></i> Rechercher</button> 
+</td>
+ 
+   </tr>
+      
+ 
+   
+    
 
-<div  >
-    <table class="float-right "style="width: 50%; height: 5%; align-content: right;"> 
-<tr>
-    <td>
-     
-   <full-calendar [options]="calendarOptions"></full-calendar></td> </tr> </table>
-</div>
-   <ng-template #template >
-      <div class="modal-header" >
-        <h4 class="modal-title pull-left">Evenement</h4>
-        <button type="button" class="btn-close close pull-right" aria-label="Close" >
-          <span aria-hidden="true" class="visually-hidden">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-       </div>
-    </ng-template>
+
+
+<style>
+  .mont{
+      color:#e05017;
+      font-weight:bold;
+  } 
+     .textColor{
+    color: red;
+  font-weight: bold;
+  }
+.continuous-line {
+  border: none;
+  border-top: 5px solid #969796;
+}
+ 
+ 
+.image-container {
+      background-image: url('assets/images/about.jpg'); /* Chemin vers votre image */
+      background-size: cover; /* Pour que l'image couvre tout le conteneur */
+      width: 600px; /* Largeur de l'image */
+      height:450 px; /* Hauteur de l'image */
+  }
+
+  .transparent-input {
+          background-color: transparent ;
+          border: 1px solid #080202; /* Ajoutez une bordure si nécessaire */
+          padding: 5px; /* Ajoutez un espacement interne pour améliorer l'apparence */
+     color:rgb(14, 13, 13);
+    font-weight: bold;
+    
+    
+     }
+::placeholder{
+  color:rgb(12, 12, 14)
+}
+</style>
+
+</table>
  
 
+  </form>
+
+
+<div  >
+  <table class="float-right "style="width: 85%; height: 5%; align-content: right;"> 
+<tr>
+  <td>
+   
+ <full-calendar  #calendar [options]="calendarOptions"></full-calendar>
+
+</td> </tr> </table>
+</div>
+ <ng-template #template >
+    <div class="modal-header" >
+      <h4 class="modal-title pull-left">Information voiture louer</h4>
+      <button type="button" class="btn-close close pull-right" aria-label="Close"   (click)="modalRef?.hide()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      voiture louer de {{start |date:'medium'}}  jusqu'au {{end |date:'medium'}}
+    
+    </div>
+          </ng-template>
+   
+ 
+    
+      
  

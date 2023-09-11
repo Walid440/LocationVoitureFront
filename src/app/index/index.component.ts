@@ -1,4 +1,4 @@
-import { Component, OnInit,Renderer2, ViewChild  } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit,Renderer2, ViewChild  } from '@angular/core';
 import { ReservationComponent } from '../reservation/reservation.component';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
  
@@ -79,9 +79,9 @@ Resultat:any;
 menu!:'Select Offre';
 date!:string;
 isHidden4: boolean = true;
-
+loaders:boolean=true;
  ratingForm!: FormGroup ;
-  constructor(private http:HttpClient,public comService : CommentService,private snackbar:MatSnackBar,private fb: FormBuilder,private renderer: Renderer2,private dial:MatDialog,private offre:OffresService,private rout:Router)  
+  constructor(private el:ElementRef,private http:HttpClient,public comService : CommentService,private snackbar:MatSnackBar,private fb: FormBuilder,private renderer: Renderer2,private dial:MatDialog,private offre:OffresService,private rout:Router)  
       {
         this.myscriptElemnt=document.createElement("script");
         this.myscriptElemnt.src="src/assets/chat.js";
@@ -271,8 +271,10 @@ getAllOffre(  ){
 
   }
 }
+
+ 
 detail(){
-  this.dial.open(ChatbotComponent,{
+  this.dial.open(ProduitComponent,{
     width:'500px',
     height:'400'
   });
@@ -338,12 +340,24 @@ navigateNext() {
   this.slickModal.slickNext();
 }
 AfficherCalendar(){
-  this.dial.open(CarPriceComparisonComponent,{
-    width:'600px',
-    height:'470px'
+  this.dial.open(CalendarComponent,{
+    width:'800px',
+    height:'700px'
   });
 
 }
+@HostListener('click')
+imageChange(){
+  var src:any = this.el.nativeElement.src; // Sélectionnez l'élément image
+  var prev:any=document.getElementsByClassName("image-text");
+  prev.src=src;
+ 
+   
+ 
+console.log();
+
+
+ }
 PrixVoitureAvantVente()
 {
   this.dial.open(DecoteVoitureComponent,{

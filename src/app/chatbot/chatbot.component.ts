@@ -11,6 +11,7 @@ declare var google: any;
 export class ChatbotComponent implements OnInit {
   directionsService!: google.maps.DirectionsService;
   directionsRenderer!: google.maps.DirectionsRenderer;
+       location1:any;
 
   private map!: google.maps.Map;
   constructor (){}
@@ -27,11 +28,10 @@ export class ChatbotComponent implements OnInit {
       this.directionsRenderer = new google.maps.DirectionsRenderer()
        navigator.geolocation.watchPosition((position)=>{
 
-      const location : google.maps.LatLngLiteral= { lat: position.coords.latitude, lng: 	 position.coords.longitude }
-      const location1: google.maps.LatLngLiteral = { lat: 45.600, lng: 	 3.1555 }
-    
+      let location : google.maps.LatLngLiteral= { lat: position.coords.latitude, lng: 	 position.coords.longitude }
+     
 
-      console.log(position.coords.latitude,position.coords.longitude)
+      console.log("ma position"+position.coords.latitude,position.coords.longitude)
       this.map = new google.maps.Map(document.getElementById("map"), {
         center: location,
         zoom: 6,
@@ -271,9 +271,21 @@ export class ChatbotComponent implements OnInit {
       
       
       )
-  
+// Fonction pour convertir des degrés en radians
+function deg2rad(deg: number) {
+  return deg * (Math.PI / 180);
+}
+const lat1 = 48.5767322;
+const lon1 = 2.4456387;
+const lat2 = 48.59062726774768;
+const lon2 = 2.4703381168246796;
+
+// Fonction pour calculer la distance entre deux points géographiques en utilisant la formule de la haversine
+ 
+
+
      
-      const adresse: string = '10 Rue du Père Legris';
+      const adresse: string = 'Rue du Four, 91540 Ormoy, France';
 let lat:any;
 let long:any;
       fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(adresse)}&format=json`)
@@ -283,18 +295,35 @@ let long:any;
           if (data.length > 0) {
             const latitude: number = parseFloat(data[0].lat);
             const longitude: number = parseFloat(data[0].lon);
-      lat=latitude;
-      long=longitude;
-            console.log(`Les coordonnées de ${adresse} sont : Latitude = ${latitude}, Longitude = ${longitude}`);
-         
       
+           this.location1 ={lat:latitude,long:longitude}
+            
+            console.log(`Les coordonnées de ${adresse} sont : Latitude = ${latitude}, Longitude = ${longitude}`);
+            const R =  6371; // Rayon de la Terre en kilomètres (utilisation du rayon par défaut de 6371 km si non spécifié)
 
+            // Conversion des degrés en radians
+            const lat1Rad = deg2rad(latitude);
+            const lon1Rad = deg2rad(longitude);
+            const lat2Rad = deg2rad(position.coords.latitude);
+            const lon2Rad = deg2rad(position.coords.longitude);
+          
+            // Différences de latitude et de longitude
+            const dLat = lat2Rad - lat1Rad;
+            const dLon = lon2Rad - lon1Rad;
+          
+            // Calcul de la distance en utilisant la formule de la haversine
+            const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                      Math.cos(lat1Rad) * Math.cos(lat2Rad) *
+                      Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            const distance = R * c; // Distance en kilomètres
 
+            console.log("Distance en kilomètres : " + distance);
 
 
 
       const marker2= new google.maps.Marker({
-        position: {lat:lat, lng: long },
+        position: {lat:latitude, lng: longitude },
         map: this.map,
       });
       const marker3= new google.maps.Marker({
@@ -324,8 +353,7 @@ let long:any;
       });
       
       polyline.setMap(this.map);
-       
-      
+    
     } else {
       console.error('Aucun résultat trouvé.');
     }
@@ -333,11 +361,18 @@ let long:any;
   .catch((error: Error) => {
     console.error('Erreur :', error);
   });
+ 
       
-      
-      
+    
+ 
+ 
+
     })
+    
+    
   })
+  
+
  
 }
 }

@@ -1,4 +1,18 @@
  
+ 
+   var mainImg = document.getElementById('main');
+   var smallImgs = document.getElementsByClassName('smal-img');
+
+   for (var i = 0; i < smallImgs.length; i++) {
+       smallImgs[i].addEventListener("click",function(event){
+
+        
+           mainImg.src = event.target.src;
+           this.classList.toggle('active');
+           //this.classList.toggle('opaque');
+
+       });
+   }
   function heartButton(){
   
     let UserHtml='<p class="fas fa-heart" style="color:red;"></p>';
@@ -26,17 +40,27 @@ else if(val=="cv"){
 else{
   ch="Verifie rvoo"
 }
-let value='<p  style="background-color:blue; color:black;border-radius:2px  5px 5px 5px;"><span>'+val+'</span></p>';
-let ch1='<p  style="background-color:gray; color:white;border-radius:2px  5px 5px 5px;"><span>'+ch+'</span></p>';
-let ch2='<p  style="background-color:gray;  animation: blink 0.7s step-end infinite ;color:white;border-radius:2px  5px 5px 5px;"><span>'+"..."+'</span></p>';
-
+let value='<p style="background-color:blue; color:black;border-radius:2px  5px 5px 5px;"><span>'+val+'</span></p>';
+let ch1='<p style="background-color:gray; color:white;border-radius:2px  5px 5px 5px;"><span>'+ch+'<span></span></p>';
+let load='<p class="spinner-border text-danger me-2">load </p>';
+ 
+ 
 
 $("#chatbox").append(value); 
-
- setTimeout(() => {
-  $("#chatbox").append(ch1);
+  setTimeout(() => {
+   $("#chatbox").append(load);
   
- }, 2000);
+ }, 1000);
+setTimeout(() => {
+  $("#chatbox").find('.spinner-border').remove();
+   $("#chatbox").append(ch1);
+
+}, 2000);
+
+
+
+ 
+
  
 $("#textInput").val(""); 
   
