@@ -308,10 +308,18 @@ padding: 18px 12px;
 					            <div class="services w-100 text-left">
 				              	<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-route"></span></div>
 				              	<div class="text w-100">
-					                <h3 class="heading mb-2" (click)="detail()">Choose Your Pickup Location</h3>
+					                <h3 class="heading mb-2" (click)="location()">Choose Your Pickup Location</h3>
 				                </div>
-					            </div>      
+					            </div>       <div class="col-md-3 ">
+                        <div class="services w-80 text-center">
+                          <div class="icon d-flex align-items-center justify-content-center"><span><a (click)="PrixVoitureAvantVente()"><img src="assets/images/EstimationVoiture.jpg" style="cursor: pointer;" width="80px"></a></span></div>
+                          <div class="text w-100">
+                            <h3 class="heading mb-2"><a (click)="PrixApproximative()" style="cursor: pointer;">Prix Approximative </a></h3>
+                          </div>
+                        </div>      
+                      </div> 
 					          </div>
+
 					          <div class="col-md-4 d-flex align-items-center">
 					            <div class="services w-80 text-center">
 				              	<div class="icon d-flex align-items-center justify-content-center"><a class="calendar" (click)="AfficherCalendar()"><span class="fa fa-calendar"></span></a></div>
@@ -328,6 +336,7 @@ padding: 18px 12px;
 					              </div>
 					            </div>      
 					          </div>
+                   
 					        </div>
 					        <p><a href="#" class="btn btn-primary py-3 px-4">Reserve Your Perfect Car</a></p>
 	  						</div>
@@ -362,30 +371,30 @@ padding: 18px 12px;
      <div   ngxSlickItem class="carousel-item"   *ngFor="let p of listOffre;let i=index">
                <td> 
                 <div>
-                <img   src="assets/images/{{p.photo}}" id="main-img" alt="" class="img-fluid" width="300px" height="300px">
+                <img   src="{{'http://localhost:8090/ImgOffre/'+p.id}}" id="main-img" alt="" class="img-fluid" width="300px" height="300px">
               <div class="image-text" >
 
 <img src="assets/images/{{p.photo2}}"  id ="main-img" class="img-fluid" width="180px">
               </div>
               
               </div>
-           
+             
               
                 <div class="text" width="100px"  >
                   <h5 class="mb-11"><a href="#">{{p.nomOffre}}</a></h5>
                   <div class="align-items-left" width="500px" >
                     <tr><td class="align-item-right" [width]="150">
                     <span class="cat"> <i class="fas fa-map-marker"></i> {{p.adresse}}</span></td>
-                  <td  class="align-items-right">	<h6 class="" ><a>$500</a> <span>/day</span></h6></td>
-                 </tr> 	</div>
+                   <td  class="align-items-right" >	<h6 class="" > <form [formGroup]="locationForm"> <a>{{p.prix}}<span>/day</span></a></form> </h6></td>
+                    </tr> 	</div>
                  
                <tr>
                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                 <td>
                  
                               
-                   <p class=""><a (click)="open(i,p.photo2,$event)" class="btn btn-primary py-2 mr-1" >Book now</a>
-                     <a (click)="detail()" class="btn btn-secondary py-2 ml-1">Details</a></p>
+                   <p class="" ><a (click)="open(i,p.photo2,p.id,p.prix,$event)" class="btn btn-primary py-2 mr-1" >Book now</a>
+                     <a (click)="detail(p.idProd)" class="btn btn-secondary py-2 ml-1">Details</a></p>
                 </td>
                </tr>
                
@@ -490,9 +499,10 @@ padding: 18px 12px;
         </div>
         <div class="carousel-inner" >
             <ngx-slick-carousel class="carousel" #slick="slick-carousel" [config]="carouselConfig2">
-          <div ngxSlickItem class="carousel-item" *ngFor="let comment of userlist">
+          <div ngxSlickItem class="carousel-item" *ngFor="let comment of userlist1">
             <div class="rating">
-              <span class="star" *ngFor="let i of getStarArray(comment.rating)">&#9733;</span>
+              
+              <span class="star" *ngFor="let i of getStarArray(comment.rate)">&#9733;</span>
             </div>
             <p >Username: {{ comment.username }}</p>
             <p>Commentaire: {{ comment.commentText }}</p>

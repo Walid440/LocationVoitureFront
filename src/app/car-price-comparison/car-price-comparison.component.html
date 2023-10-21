@@ -1,14 +1,20 @@
 <div>
     <form [formGroup]="form" (ngSubmit)="compareCars()">
-    <h2>Comparaison de Voitures</h2>
+    <h2>Approximation de Voiture :</h2>
    
   
-    <label>Caractéristiques de la Voiture 1:</label>
-    <textarea formControlName="car1Features" rows="5" class="form-control"></textarea>
-
-    <label>Caractéristiques de la Voiture 2:</label>
-    <textarea formControlName="car2Features" rows="5" class="form-control"></textarea>
-  
+      <label>Modele</label>
+    <input type="text" formControlName="model" class="form-control">
+    <label>Année Modele</label>
+    <input type="text" formControlName="Annee"   class="form-control">
+    <label>Date de mise en circulation</label>
+    <input type="date" formControlName="date"  class="form-control">
+    <label>KM</label>
+    <input type="text" formControlName="km"  class="form-control">
+    <label>Nombre de porte</label>
+    <input type="text" formControlName="porte"   class="form-control">
+    <label>Puissance fiscale</label>
+    <input type="text" formControlName="Puissance"   class="form-control">
     <button >Comparer</button>
 
    <div  class="alert alert-success" *ngIf="comparisonResult">

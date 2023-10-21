@@ -1,4 +1,6 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
+import { OffresService } from '../services/offres.service';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-produit',
@@ -7,9 +9,8 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 })
 export class ProduitComponent implements OnInit  {
   myscriptElemnt!:HTMLScriptElement;
-
- 
-constructor(private renderer: Renderer2){  this.myscriptElemnt=document.createElement("script");
+  userlist:any;
+constructor(@Inject(MAT_DIALOG_DATA) public data: any,private serv:OffresService,private renderer: Renderer2){  this.myscriptElemnt=document.createElement("script");
 this.myscriptElemnt.src="src/assets/chat.js";
 document.body.appendChild(this.myscriptElemnt);
 }
@@ -19,6 +20,8 @@ document.body.appendChild(this.myscriptElemnt);
       // Now you can safely call the JavaScript function.
       this.callCustomFunction();
     });
+    this.getallImages()
+console.log(this.data.id)
   }
   loadScript(scriptUrl: string): Promise<void> {
     return new Promise<void>((resolve, reject) => {
@@ -38,5 +41,11 @@ document.body.appendChild(this.myscriptElemnt);
     // Now that the script is loaded, you can call the JavaScript function.
     (window as any).myFunction();
   }
-
+  
+  getallImages(){
+    this.serv.Prod(this.data.id).subscribe(response => {
+      this.userlist = response;
+      console.log("ueser"+this.userlist)
+    });
+  }
 }

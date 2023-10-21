@@ -48,7 +48,7 @@ width:350px;
   position: fixed;
   bottom: 0;
   right: 50px;
-  box-shadow: 0 8px 16px rgba(red, green, blue, alpha);
+  box-shadow: 0 8px 16px rgb;
   background-color: rgb(51, 141, 141);
 }
  

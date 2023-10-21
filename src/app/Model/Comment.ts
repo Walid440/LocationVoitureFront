@@ -1,10 +1,11 @@
 
 
 export class comment{
+    
     username!:string;
     commentText!:string;
-    rating :any;
- 
+    rating!:any;
+ rate!:any;
 
 
 }

@@ -23,10 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BookComponent } from './book/book.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ProduitComponent } from './produit/produit.component';
-import { LocationComponent } from './offre/location/location.component';
-import { EchangeComponent } from './offre/echange/echange.component';
-
-import { VenteComponent } from './offre/vente/vente.component';
+ 
 import { PaiementComponent } from './paiement/paiement.component';
 import { ChatbotComponent } from './chatbot/chatbot.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -40,6 +37,9 @@ import { CarPriceComparisonComponent } from './car-price-comparison/car-price-co
 import { DecoteVoitureComponent } from './decote-voiture/decote-voiture.component';
 import { BsModalRef, ModalModule } from 'ngx-bootstrap/modal';
 import { BootstrapModalModule } from 'ngx-bootstrap-modal';
+import { LocationComponent } from './offre/location/location.component';
+import { VenteComponent } from './offre/vente/vente.component';
+ 
  
   
        
@@ -53,19 +53,16 @@ import { BootstrapModalModule } from 'ngx-bootstrap-modal';
   IndexComponent,
     PrincipalComponent,
     ReservationComponent,
-  
+  VenteComponent,
     FrontsComponent,
 CarPriceComparisonComponent,
 PaiementComponent,
     BookComponent,
       ProduitComponent,
-      LocationComponent,
-      EchangeComponent,
-      VenteComponent,
-      ChatbotComponent,
+       ChatbotComponent,
       CalendarComponent,
       DecoteVoitureComponent,
-  
+  LocationComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -84,7 +81,8 @@ HttpClientModule,
     MatIconModule,
 MatInputModule,
 SlickCarouselModule,
- ModalModule.forRoot()
+ ModalModule.forRoot(),
+ 
    ],
  
   

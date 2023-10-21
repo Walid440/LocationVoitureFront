@@ -1,7 +1,7 @@
 <div class="image-container">
   <form  [formGroup]="form">
   &nbsp;
-<h3>Verifier Disponibilité des voitures de location</h3>
+<h3 class="orange-text">Verifier Disponibilité des voitures de location</h3>
 <hr class="continuous-line">
 <table  >
   <tr>
@@ -9,7 +9,7 @@
  
 <p></p>
 </td></tr>
- 
+
    
           <tr>
             <td> 
@@ -35,7 +35,8 @@
   <td> <p></p>   
   <button class="btn btn-primary" (click)="RechercheCalen()"><img *ngIf="IsLoading" src="assets/images/loading.gif" style="width: 24px;"><i class="fas fa-check" style="width:15px;height:22px;" ></i> Rechercher</button> 
 </td>
- 
+<input type="text" class="transparent-input" height="5px" width="10px"   readonly>
+
    </tr>
       
  
@@ -62,8 +63,8 @@
 .image-container {
       background-image: url('assets/images/about.jpg'); /* Chemin vers votre image */
       background-size: cover; /* Pour que l'image couvre tout le conteneur */
-      width: 600px; /* Largeur de l'image */
-      height:450 px; /* Hauteur de l'image */
+      width: 700px; /* Largeur de l'image */
+      height:200 px; /* Hauteur de l'image */
   }
 
   .transparent-input {
@@ -91,7 +92,7 @@
 <tr>
   <td>
    
- <full-calendar  #calendar [options]="calendarOptions"></full-calendar>
+ <full-calendar   class="full-calendar" #calendar [options]="calendarOptions" ></full-calendar>
 
 </td> </tr> </table>
 </div>

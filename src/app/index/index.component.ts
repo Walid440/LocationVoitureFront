@@ -33,7 +33,7 @@ import { DecoteVoitureComponent } from '../decote-voiture/decote-voiture.compone
 
 declare const myFunction: any;
 
- 
+
 export interface Rating {
   value: number;
 }
@@ -48,24 +48,30 @@ export interface Rating {
 export class IndexComponent implements OnInit{
 myscriptElemnt!:HTMLScriptElement;
 DateAujou:any;
+
+  val:any;
+  
 Comm:comment=new comment();
 star:number[]=[5,4,2,3,1];
-
+locationForm!:FormGroup;
 @ViewChild('slik') slickModal!: SlickCarouselComponent ;
 
 response = [
   '',
-  'Very unsatisfied',
-  'Neutral',
-  'Satisfied',
-  'Very Satisfied'
+  'TresUnsatisfait',
+  'Neutre',
+  'Satisfait',
+  'TresSatisfait'
 ]
-resp=[0,1,2,3,4,5];
+resp=[0,1,2,3,4];
    hoveredComment: any;
  getStarArray(value: number): number[] {
+  
   return Array(value).fill(0);
 }
 userlist!:any;
+userlist1!:any;
+
 heure!:any;
 username: string = '';
 commenTex:string='';
@@ -106,16 +112,15 @@ loaders:boolean=true;
   isBackgroundActive: boolean = false;
 
      ngOnInit(): void {
-  
+     
       this.ratingForm = this.fb.group({
         username:new FormControl(),
        commentText:new FormControl(),
        star1:new FormControl(),
        star2:new FormControl(),
        star3:new FormControl(),
-       star4:new FormControl(),
-       star5:new FormControl(),
-       ville:new FormControl(),
+       star4:new FormControl(), 
+              ville:new FormControl(),
        menu:new FormControl(),
        date:new FormControl()
   
@@ -128,6 +133,7 @@ loaders:boolean=true;
         rating: ['rating'], // Contrôle pour le bouton radio
       });
        this.getAllOffre();
+      
 
 this.rating(this.id);
 
@@ -159,18 +165,22 @@ this.rating(this.id);
       (window as any).myFunction();
     }
   
-  
-  
   getAllComments(){
-    this.comService.getAll().subscribe(response => {
-      this.userlist = response;
-      console.log("resss"+this.userlist)
-     
-    });
+ this.comService.getAll().subscribe(response => {
+  this.userlist1 = response;
+  // Boucle à travers les éléments du tableau
+  for (const comment of this.userlist1) {
+    const ratingString = comment.rating as string; // Assurez-vous que comment.rating est de type string
+    if (ratingString === "Neutre") {
+      // Convertir "Neutre" en nombre en utilisant le tableau "response"
+      this.val = 2;
+     }
+    
   }
+});
+
   
-  
-     
+}
     
   c(){
 
@@ -212,17 +222,18 @@ this.rating(this.id);
   selectedElement: string | null = null;
 
    
-  open(i: number,s:any,event:any){
+  open(i: number,s:any,id:any,prix:any,event:any){
 
 
     this.selectedElement = s;
-   
+    
      if(   this.selectedElement =="location.png")
   {
 
     this.dial.open(LocationComponent,{
       width:'600px',
-      height:'400px'
+      height:'400px',
+     data: { prix: prix,id:id }
     });
    
   }
@@ -230,9 +241,10 @@ else   if(   this.selectedElement =="vente.png")
   {
 
     this.dial.open(VenteComponent,{
-      width:'600px',
-      height:'370px'
-    });
+      width:'650px',
+      height:'400px',
+      data: { prix: prix,id:id }
+        });
    
   }
   else   if(   this.selectedElement =="echange.png")
@@ -255,6 +267,7 @@ getAllOffre(  ){
       
 
        this.listOffre=res;
+       console.log("res"+ this.listOffre);
         
     }); } else {
   
@@ -262,6 +275,7 @@ getAllOffre(  ){
  
       this.offre.search(this.date,this.menu,this.ville).subscribe(res=>{
    this.listOffre=res;
+   console.log("rrrrrrr"+ this.listOffre)
       });
    
 
@@ -273,12 +287,13 @@ getAllOffre(  ){
 }
 
  
-detail(){
+detail(id:number){
   this.dial.open(ProduitComponent,{
     width:'500px',
-    height:'400'
+    height:'400',
+    data:{id:id}
   });
-}
+ }
  
  
 
@@ -290,14 +305,7 @@ DateCommentaire()
   this.DateAujou=currentDate.toLocaleDateString();
   
 }
-rat = 0;
-returnStar(i: number) {
-  if (this.rat >= i + 1) {
-    return 'star';
-  } else {
-    return 'star_border';
-  }
-}
+ 
 
 rating(i :number){
  
@@ -306,9 +314,9 @@ let y:any;
 this.snackbar.open(this.response[i], '', {
    panelClass: ['snack-bar']
 });
-   this.rate=this.resp[i];
-
+   this.rate=this.resp[i-1];
  
+   console.log("rates"+this.getStarArray(this.rate))
 
 }
  
@@ -341,7 +349,20 @@ navigateNext() {
 }
 AfficherCalendar(){
   this.dial.open(CalendarComponent,{
-    width:'800px',
+    width:'700px',
+    height:'700px'
+  });
+
+}
+PrixApproximative(){
+  this.dial.open(CarPriceComparisonComponent,{
+    width:'700px',
+    height:'700px'
+  });
+}
+location(){
+  this.dial.open(ChatbotComponent,{
+    width:'700px',
     height:'700px'
   });
 
@@ -370,6 +391,8 @@ PrixVoitureAvantVente()
 AddCom(){
  
   this.Comm.rating=this.rate;
+  this.Comm.rate=this.rate.valueOf()+1;
+
     this.Comm.commentText=this.commenTex;
     this.Comm.username=this.username;
     if(this.rate==null)

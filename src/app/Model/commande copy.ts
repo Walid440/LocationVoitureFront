@@ -5,13 +5,13 @@ import { status } from "./status";
 
 
 export class commande{
-   id!:number; 
+   id:number; 
    dateDebut:any;
    dateFin:any;
-   client!: client;
+   client:client;
    prix:any;
-   status!:status;
-   prod!:produit;
-   paie!:paiement | null;
+   status:status;
+   prod:produit;
+   paie:paiement | null;
 
 }

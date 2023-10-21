@@ -3,6 +3,7 @@
 <h2>Paiement en ligne</h2>
 <hr class="continuous-line">
 <table  >
+ 
     <tr>
         <td>
 <img src="assets/images/carte-visa.jpg" width="40px"> &nbsp;&nbsp;
@@ -16,6 +17,21 @@
 <img src="assets/images/Ing.jpg" width="50px">
 <p></p>
 </td></tr>
+
+
+<tr>
+    <td><div class="input-group">
+        <div class="input-group-prepend">
+        <label for="payment-method"><strong>Méthode de Paiement</strong></label>
+        <select id="payment-method">
+          <option value="card">Carte de Crédit</option>
+          <option value="cash">Espèces</option>
+        </select>
+        </div>
+        </div>
+    </td>
+    
+                   </tr> 
 <tr>
     <tr>
         <td> 
@@ -55,10 +71,18 @@
 
  
         <td  >  <p></p>
-            <img src="assets/images/info.png" width="20px"><span class="textColor"> pour annuler votre paiement cliquer sur Annuler</span></td>
-</tr>
+            <img src="assets/images/info.png" width="20px"><span class="textColor"> Pour annuler votre paiement cliquer sur Annuler</span></td>
+
+            <td  >  <p></p>
+                <img src="assets/images/info.png" width="20px"><span class="textColor"> <p>Veuillez payer en espèces à notre bureau principal. Voici l'adresse :</p>
+                </span></td>
+    
+        </tr>
      </tr>
+     <td>
         
+    
+     </td>
    
      
       
@@ -83,8 +107,8 @@
   .image-container {
         background-image: url('assets/images/Arriere.png'); /* Chemin vers votre image */
         background-size: cover; /* Pour que l'image couvre tout le conteneur */
-        width: 400px; /* Largeur de l'image */
-        height: 370px; /* Hauteur de l'image */
+        width: 600px; /* Largeur de l'image */
+        height: 600px; /* Hauteur de l'image */
     }
  
     .transparent-input {
