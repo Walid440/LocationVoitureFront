@@ -1,18 +1,21 @@
 
 
-
-<mat-dialog-actions>
+<div>
+    <form class="auth-login-form mt-2" [formGroup]="loginForm"  >
+<mat-dialog-actions id="login-screen" >
+    
+ 
 <table   width="1100px">
 <tr>
 <td><img src="assets/login.png" width="280px"></td>
 <td><h6><b><p class="text-primary">Please login login to your account</p></b></h6>
  
-<input type="text" name="User" placeholder="Enter your name">
+<input type="text" name="email" formControlName="email" placeholder="Enter your name">
 &nbsp;
 <input type="text" name="User" placeholder="Enter your Password">
 <p>
     <div class="example-button-row">
-        <button type="button" class="btn btn-primary">
+        <button type="button" class="btn btn-primary" (click)="submit()">
             <i class="fas fa-user"></i> Login
           </button>
 </div>
@@ -24,6 +27,7 @@
 
 
 </table>
+    
 
-
-</mat-dialog-actions>
+</mat-dialog-actions></form>
+</div>

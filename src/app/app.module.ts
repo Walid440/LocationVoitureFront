@@ -39,9 +39,10 @@ import { BsModalRef, ModalModule } from 'ngx-bootstrap/modal';
 import { BootstrapModalModule } from 'ngx-bootstrap-modal';
 import { LocationComponent } from './offre/location/location.component';
 import { VenteComponent } from './offre/vente/vente.component';
+import { Routes } from '@angular/router';
+import { AuthLoginV2Component } from './User/authentication/auth-login-v2/auth-login-v2.component';
+import { AuthRegisterV2Component } from './User/authentication/auth-register-v2/auth-register-v2.component';
  
- 
-  
        
  
  
@@ -62,7 +63,9 @@ PaiementComponent,
        ChatbotComponent,
       CalendarComponent,
       DecoteVoitureComponent,
-  LocationComponent
+  LocationComponent,
+  AuthLoginV2Component,
+  AuthRegisterV2Component,
   ],
   imports: [
     ReactiveFormsModule,
@@ -82,8 +85,8 @@ HttpClientModule,
 MatInputModule,
 SlickCarouselModule,
  ModalModule.forRoot(),
- 
-   ],
+   
+    ],
  
   
   providers: [{provide: MAT_DIALOG_DEFAULT_OPTIONS,
@@ -92,3 +95,7 @@ SlickCarouselModule,
   
 })
 export class AppModule { }
+const routes: Routes = [
+  { path: '/login', component: BookComponent },
+ 
+]

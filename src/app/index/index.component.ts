@@ -1,6 +1,6 @@
-import { Component, ElementRef, HostListener, OnInit,Renderer2, ViewChild  } from '@angular/core';
+import { Component, ElementRef, HostListener, Inject, OnInit,Renderer2, ViewChild  } from '@angular/core';
 import { ReservationComponent } from '../reservation/reservation.component';
-import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
  
 import { FrontsComponent } from '../fronts/fronts.component';
  
@@ -10,12 +10,13 @@ import { ProduitComponent } from '../produit/produit.component';
 import { LocationComponent } from '../offre/location/location.component';
 import { offre } from '../Model/offre';
 import { VenteComponent } from '../offre/vente/vente.component';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { elementAt } from 'rxjs';
 import { EchangeComponent } from '../offre/echange/echange.component';
 import { ChatbotComponent } from '../chatbot/chatbot.component';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
- 
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 import { MatSnackBar } from '@angular/material/snack-bar'; // Importez le service
 import { CommentService } from '../services/comment.service';
 import { comment } from '../Model/Comment';
@@ -25,6 +26,7 @@ import { CalendarComponent } from '../calendar/calendar.component';
 import { CarPriceComparisonComponent } from '../car-price-comparison/car-price-comparison.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { DecoteVoitureComponent } from '../decote-voiture/decote-voiture.component';
+ import { AuthLoginV2Component } from '../User/authentication/auth-login-v2/auth-login-v2.component';
  
 
 
@@ -87,7 +89,7 @@ date!:string;
 isHidden4: boolean = true;
 loaders:boolean=true;
  ratingForm!: FormGroup ;
-  constructor(private el:ElementRef,private http:HttpClient,public comService : CommentService,private snackbar:MatSnackBar,private fb: FormBuilder,private renderer: Renderer2,private dial:MatDialog,private offre:OffresService,private rout:Router)  
+  constructor(private modalService: NgbModal,private Route:ActivatedRoute,private el:ElementRef,private http:HttpClient,public comService : CommentService,private snackbar:MatSnackBar,private fb: FormBuilder,private renderer: Renderer2,private dial:MatDialog,private offre:OffresService,private rout:Router)  
       {
         this.myscriptElemnt=document.createElement("script");
         this.myscriptElemnt.src="src/assets/chat.js";
@@ -110,9 +112,14 @@ loaders:boolean=true;
   id!:number;
   isHidden3: boolean = true; 
   isBackgroundActive: boolean = false;
-
+ 
+user!: string;
      ngOnInit(): void {
-     
+
+  
+      this.Route.queryParams.subscribe(params => {
+        this.user =params['username'] ; // Utilisation de + pour convertir la valeur en nombre
+      });     
       this.ratingForm = this.fb.group({
         username:new FormControl(),
        commentText:new FormControl(),
@@ -181,7 +188,12 @@ this.rating(this.id);
 
   
 }
-    
+    logout(){
+      this.rout.navigate(['/'], { queryParams: { username: '' } }); // Redirigez avec username vide
+
+      this.modalService.open(AuthLoginV2Component,  { size: 'lg', backdrop: 'static' });
+
+    }
   c(){
 
    
@@ -191,8 +203,8 @@ this.rating(this.id);
     }
    
   }
+ 
 
-  
   closeCompose(){
     this.isHidden=true;  }
   slides = [

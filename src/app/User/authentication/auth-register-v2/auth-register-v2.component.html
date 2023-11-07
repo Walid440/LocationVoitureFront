@@ -1,0 +1,101 @@
+<div class="auth-wrapper auth-v2">
+  <div class="auth-inner row m-0">
+    <!-- Brand logo--><a class="brand-logo" href="javascript:void(0);">
+      
+         <a class="text-body" data-dismiss="modal" aria-label="Close" 
+          ><button type="button" class="btn-close" aria-label="Close" (click)="Annuler()"><b class="text-red">X</b></button></a>
+    <!-- /Brand logo-->
+    <!-- Left Text-->
+     
+    <!-- /Left Text-->
+    <!-- Register-->
+   
+      <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
+
+
+        &nbsp;&nbsp;   
+        <h2 class="card-title font-weight-bold mb-1">Adventure starts here 🚀</h2>
+        <p class="card-text mb-2">Make your app management easy and fun!</p>
+        <div class="d-flex justify-content-center align-items-center">
+
+        <form class="auth-register-form mt-2" [formGroup]="registerForm" (ngSubmit)="addData()">
+          <div class="form-group">
+            <label for="register-username" class="form-label">firstName</label>
+            <input
+              type="text"
+              formControlName="firstName"
+              class="form-control"
+              placeholder="johndoe"
+              aria-describedby="register-username"
+              tabindex="1"
+              autofocus
+            
+            />
+            
+          </div>
+          <div class="form-group">
+            <label for="register-email" class="form-label" >Email</label>
+            <input
+              type="text"
+              formControlName="email"
+              class="form-control"
+              placeholder="john@example.com"
+              aria-describedby="register-email"
+              tabindex="2"
+              
+             />
+           
+
+          <div class="form-group">
+            <label for="register-password" class="form-label">Password</label>
+
+            <div class="input-group input-group-merge form-password-toggle">
+              <input
+                [type]="passwordTextType ? 'text' : 'password'"
+                formControlName="password"
+                class="form-control form-control-merge"
+                placeholder="············"
+                aria-describedby="register-password"
+                tabindex="3"
+          
+              />
+              <div class="input-group-append">
+                <span class="input-group-text cursor-pointer"
+                  ><i
+                    class="feather font-small-4"
+                    [ngClass]="{
+                      'icon-eye-off': passwordTextType,
+                      'icon-eye': !passwordTextType
+                    }"
+                    (click)="togglePasswordTextType()"
+                  ></i
+                ></span>
+              </div>
+            </div>
+            
+        
+          <!-- Vous devez importer FormsModule dans votre module Angular pour utiliser ngModel -->
+          <div class="form-group">
+            <label for="register-email" class="form-label" >Role</label>
+            <input
+              type="text"
+              formControlName="role"
+              class="form-control"
+           value="USER"
+              
+              readonly
+             />
+
+          <div class="form-group">
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" id="register-privacy-policy" tabindex="4" />
+              <label class="custom-control-label" for="register-privacy-policy">
+                I agree to <a href="javascript:void(0);">privacy policy & terms</a>
+              </label>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-block" tabindex="5" rippleEffect>Sign up</button>
+          </div>
+          </div>
+          </div>
+        </form>

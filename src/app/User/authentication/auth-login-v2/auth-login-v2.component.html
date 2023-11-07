@@ -1,0 +1,60 @@
+<div class="auth-wrapper auth-v2">
+  <div class="auth-inner row m-0">
+    <!-- Brand logo--><a class="brand-logo" href="javascript:void(0);">
+      <a class="text-body" data-dismiss="modal" aria-label="Close" (click)="Annuler()"
+      ><button type="button" class="btn-close" aria-label="Close"><b class="text-red">X</b></button></a>
+
+  </a>
+    
+    
+    <!-- /Left Text-->
+    <!-- Login-->
+  
+        <br>   <br>   <br>
+        <h2 class="card-title font-weight-bold mb-1 d-lg-flex align-items-center justify-content-center">Welcome to DELISAS!👋</h2>
+        <p class="card-text mb-2">Please sign-in to your account and start the adventure</p>
+        
+
+      
+
+        <div class="modal-body">
+          <form [formGroup]="loginForm"  enctype="multipart/form-data"    >
+            
+           
+           
+             
+            <div class="form-group"  >
+              <label>Email </label>
+              <input class="custom-control-input" type="text" class="form-control"   formControlName="email" id="email"    >
+               
+             
+              </div>
+              <div class="form-group"  >
+                <label>Password </label>
+                <input class="custom-control-input" type="text" class="form-control"   formControlName="password" id="password"    >
+                 
+               
+                </div>
+            
+              
+           
+          <div class="form-group">
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" id="remember-me" type="checkbox" tabindex="3" />
+              <label class="custom-control-label" for="remember-me"> Remember Me</label>
+            </div>
+          </div>
+          <button [disabled]="loading" (click)="onSubmit()" class="btn btn-primary btn-block" tabindex="4" rippleEffect>
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>Sign in
+          </button>
+          <div class="text-center">
+            <a class="small" (click)="Register()"  >Already have an account? Login!</a>
+           </div>
+        </form>
+       
+    
+      </div>
+    </div>
+    <!-- /Login-->
+  </div>
+ 

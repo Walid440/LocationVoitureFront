@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { offre } from '../Model/offre';
 import { produit } from '../Model/produit';
+import { User } from '../Model/user';
  
 
 @Injectable({
@@ -28,5 +29,9 @@ host:string="http://localhost:8090/ImgOffre/";
   public Prod1(id:number){
     return this.http.get<produit>("http://localhost:8090/ImgProd1/"+id);
 
+  }
+  public verif(email:String){
+    return this.http.get<any>("http://localhost:8090/Recherche/"+email);
+    
   }
 }

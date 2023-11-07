@@ -1,4 +1,39 @@
- .img-prev{
+ 
+ .navbar {
+  background-color: #333;
+  padding: 10px;
+}
+
+.nav-item {
+  display: inline;
+  margin: 0 10px;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+}
+
+.dropdown-menu {
+  background-color: #333;
+}
+
+.dropdown-item {
+  color: #fff;
+  text-decoration: none;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-name {
+  margin-right: 10px;
+}
+
+/* Ajoutez ici d'autres styles personnalisés selon vos besoins */
+.img-prev{
 
 margin-top: 10px;
 
@@ -43,7 +78,7 @@ border:3px solid white;
 text-align: left;
 width:350px;
 }
-
+ 
 .chat-bar-collapsible {
   position: fixed;
   bottom: 0;
@@ -58,10 +93,26 @@ width:350px;
   transition: max-height 0.2s ease-out;
   background-color: azure;
 }
+.content2{
+  max-height: 0 ;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+ 
+}
 
 .full-chat-block {
   width: 350px;
-  background:rgb(239, 241, 235);
+  background:rgb(81, 94, 214);
+  text-align: center;
+  overflow: auto;
+  scrollbar-width: none;
+   height: max-content;
+  transition: max-height 0.2 ease-out;
+  border: 15px;
+}
+.full {
+  width: 90px;
+  background:rgb(119, 127, 199);
   text-align: center;
   overflow: auto;
   scrollbar-width: none;
