@@ -1,4 +1,7 @@
 <div>
+  <p></p><a class="text-body" data-dismiss="modal" aria-label="Close" (click)="close()"
+><i data-feather="x" style="color:red; bottom:blue;"><button type="button" class="btn-close" aria-label="Close">X</button></i>
+</a>
     <form [formGroup]="form">
     <h2>Estimation de Coût de Voiture</h2>
     <table> <div class="chat-bar-input-block">
@@ -15,7 +18,14 @@
                 <tr><td> <div> <i class="fas fa-tachometer-alt"></i></div></td>
                     <td> <input type="text" class="form-control" formControlName="km"  placeholder="Entrer Dernier KM">
                       </td>  </tr></div> 
-            
+                      <div class="chat-bar-input-block">
+                        <label for="typeCarburant">Type de Carburant:</label>
+                        <select formControlName="typeCarburant" id="typeCarburant">
+                          <option value="essence">Essence</option>
+                          <option value="diesel">Diesel</option>
+                        </select>
+                      </div> 
+                    
     
               <button type="submit" class="btn btn-primary" (click)="calculateEstimatedCost()"><img *ngIf="IsLoading" src="assets/images/loading.gif" style="width: 24px;">Cout Estimé</button>
  

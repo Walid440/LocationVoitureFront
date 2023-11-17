@@ -12,6 +12,7 @@ export class commande{
    prix:any;
    status!:status;
    prod!:produit;
+   type!:string;
    paie!:paiement | null;
 
 }

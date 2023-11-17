@@ -28,7 +28,7 @@ export class VenteComponent implements OnInit  {
       prix:new FormControl(this.data.prix,[Validators.required]),
       
     });
-      
+      console.log(this.data.idUser)
  
 
   }
@@ -52,10 +52,10 @@ open() {
   
   // Convertissez la différence en jours (1 jour = 24 heures)
   const differenceEnJours = differenceEnMillisecondes / (1000 * 60 * 60 * 24);
-
+  this.personl.type="vente"
   // Utilisez la différence en jours pour calculer le prix total
   this.personl.prix = this.data.prix;
-  this.Person.CreateCommande(this.personl,this.data.id).subscribe( data => {   
+  this.Person.CreateCommande(this.personl,this.data.prod,this.data.idUser).subscribe( data => {   
    this.userlist=data;
     
   });
@@ -64,7 +64,7 @@ paiement(){
   this.dial.open(PaiementComponent,{
     width:'600px',
     height:'600px',
- 
+    data: { email:this.data.idUser }
   });
 }
 close(){

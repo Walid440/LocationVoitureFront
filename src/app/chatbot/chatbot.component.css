@@ -6,7 +6,10 @@ body {
     margin: 0;
     background-color: #f0f0f0;
 }
+.card-text{
 
+    color:red;
+}
 .viewer {
     position: relative;
     width: 400px;

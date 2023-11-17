@@ -35,8 +35,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [
   
-     
   ],
-  imports: [CommonModule]
+  imports: [CommonModule,NgbModule]
 })
 export class AuthenticationModule {}

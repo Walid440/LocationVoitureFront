@@ -8,8 +8,8 @@ import { commande } from '../Model/commande';
 export class CommandeService {
 
   constructor(private http:HttpClient) { }
-  public CreateCommande(person:commande,idF:number){
-    return this.http.post<commande>("http://localhost:8090/CreateCommande/"+idF,person);
+  public CreateCommande(person:commande,idF:number,idUser:number){
+    return this.http.post<commande>("http://localhost:8090/CreateCommande/"+idF+"/"+idUser,person);
     
   }
 

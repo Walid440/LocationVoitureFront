@@ -1,20 +1,18 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-import { takeUntil } from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Subject } from 'rxjs';
-import { User } from 'src/app/Model';
-import { ServicesService } from 'src/app/services.service';
 import Swal from 'sweetalert2';
-import { NgbModal,NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
- 
+import { User } from '../Model';
+import { ServicesService } from '../services.service';
+import { MatDialog } from '@angular/material/dialog';
+
 @Component({
-  selector: 'app-auth-register-v2',
-  templateUrl: './auth-register-v2.component.html',
-  styleUrls: ['./auth-register-v2.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
-export class AuthRegisterV2Component implements OnInit {
+export class RegisterComponent implements OnInit{
   [x: string]: any;
   // Public  
   public passwordTextType: boolean | undefined;
@@ -32,7 +30,7 @@ active:boolean=false;
    * @param {CoreConfigService} _coreConfigService
    * @param {FormBuilder} _formBuilder
    */
-  constructor(public modal:NgbActiveModal,public Person : ServicesService, private _formBuilder: FormBuilder) {
+  constructor(private dial:MatDialog,public Person : ServicesService, private _formBuilder: FormBuilder) {
     this._unsubscribeAll = new Subject();
 
     // Configure the layout
@@ -41,7 +39,7 @@ active:boolean=false;
 
   Annuler(){
 
-    this.modal.close();
+    this.dial.closeAll();
     
     }
   // convenience getter for easy access to form fields
@@ -139,5 +137,8 @@ active:boolean=false;
 }
 
 }
+
+
+
 
 

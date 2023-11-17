@@ -15,7 +15,7 @@
     <input type="text" formControlName="porte"   class="form-control">
     <label>Puissance fiscale</label>
     <input type="text" formControlName="Puissance"   class="form-control">
-    <button >Comparer</button>
+    <button (click)=" compareCars() ">Comparer</button>
 
    <div  class="alert alert-success" *ngIf="comparisonResult">
     <ul class="list-group">

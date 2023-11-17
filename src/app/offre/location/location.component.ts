@@ -4,7 +4,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { commande } from 'src/app/Model/commande';
 import { CommandeService } from 'src/app/services/commande.service';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog'; // Assurez-vous d'inclure cette ligne
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog'; // Assurez-vous d'inclure cette ligne
+import { EchangeComponent } from '../echange/echange.component';
+import { PaiementComponent } from 'src/app/paiement/paiement.component';
 
 @Component({
   selector: 'app-location',
@@ -13,7 +15,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog'; // Assurez-vous d'in
 })
 export class LocationComponent  implements OnInit {
   editForm: any;  personl:commande=new commande(); 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private Person:CommandeService,private route: ActivatedRoute){}
+  constructor(private dial:MatDialog,@Inject(MAT_DIALOG_DATA) public data: any, private Person:CommandeService,private route: ActivatedRoute){}
   ngOnInit(): void {
     const initialData = this.route.snapshot.data['data']; // Obtenez la valeur initiale depuis les données de la route
 
@@ -56,7 +58,7 @@ open() {
   // Utilisez la différence en jours pour calculer le prix total
   this.personl.prix = article.prix * differenceEnJours;
   
- 
+ this.personl.type="location"
   
 // Créez une date au format JavaScript
    // Convertissez-la en chaîne au format "YYYY-MM-DD"
@@ -73,13 +75,15 @@ open() {
  // this.personl.cabins=article.cabin;*/
  // this.personl.cabins=article.cabin;*/
     
-this.Person.CreateCommande(this.personl,1).subscribe( data => {   
+this.Person.CreateCommande(this.personl,this.data.prod,this.data.idUser).subscribe( data => {   
    
-     if(article.photo2=="vente")
-     {
-   //this.modalService.open(VenteComponent);
+  this.dial.open(PaiementComponent,{
+    width:'600px',
+    height:'470px',
+ 
+  });
   
-}
+
    });
   
   

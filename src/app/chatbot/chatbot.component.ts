@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Loader } from '@googlemaps/js-api-loader';
+import { OffresService } from '../services/offres.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
  
 declare var google: any; 
 
@@ -12,17 +15,27 @@ export class ChatbotComponent implements OnInit {
   directionsService!: google.maps.DirectionsService;
   directionsRenderer!: google.maps.DirectionsRenderer;
        location1:any;
-
+active:boolean=false;
   private map!: google.maps.Map;
-  constructor (){}
-  ngOnInit(): void {
-     
+  constructor (private dial:MatDialog,private offre:OffresService){}
+   OffreList!:any;
+   editForm!:FormGroup;adresse:any;
+   ngOnInit(): void {
+    this.listOffre()
+    this.editForm=new FormGroup({
+   
+      adresse:new FormControl('',[Validators.required]),
+    
+    });
     let loader = new Loader({
       apiKey: '--APIKEY--'
     })
+
+ 
+
     directionsService: google.maps.DirectionsService;
     directionsRenderer: google.maps.DirectionsRenderer;
-
+   
     loader.load().then(() => {
       this.directionsService = new google.maps.DirectionsService();
       this.directionsRenderer = new google.maps.DirectionsRenderer()
@@ -285,10 +298,10 @@ const lon2 = 2.4703381168246796;
 
 
      
-      const adresse: string = 'Rue du Four, 91540 Ormoy, France';
+     // const adresse: string = 'Rue du Four, 91540 Ormoy, France';
 let lat:any;
 let long:any;
-      fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(adresse)}&format=json`)
+      fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(this.editForm.value.adresse)}&format=json`)
         
         .then((response: Response) => response.json())
         .then((data: any[]) => {
@@ -298,7 +311,7 @@ let long:any;
       
            this.location1 ={lat:latitude,long:longitude}
             
-            console.log(`Les coordonnées de ${adresse} sont : Latitude = ${latitude}, Longitude = ${longitude}`);
+            console.log(`Les coordonnées de ${this.adresse} sont : Latitude = ${latitude}, Longitude = ${longitude}`);
             const R =  6371; // Rayon de la Terre en kilomètres (utilisation du rayon par défaut de 6371 km si non spécifié)
 
             // Conversion des degrés en radians
@@ -320,16 +333,16 @@ let long:any;
 
             console.log("Distance en kilomètres : " + distance);
 
-
-
+ 
       const marker2= new google.maps.Marker({
         position: {lat:latitude, lng: longitude },
         map: this.map,
+        title:'Origin de voiture'
       });
       const marker3= new google.maps.Marker({
         position: location,
         map: this.map,
-        title:'Origin de voiture'
+        title:'Ma position Actuel'
       });
       const directionRequest =(
         {
@@ -375,6 +388,35 @@ let long:any;
 
  
 }
+listOffre(){
+  this.offre.getAll().subscribe(res=>{
+    this.OffreList=res;
+  console.log(this.OffreList)
+       });
+
+
+}
+// Supposons que vous avez une propriété user dans votre composant.
+// Assurez-vous de remplacer user par la propriété que vous utilisez dans votre template.
+
+// Déclarez la propriété user avec un point d'interrogation pour indiquer qu'elle peut être nulle.
+ // Remplacez UserType par le type réel de votre objet user.
+
+// ...
+
+// Assurez-vous d'initialiser ou de récupérer la valeur de votre propriété user quelque part dans votre code.
+
+// ...
+
+// Dans votre méthode onAdresseChange, effectuez la vérification de null avant d'accéder à la propriété.
+onAdresseChange() {
+   this.active=true;
+   window.location
+ }
+close(){
+  this.dial.closeAll();
+}
+
 }
 
 

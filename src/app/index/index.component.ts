@@ -27,6 +27,9 @@ import { CarPriceComparisonComponent } from '../car-price-comparison/car-price-c
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { DecoteVoitureComponent } from '../decote-voiture/decote-voiture.component';
  import { AuthLoginV2Component } from '../User/authentication/auth-login-v2/auth-login-v2.component';
+import { AuthLoginComponent } from '../usr/auth-login/auth-login.component';
+import { ServicesService } from '../services.service';
+import { ResetPassComponent } from '../reset-pass/reset-pass.component';
  
 
 
@@ -52,7 +55,7 @@ myscriptElemnt!:HTMLScriptElement;
 DateAujou:any;
 
   val:any;
-  
+  param:any;
 Comm:comment=new comment();
 star:number[]=[5,4,2,3,1];
 locationForm!:FormGroup;
@@ -88,8 +91,9 @@ menu!:'Select Offre';
 date!:string;
 isHidden4: boolean = true;
 loaders:boolean=true;
- ratingForm!: FormGroup ;
-  constructor(private modalService: NgbModal,private Route:ActivatedRoute,private el:ElementRef,private http:HttpClient,public comService : CommentService,private snackbar:MatSnackBar,private fb: FormBuilder,private renderer: Renderer2,private dial:MatDialog,private offre:OffresService,private rout:Router)  
+test!:string;
+ ratingForm!: FormGroup ; ng:any;
+  constructor(private route: ActivatedRoute,public authService: ServicesService,private modalService: NgbModal,private Route:ActivatedRoute,private el:ElementRef,private http:HttpClient,public comService : CommentService,private snackbar:MatSnackBar,private fb: FormBuilder,private renderer: Renderer2,private dial:MatDialog,private offre:OffresService,private rout:Router)  
       {
         this.myscriptElemnt=document.createElement("script");
         this.myscriptElemnt.src="src/assets/chat.js";
@@ -112,22 +116,46 @@ loaders:boolean=true;
   id!:number;
   isHidden3: boolean = true; 
   isBackgroundActive: boolean = false;
- 
+  ngValue: string | null = null;
+  
 user!: string;
+idUser:any;rest:any;
      ngOnInit(): void {
 
-  
+     
+    
+      // Now 'ngValue' contains the value of the 'ng' parameter
+     
       this.Route.queryParams.subscribe(params => {
-        this.user =params['username'] ; // Utilisation de + pour convertir la valeur en nombre
-      });     
-      this.ratingForm = this.fb.group({
+        this.user =params['username'] ;
+        this.idUser =params['id'] ;
+        this.route.queryParams.subscribe(queryParams => {
+          this.rest = queryParams['token']; // Assuming 'token' is the parameter name
+       
+ 
+        if (this.rest!=null) {
+          
+      
+          this.dial.open(ResetPassComponent,{
+            width:'800px',
+            height:'400px',
+           // Empêche la fermeture du modal lors d'un clic en dehors de celui-ci
+    
+           });
+  
+          }
+        
+      }); 
+     
+     });
+       this.ratingForm = this.fb.group({
         username:new FormControl(),
        commentText:new FormControl(),
        star1:new FormControl(),
        star2:new FormControl(),
        star3:new FormControl(),
        star4:new FormControl(), 
-              ville:new FormControl(),
+       ville:new FormControl(),
        menu:new FormControl(),
        date:new FormControl()
   
@@ -171,6 +199,7 @@ this.rating(this.id);
       // Now that the script is loaded, you can call the JavaScript function.
       (window as any).myFunction();
     }
+    
   
   getAllComments(){
  this.comService.getAll().subscribe(response => {
@@ -188,12 +217,35 @@ this.rating(this.id);
 
   
 }
-    logout(){
-      this.rout.navigate(['/'], { queryParams: { username: '' } }); // Redirigez avec username vide
+ 
+ 
 
-      this.modalService.open(AuthLoginV2Component,  { size: 'lg', backdrop: 'static' });
+// Add this method to check if the user is authenticated
+isAuthenticated(): boolean {
+  return this.authService.isAuthenticatedSubject.value;
+}
 
+   async logBody(){
+
+  
+  // Now 'ngValue' contains the value of the 'ng' parameter
+   if(this.user==="")
+{
+      this.dial.open(BookComponent,{
+        width:'800px',
+        height:'400px',
+        disableClose: true,  // Empêche la fermeture du modal lors d'un clic en dehors de celui-ci
+
+       });
     }
+    console.log("param"+this.param)
+}
+ 
+    logout(){
+   var c=   this.rout.navigate(['/'], { queryParams: { username: '' } }); // Redirigez avec username vide
+
+  
+  }
   c(){
 
    
@@ -233,10 +285,10 @@ this.rating(this.id);
  
   selectedElement: string | null = null;
 
-   
-  open(i: number,s:any,id:any,prix:any,event:any){
+  
+  open(i: number,s:any,id:any,prix:any,prod:any ,idUser:any,event:any){
 
-
+ 
     this.selectedElement = s;
     
      if(   this.selectedElement =="location.png")
@@ -245,7 +297,7 @@ this.rating(this.id);
     this.dial.open(LocationComponent,{
       width:'600px',
       height:'400px',
-     data: { prix: prix,id:id }
+     data: { prix: prix,id:id,prod:prod,idUser:this.idUser }
     });
    
   }
@@ -255,7 +307,7 @@ else   if(   this.selectedElement =="vente.png")
     this.dial.open(VenteComponent,{
       width:'650px',
       height:'400px',
-      data: { prix: prix,id:id }
+      data: { prix: prix,id:id,prod:prod,idUser:this.idUser }
         });
    
   }
@@ -264,14 +316,15 @@ else   if(   this.selectedElement =="vente.png")
 
     this.dial.open(EchangeComponent,{
       width:'600px',
-      height:'470px'
+      height:'470px',
+      data: { prix: prix,id:id,prod:prod,idUser:this.idUser }
     });
    
   }
 }
  
 
-  
+   
   result:any;
 getAllOffre(  ){
    if (this.ville === 'Select') {
@@ -279,7 +332,8 @@ getAllOffre(  ){
       
 
        this.listOffre=res;
-       console.log("res"+ this.listOffre);
+       
+      // console.log("res"+ this.listOffre);
         
     }); } else {
   
@@ -287,7 +341,7 @@ getAllOffre(  ){
  
       this.offre.search(this.date,this.menu,this.ville).subscribe(res=>{
    this.listOffre=res;
-   console.log("rrrrrrr"+ this.listOffre)
+   //console.log("rrrrrrr"+ this.listOffre)
       });
    
 
@@ -368,14 +422,14 @@ AfficherCalendar(){
 }
 PrixApproximative(){
   this.dial.open(CarPriceComparisonComponent,{
-    width:'700px',
-    height:'700px'
+    width:'500px',
+    height:'500px'
   });
 }
 location(){
   this.dial.open(ChatbotComponent,{
-    width:'700px',
-    height:'700px'
+    width:'500',
+    height:'450px'
   });
 
 }
@@ -407,6 +461,8 @@ AddCom(){
 
     this.Comm.commentText=this.commenTex;
     this.Comm.username=this.username;
+    this.Comm.dateJour= new Date();
+    console.log(this.DateAujou)
     if(this.rate==null)
     {
       Swal.fire("Selectionner rate!!")

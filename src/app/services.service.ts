@@ -37,6 +37,25 @@ export class ServicesService {
     
   }
   
+ 
+  private stripeKey = 'pk_test_51OBGlIJPU0KIqXjAADPmh0AGwj8DxWJEP06T7Zph5SExhXGGfB2mqG8dkSuPzbOwYEIJUOZo6ErWvUO5DFkWoCXq00ln2a8Z2d'; // Remplacez par votre clé publique Stripe
+
+ 
+  public isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
+  isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
+
+  login() {
+    // Perform login logic
+    this.isAuthenticatedSubject.next(true);
+  }
+
+  logout() {
+    // Perform logout logic
+    this.isAuthenticatedSubject.next(false);
+  }
+
+
+  
   create(id:number,start:string,end:string,offre: FormData) {
     return this.http.post<offre>("http://localhost:8089/SpringMVC/offre/CreateF/"+start+"/"+end+"/"+id,offre);  }
     UpdateFile(id:number,start:string,end:string,offre: offre) {
@@ -64,7 +83,10 @@ export class ServicesService {
     
   }
   
-  
+  public CreatePaiement(price:String,email:String){
+    return this.http.get<any>("http://localhost:8090/pay/"+price+"/"+email);
+    
+  }
   public CreateProduit(person:FormData){
     return this.http.post<any>("http://localhost:8090/CreateProduit",person);
     
@@ -171,6 +193,11 @@ export class ServicesService {
     return this.http.get<User>("http://localhost:8090/validatePassword/"+email+"/"+pass);
 
 
+  } public ResetPass(email:String,pass:String)
+  {
+    return this.http.get<User>("http://localhost:8090/users/rest/"+email+"/"+pass);
+
+
   } 
   
   
@@ -203,5 +230,23 @@ export class ServicesService {
         resolve(this.rows);
       }, reject);
     });
+  }
+
+  private isAuthenticated = false;
+
+  login1(username: string, password: string): boolean {
+    // Mettez en œuvre la logique d'authentification ici (par exemple, une vérification côté serveur)
+    // En supposant que l'authentification réussisse, définissez isAuthenticated sur true
+    this.isAuthenticated = true;
+    return this.isAuthenticated;
+  }
+
+  logout1(): void {
+    // Déconnectez l'utilisateur en réinitialisant isAuthenticated à false
+    this.isAuthenticated = false;
+  }
+
+  getIsAuthenticated(): boolean {
+    return this.isAuthenticated;
   }
 }

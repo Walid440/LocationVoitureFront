@@ -1,7 +1,19 @@
+
 <div class="image-container">
     &nbsp;
 <h2>Paiement en ligne</h2>
+<script src="https://www.paypal.com/sdk/js?client-id=AcFWoaDVrhvkiwRdDT4nSXHuc2pgYrGnqJD4ZFX48o3G628Pmkf62I6f0NDhThQfwY9B3TFLool9uv1N"></script>
+
+
+
+<a class="text-body" data-dismiss="modal" aria-label="Close" (click)="closeCompose()"
+            ><i data-feather="x" style="color:red; bottom:blue;"><button type="button" class="btn-close" aria-label="Close">X</button></i>
+            </a>
+
+ 
+ 
 <hr class="continuous-line">
+<form  [formGroup]="editForm" enctype="multipart/form-data"    >
 <table  >
  
     <tr>
@@ -20,12 +32,12 @@
 
 
 <tr>
-    <td><div class="input-group">
-        <div class="input-group-prepend">
+    <td><div class="input-group" >
+        <div class="input-group-prepend" >
         <label for="payment-method"><strong>Méthode de Paiement</strong></label>
-        <select id="payment-method">
+        <select id="payment-method" formControlName="pay" (change)="select()">
           <option value="card">Carte de Crédit</option>
-          <option value="cash">Espèces</option>
+          <option value="cash" >Espèces</option>
         </select>
         </div>
         </div>
@@ -35,14 +47,18 @@
 <tr>
     <tr>
         <td> 
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="far fa-euro-sign"></i></span>
-                </div>
-            <label class="mont">Montant de transaction : 2000</label>   
-            </div>
+            
+                
 <tr>
     <td> 
+        <div class="input-group">
+            <div class="input-group-prepend">
+            
+                <span class="input-group-text"><i class=" fa fa-credit-card"></i></span>
+            </div>
+            <input type="text" class="transparent-input" placeholder="Email" height="40px" formControlName="email">
+            
+            </div>
           <div class="input-group">
             <div class="input-group-prepend">
             
@@ -51,21 +67,31 @@
             <input type="text" class="transparent-input" placeholder="Saisir numéro du carte" height="40px" formControlName="numeroCarte">
             
             </div>
-    </tr>
-    <tr>
-        <td> 
             <div class="input-group">
                 <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="far fa-calendar"></i></span>
+                
+                    <span class="input-group-text"><i class=" fa fa-money"></i></span>
                 </div>
-                <input type="text" class="transparent-input" height="40px" formControlName="heure_debut" placeholder="Selectionner date expiration"  onfocus="(this.type='date')">
-            </div>
+                <input type="text" class="transparent-input" placeholder="Amount" height="40px" formControlName="Amount">
+                
+                </div>
+    </tr>
+    
         
-            
+            <tr>
+                <td> 
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="far fa-calendar"></i></span>
+                        </div>
+                        <input type="text" class="transparent-input" height="40px" formControlName="payementDate" placeholder="payementDate"  onfocus="(this.type='date')">
+                    </div>
+                
+                    
      <tr  >
         
-    <td> <p></p>   <button class="btn btn-danger" ><i class="fas fa-times" style="width:15px;height:22px;" (click)="Annuler()"></i> Annuler</button> 
-    <button class="btn btn-primary" ><i class="fas fa-check" style="width:15px;height:22px;"></i> Valider</button> 
+    <td> <p></p>   <button class="btn btn-danger" (click)="Annuler()"><i class="fas fa-times" style="width:15px;height:22px;"  ></i> Annuler</button> 
+    <button class="btn btn-primary"  (click)="createCharge()"><i class="fas fa-check" style="width:15px;height:22px;"></i> Valider</button> 
 </td>
 <tr >
 
@@ -73,8 +99,8 @@
         <td  >  <p></p>
             <img src="assets/images/info.png" width="20px"><span class="textColor"> Pour annuler votre paiement cliquer sur Annuler</span></td>
 
-            <td  >  <p></p>
-                <img src="assets/images/info.png" width="20px"><span class="textColor"> <p>Veuillez payer en espèces à notre bureau principal. Voici l'adresse :</p>
+            <td *ngIf="active" >  <p></p>
+                <img src="assets/images/info.png" width="20px"><span class="textColor" > <p>Veuillez payer en espèces à notre bureau principal. Voici l'adresse :</p>
                 </span></td>
     
         </tr>
@@ -126,4 +152,5 @@
 </style>
 
 </table>
+</form>
 </div>

@@ -9,4 +9,8 @@ export class User {
   avatar!: string;
   role!: Role;
   token?: string;
+  telephone!:string;
+delivre!:string;
+permis!:string;
+naissance!:string;
 }

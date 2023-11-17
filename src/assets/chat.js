@@ -29,16 +29,22 @@ function sendButton(){
   let ch="";
   
 let val= $("#textInput").val(); 
-if(val=="hello")
+if(val=="bonjour")
 {
- ch= "Hiiiiiiii!";
+ ch= "Bonjour ! Comment puis-je vous aider aujourd'hui ?";
 }
 else if(val=="cv"){
-  ch="vous etes les bienvenue!!!"
+  ch="Je vais bien, merci ! Comment puis-je vous assister dans la recherche, la vente ou l'échange de votre voiture ?"
 
 }
-else{
-  ch="Verifie rvoo"
+else if (val.toLowerCase().includes("recherche") || val.toLowerCase().includes("trouver")) {
+  ch = "Bien sûr, je peux vous aider à trouver la voiture parfaite. Pourriez-vous me donner plus de détails sur le modèle, l'année ou la marque que vous recherchez ?";
+} else if (val.toLowerCase().includes("vendre") ||  val.toLowerCase().includes("mettre en vente")) {
+  ch = "Si vous souhaitez vendre votre voiture, je peux vous fournir des conseils sur la mise en vente et vous aider à trouver des acheteurs potentiels.";
+} else if (val.toLowerCase().includes("échange") || val.toLowerCase().includes("changer")) {
+  ch = "L'échange de voiture peut être une excellente option. Pourriez-vous me donner plus d'informations sur le type de voiture que vous avez et celle que vous recherchez ?";
+} else {
+  ch = "Je suis désolé, je n'ai pas compris. Pouvez-vous reformuler votre question ?";
 }
 let value='<p style="background-color:blue; color:black;border-radius:2px  5px 5px 5px;"><span>'+val+'</span></p>';
 let ch1='<p style="background-color:gray; color:white;border-radius:2px  5px 5px 5px;"><span>'+ch+'<span></span></p>';

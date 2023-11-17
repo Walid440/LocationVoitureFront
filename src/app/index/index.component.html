@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myApp" >
+<html lang="en" >
   <head>
 
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -120,13 +120,16 @@ padding: 18px 12px;
   </head>
  
  
+ 
   
-  
-  
-  <body ng-controller="MyController">
+ 
+
+  <body (click)="logBody()" >
     
-   
-     
+    
+
+
+
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container"class="col2">
         <li ngbDropdown class="nav-item dropdown-user">
@@ -156,7 +159,7 @@ padding: 18px 12px;
                 <div class="full-chat-block">
               <div   ngbDropdownMenu aria-labelledby="adminDropdownButton">
                 <button class="dropdown-item">{{user}}</button>
-                <button class="dropdown-item">Action 2</button>
+              
                 <button (click)="logout()" class="dropdown-item">Logout</button>
               </div>
                 </div>
@@ -167,6 +170,7 @@ padding: 18px 12px;
         </li>
   </div>
 </nav>
+
           <div ngbDropdownMenu aria-labelledby="navbarUserDropdown" class="dropdown-menu dropdown-menu-right">
       
             ><a ngbDropdownItem (click)="logout()"><span  [class]="'mr-50'"></span> Logout</a>
@@ -320,7 +324,7 @@ padding: 18px 12px;
 			            <div class="form-group">
                     <div class="row">
                       <div class="col-md-6">
-                        <a href="#ng" class="btn btn-success"  is  id="search"  onclick="load()" (click)="getAllOffre()">&nbsp;&nbsp;&nbsp;Rechercher</a>
+                        <a href="#username" class="btn btn-success"  is  id="search"  onclick="load()" (click)="getAllOffre()">&nbsp;&nbsp;&nbsp;Rechercher</a>
 
                       </div>
                     </div>  
@@ -365,7 +369,7 @@ padding: 18px 12px;
 					          </div>
                    
 					        </div>
-					        <p><a href="#" class="btn btn-primary py-3 px-4">Reserve Your Perfect Car</a></p>
+					        <p><a href="username" class="btn btn-primary py-3 px-4">Reserve Your Perfect Car</a></p>
 	  						</div>
 	  					</div>
 	  				</div>
@@ -376,7 +380,7 @@ padding: 18px 12px;
 
 
     <section class="ftco-section ftco-no-pt bg-light">
-    	<div class="container" id="ng">
+    	<div class="container" id="username">
     		<div class="row justify-content-center">
           <div class="col-12 heading-section text-center animate__animated animate__fadeInUp mb-5">
           	<span class="subheading">What we offer</span>
@@ -390,54 +394,39 @@ padding: 18px 12px;
                 </div>
               </div>
           </div>
-<div   class ="carousel" id="carousel">
-
-            <ngx-slick-carousel  #slickModal="slick-carousel" 
-            [config]="carouselConfig" >
-             
-     <div   ngxSlickItem class="carousel-item"   *ngFor="let p of listOffre;let i=index">
-               <td> 
+          <div class="carousel" id="carousel">
+            <ngx-slick-carousel #slickModal="slick-carousel" [config]="carouselConfig">
+              <div ngxSlickItem class="carousel-item" *ngFor="let p of listOffre; let i = index">
                 <div>
-                <img   src="{{'http://localhost:8090/ImgOffre/'+p.id}}" id="main-img" alt="" class="img-fluid" width="300px" height="300px">
-              <div class="image-text" >
-
-<img src="assets/images/{{p.photo2}}"  id ="main-img" class="img-fluid" width="180px">
-              </div>
-              
-              </div>
-             
-              
-                <div class="text" width="100px"  >
-                  <h5 class="mb-11"><a href="#">{{p.nomOffre}}</a></h5>
-                  <div class="align-items-left" width="500px" >
-                    <tr><td class="align-item-right" [width]="150">
-                    <span class="cat"> <i class="fas fa-map-marker"></i> {{p.adresse}}</span></td>
-                   <td  class="align-items-right" >	<h6 class="" > <form [formGroup]="locationForm"> <a>{{p.prix}}<span>/day</span></a></form> </h6></td>
-                    </tr> 	</div>
-                 
-               <tr>
-                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                <td>
-                 
-                              
-                   <p class="" ><a (click)="open(i,p.photo2,p.id,p.prix,$event)" class="btn btn-primary py-2 mr-1" >Book now</a>
-                     <a (click)="detail(p.idProd)" class="btn btn-secondary py-2 ml-1">Details</a></p>
-                </td>
-               </tr>
-               
-               
+                  <img src="{{ 'http://localhost:8090/ImgOffre/' + p.id }}" id="main-img" alt="" class="img-fluid" width="300px" height="300px">
+                  <div class="image-text">
+                    <img src="assets/images/{{ p.photo2 }}" id="main-img" class="img-fluid" width="180px">
+                  </div>
                 </div>
-               </td>
-
-  
-               
-     </div>
-    
-              </ngx-slick-carousel>
-             
-                         
-
+                <div class="text" width="100px">
+                  <h5 class="mb-11"><a href="username">{{ p.nomOffre }}</a></h5>
+                  <div class="align-items-left" width="500px">
+                    <tr>
+                      <td class="align-item-right" [width]="150">
+                        <span class="cat"> <i class="fas fa-map-marker"></i> {{ p.adresse }}</span>
+                      </td>
+                      <td class="align-items-right">
+                        <h6 class=""> <form [formGroup]="locationForm" > <a>{{ p.prix }}<span>/day</span></a></form> </h6>
+                      </td>
+                    </tr>
+                  </div>
+                  <tr>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <td>
+                      <p class=""><a (click)="open(i,p.photo2,p.id,p.prix,p.idProd,user,$event)" class="btn btn-primary py-2 mr-1" >Book now</a>
+                        <a (click)="detail(p.idProd)" class="btn btn-secondary py-2 ml-1">Details</a></p>
+                    </td>
+                  </tr>
+                </div>
               </div>
+            </ngx-slick-carousel>
+          </div>
+          
           
      </div>
         </div>

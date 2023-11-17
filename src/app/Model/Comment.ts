@@ -6,6 +6,7 @@ export class comment{
     commentText!:string;
     rating!:any;
  rate!:any;
+ dateJour!:any;
 
 
 }

@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ResetPassComponent } from './reset-pass/reset-pass.component';
 
-const routes: Routes = [];
+const routes: Routes = [ { path: 'reset', component: ResetPassComponent }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+ 

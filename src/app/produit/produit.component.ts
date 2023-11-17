@@ -45,7 +45,7 @@ console.log(this.data.id)
   getallImages(){
     this.serv.Prod(this.data.id).subscribe(response => {
       this.userlist = response;
-      console.log("ueser"+this.userlist)
+     // console.log("ueser"+this.userlist)
     });
   }
 }

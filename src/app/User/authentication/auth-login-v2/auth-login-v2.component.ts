@@ -11,6 +11,8 @@ import Swal from 'sweetalert2';
 import { AuthRegisterV2Component } from '../auth-register-v2/auth-register-v2.component';
 import { ServicesService } from 'src/app/services.service';
 import { User } from 'src/app/Model';
+import { RegisterComponent } from 'src/app/register/register.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-auth-login-v2',
@@ -36,7 +38,7 @@ userlist:any;
    *
    * @param {CoreConfigService} _coreConfigService
    */
-  constructor(public modal:NgbActiveModal,private rout: Router,private Serv:ServicesService,private modalService: NgbModal,private _router: Router,private _formBuilder:FormBuilder)
+  constructor(public modal:NgbActiveModal,private dial:MatDialog,private rout: Router,private Serv:ServicesService,private modalService: NgbModal,private _router: Router,private _formBuilder:FormBuilder)
  
    
    
@@ -122,8 +124,13 @@ userlist:any;
   }
   Register(){
 
-    const ref = this.modalService.open(AuthRegisterV2Component,  { size: 'lg', backdrop: 'static' });
-    
+    this.dial.open(RegisterComponent,{
+      width:'800px',
+      height:'400px',
+        // Empêche la fermeture du modal lors d'un clic en dehors de celui-ci
+
+     });    
  
   }
+  
 }

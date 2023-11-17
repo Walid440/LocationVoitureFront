@@ -45,7 +45,36 @@
               
              />
            
-
+             <div class="form-group">
+              <label for="register-birthdate" class="form-label">Date de naissance</label>
+              <input
+                type="date"
+                formControlName="naissance"
+                class="form-control"
+                aria-describedby="register-birthdate"
+                tabindex="6"
+              />
+            </div>
+            <div class="form-group">
+              <label for="register-birthdate" class="form-label">Permis</label>
+              <input
+                type="text"
+                formControlName="permis"
+                class="form-control"
+                aria-describedby="register-birthdate"
+                tabindex="6"
+              />
+            </div>
+            <div class="form-group">
+              <label for="register-birthdate" class="form-label">delivre</label>
+              <input
+                type="date"
+                formControlName="delivre"
+                class="form-control"
+                aria-describedby="register-birthdate"
+                tabindex="6"
+              />
+            </div>
           <div class="form-group">
             <label for="register-password" class="form-label">Password</label>
 
@@ -81,8 +110,9 @@
               type="text"
               formControlName="role"
               class="form-control"
-           value="USER"
-              
+            value="USER"
+              aria-describedby="register-email"
+              tabindex="2"
               readonly
              />
 
@@ -97,5 +127,6 @@
           <button class="btn btn-primary btn-block" tabindex="5" rippleEffect>Sign up</button>
           </div>
           </div>
+          
           </div>
         </form>

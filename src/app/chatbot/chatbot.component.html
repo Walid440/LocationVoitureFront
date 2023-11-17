@@ -1,10 +1,32 @@
 <!doctype html>
 <html lang="en">
- 
- 
- <div id="map" class="full">
-    <script src="https://maps.googleapis.com/maps/api/js?key=VOTRE_CLE_API&libraries=geometry&callback=initMap"></script>
+   <div class="card">
+      <div class="card-body">
+<p></p><a class="text-body" data-dismiss="modal" aria-label="Close" (click)="close()"
+><i data-feather="x" style="color:red; bottom:blue;"><button type="button" class="btn-close" aria-label="Close">X</button></i>
+</a>
+<p class="text-info">NB: Selectionner nom d'offre correspondant pour afficher votre positon par rapport à l'adresse de voiture </p>
 
+</div>
+   </div>
   
- </div>
  
+   <div   [formGroup]="editForm">
+      
+   
+       
+      <label>Selectionner l'offre *</label>
+     <select class="form-control" formControlName="adresse" id="adresse" (change)="onAdresseChange()">
+       <option value="">Sélectionnez une option</option>
+       <option *ngFor="let option of OffreList" [value]="option.adresse">{{ option.nomOffre }}</option>
+     </select>
+     
+     <div></div>
+     <div id="map" class="full" *ngIf="active===true">
+      <script src="https://maps.googleapis.com/maps/api/js?key=VOTRE_CLE_API&libraries=geometry&callback=initMap"></script>
+  
+    
+   </div>
+     </div>
+    
+    

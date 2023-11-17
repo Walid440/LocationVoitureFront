@@ -39,12 +39,18 @@ import { BsModalRef, ModalModule } from 'ngx-bootstrap/modal';
 import { BootstrapModalModule } from 'ngx-bootstrap-modal';
 import { LocationComponent } from './offre/location/location.component';
 import { VenteComponent } from './offre/vente/vente.component';
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { AuthLoginV2Component } from './User/authentication/auth-login-v2/auth-login-v2.component';
 import { AuthRegisterV2Component } from './User/authentication/auth-register-v2/auth-register-v2.component';
- 
-       
- 
+import { EchangeComponent } from './offre/echange/echange.component';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { AuthLoginComponent } from './usr/auth-login/auth-login.component';
+import { RegisterComponent } from './register/register.component';
+import { ResetPassComponent } from './reset-pass/reset-pass.component';
+const routes: Routes = [
+  { path: 'reset', component: ResetPassComponent },
+  // Other routes...
+];
  
 
     
@@ -65,7 +71,7 @@ PaiementComponent,
       DecoteVoitureComponent,
   LocationComponent,
   AuthLoginV2Component,
-  AuthRegisterV2Component,
+  AuthRegisterV2Component,EchangeComponent, AuthLoginComponent, RegisterComponent, ResetPassComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -85,17 +91,16 @@ HttpClientModule,
 MatInputModule,
 SlickCarouselModule,
  ModalModule.forRoot(),
-   
+ NgbModalModule,   
+  RouterModule.forRoot(routes),
+
     ],
- 
+    exports: [RouterModule],
   
   providers: [{provide: MAT_DIALOG_DEFAULT_OPTIONS,
     useValue: { height: '1000px', width: '1000px', autoFocus: true }}],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent,ResetPassComponent],
   
 })
 export class AppModule { }
-const routes: Routes = [
-  { path: '/login', component: BookComponent },
  
-]

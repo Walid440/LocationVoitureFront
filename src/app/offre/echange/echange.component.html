@@ -48,6 +48,7 @@ color:red
             document.getElementById("text").style.font="calibri";
         }
         </script>
+         <form class="auth-login-form mt-2" [formGroup]="editForm"  enctype="multipart/form-data"   >
 <table  width="600px"   >
  
 
@@ -96,7 +97,7 @@ color:red
     <div class="input-group-prepend">
         <span class="input-group-text"><i class="far fa-object-ungroup icon-red"></i></span>
     </div>
-    <input type="text" class="transparent-input" height="40px" formControlName="Model2" placeholder="Model2"  >
+    <input type="text" class="transparent-input" height="40px" formControlName="modele2" placeholder="modele2"  >
 </div></td>
 </tr>
 <tr>
@@ -105,13 +106,18 @@ color:red
     <div class="input-group-prepend">
         <span class="input-group-text"><i class="far fa-calendar-alt icon-red"></i></span>
     </div>
-    <input type="text" class="transparent-input" height="40px" formControlName="Annee2" placeholder="Annee2" onfocus="(this.type='date')"  >
+    <input type="text" class="transparent-input" height="40px" formControlName="annee2" placeholder="annee2" onfocus="(this.type='date')"  >
 </div>
 </td>
-</tr>
-
  
-
+<td><div class="input-group">
+    <div class="input-group-prepend">
+        <span class="input-group-text"><i class="far fa-calendar-alt icon-red"></i></span>
+    </div>
+    <input type="text" class="transparent-input" height="40px" formControlName="lieu" placeholder="lieu"   >
+</div>
+</td>
+</tr> 
  
 
       
@@ -126,4 +132,5 @@ color:red
  
 
 </table>
+</form>
 </div>
