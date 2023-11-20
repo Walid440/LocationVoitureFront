@@ -11,7 +11,7 @@
       <!-- Login-->
     
           <br>   <br>   <br>
-          <h2 class="card-title font-weight-bold mb-1 d-lg-flex align-items-center justify-content-center">Welcome to DELISAS!👋</h2>
+          <h2 class="card-title font-weight-bold mb-1 d-lg-flex align-items-center justify-content-center">Welcome to Françliens!👋</h2>
           <p class="card-text mb-2">Please sign-in to your account and start the adventure</p>
           
   
@@ -47,6 +47,11 @@
             <button [disabled]="loading" (click)="onSubmit()" class="btn btn-primary btn-block" tabindex="4" rippleEffect>
               <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>Sign in
             </button>
+            <p></p>
+            <div class="text-center">
+              <a class="small" (click)="ForgotPass()"  >Forgot Password</a>
+             </div>
+             <p></p>
             <div class="text-center">
               <a class="small" (click)="Register()"  >Already have an account? Login!</a>
              </div>

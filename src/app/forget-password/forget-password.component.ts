@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Subject } from 'rxjs';
 import Swal from 'sweetalert2';
 import { User } from '../Model';
 import { ServicesService } from '../services.service';
-import { MatDialog } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-forget-password',
+  templateUrl: './forget-password.component.html',
+  styleUrls: ['./forget-password.component.css']
 })
-export class RegisterComponent implements OnInit{
+export class ForgetPasswordComponent implements OnInit{
   [x: string]: any;
   // Public  
   public passwordTextType: boolean | undefined;
@@ -21,6 +20,7 @@ export class RegisterComponent implements OnInit{
   public registerForm!:FormGroup ;
   public submitted = false;
     personl:User=new User(); 
+    val="0";
   // Private
   private _unsubscribeAll: Subject<any>;
 active:boolean=false;
@@ -74,17 +74,12 @@ active:boolean=false;
    */
   ngOnInit(): void {
   
-    this.registerForm = this._formBuilder.group({
-      firstName: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-      naissance: ['', Validators.required],
-      permis: ['', Validators.required],  
-      delivre: ['', Validators.required],
-      telephone: ['', Validators.required],
-      role: ['', Validators.required]
+   
+    this.registerForm=new FormGroup({
+      email:new FormControl('',[Validators.required]),
+      password:new FormControl('',[Validators.required]),
+     
     });
-
      
   
   }
@@ -101,37 +96,38 @@ active:boolean=false;
   addData() {
     const formData = new  FormData();
     const article = this.registerForm.value;
-  this.personl.firstName=article.firstName;
-    this.personl.lastName=article.lastName;
-    this.personl.email=article.email;
-    this.personl.password=article.password;
-    this.personl.telephone=article.email;
-    this.personl.delivre=article.delivre;
-    this.personl.permis=article.permis;
-    this.personl.naissance=article.naissance;
-   //this.personl.role=this.registerForm.get("role").value;
  
-   
-   
-   if(this.active===false)
-   {
-    this.Person.Recherche(this.registerForm.value.email).subscribe( res => {
-      if (res && res['email'] === this.registerForm.value.email) {
-        this.active = false;
-        Swal.fire("Email déjà existant ! Veuillez utiliser une autre adresse.");
-      } else { Swal.fire("Opération réussie! Svp, vérifier votre mail pour completer l'inscription ");
-        this.Person.Register(this.personl).subscribe();
-      }
-      
   
-  });
-   }
+ 
+    this.Person.Login(this.registerForm.value.email,this.registerForm.value.password).subscribe( res => {
+      this['userlist']=res;
+      
+      if(res===null)
+          {
+           Swal.fire("mot de passe ou login incorrecte!!")
+         }
+      else{
+     this.Person.VerifPass(this.registerForm.value.email,this.registerForm.value.password).subscribe(res=>{
+
+          Swal.fire("Opération réussie! Svp, vérifier votre mail pour recupérer votre mot de passe");
+        });
+ }
+
+  
+ 
+  
+   
+   
+    
       
  
   
-}
+});
+  }
+
 
 }
+
 
 
 

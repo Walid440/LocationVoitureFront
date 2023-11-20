@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
 import { OffresService } from '../services/offres.service';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-produit',
@@ -9,8 +9,8 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class ProduitComponent implements OnInit  {
   myscriptElemnt!:HTMLScriptElement;
-  userlist:any;
-constructor(@Inject(MAT_DIALOG_DATA) public data: any,private serv:OffresService,private renderer: Renderer2){  this.myscriptElemnt=document.createElement("script");
+  userlist:any; userlist2:any;
+constructor(@Inject(MAT_DIALOG_DATA) public data: any,private dial:MatDialog,private serv:OffresService,private renderer: Renderer2){  this.myscriptElemnt=document.createElement("script");
 this.myscriptElemnt.src="src/assets/chat.js";
 document.body.appendChild(this.myscriptElemnt);
 }
@@ -21,7 +21,7 @@ document.body.appendChild(this.myscriptElemnt);
       this.callCustomFunction();
     });
     this.getallImages()
-console.log(this.data.id)
+    this.getallProd();
   }
   loadScript(scriptUrl: string): Promise<void> {
     return new Promise<void>((resolve, reject) => {
@@ -41,10 +41,19 @@ console.log(this.data.id)
     // Now that the script is loaded, you can call the JavaScript function.
     (window as any).myFunction();
   }
-  
+  closeCompose(){
+
+    this.dial.closeAll();
+  }
   getallImages(){
     this.serv.Prod(this.data.id).subscribe(response => {
       this.userlist = response;
+     // console.log("ueser"+this.userlist)
+    });
+  }
+  getallProd(){
+    this.serv.GeIdProd(this.data.id).subscribe(response => {
+      this.userlist2 = response;
      // console.log("ueser"+this.userlist)
     });
   }

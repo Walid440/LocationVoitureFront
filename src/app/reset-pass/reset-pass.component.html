@@ -1,27 +1,25 @@
-<div>
+<div  >
+    <form [formGroup]="registerForm">
     <a class="brand-logo" href="javascript:void(0);">
         <a class="text-body" data-dismiss="modal" aria-label="Close" (click)="Annuler()"
         ><button type="button" class="btn-close" aria-label="Close"><b class="text-red">X</b></button></a>
   
     </a>
-    <h2>Reset Password</h2>
-    <div *ngIf="!resetSuccess">
-      <p>Enter your new password:</p>
-      <input type="password" [(ngModel)]="password" placeholder="New Password" />
-      <p>Confirm your password:</p>
-      <input type="password" [(ngModel)]="pass" placeholder="New Password" />
- <p>
-
-
- </p>
-    <button (click)="resetPassword()">Reset Password</button>
-   </div>
+    <h2>Créer nouveau Mot de passe</h2>
+    <div>
+        <label>Nouveau mot de passe </label>
+        <input type="text"   formControlName="password" id="password"    >
+         
+        
+      </div>
+    <button (click)="resetPassword()">Valider</button>
+   
    <div>
    
    </div>
 
     <div *ngIf="resetSuccess">
       <p>Password reset successfully!</p>
-      <a routerLink="/">Go to Home</a>
-    </div>
+     
+    </div></form>
   </div>

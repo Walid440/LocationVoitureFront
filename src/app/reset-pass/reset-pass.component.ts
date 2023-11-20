@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServicesService } from '../services.service';
 import Swal from 'sweetalert2';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reset-pass',
@@ -12,23 +13,36 @@ import Swal from 'sweetalert2';
 export class ResetPassComponent implements OnInit{
   password: string = '';
   pass: string = '';
+  token!:string;
   resetSuccess: boolean = false;
-  constructor(private dial:MatDialog,
-    
+  registerForm!:FormGroup;
+   
+    constructor(private dial:MatDialog,
+   
     private route: ActivatedRoute,private Ser:ServicesService,
-    private router: Router
+    private router: Router,private _formBuilder: FormBuilder
   ) {}
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.registerForm =new FormGroup({
+      password:new FormControl('',[Validators.required]),
+      
+    });
+
+   this.route.queryParams.subscribe(res=>{
+this.token=res['token'];
+   });
+  
   }
+ 
+
   resetPassword() {
  
-   this.Ser.ResetPass("05963eed-f5da-4558-aa46-a9cb1fb4ad8d", "12345").subscribe(res=>{
+    this.Ser.ResetPass(this.token, this.registerForm.value.password).subscribe(res=>{
 
 
-    Swal.fire("element modifie")
-   });
-      
+      this.resetSuccess=true;
+   }); 
+  
       
     
 }

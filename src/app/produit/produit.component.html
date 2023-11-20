@@ -5,7 +5,9 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
   <!-- Use the car icon from Font Awesome -->
-  
+  <a class="text-body" data-dismiss="modal" aria-label="Close" (click)="closeCompose()"
+            ><i data-feather="x" style="color:red; bottom:blue;"><button type="button" class="btn-close" aria-label="Close">X</button></i>
+             </a>
 
   <!-- Include the Bootstrap JS and jQuery files (if needed for your project) -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -69,27 +71,36 @@ cursor: pointer;
                font-size: 17px;
                
            }
+           .image7-text {
+               position: absolute;
+               top: 75%;
+               right: 16%;
+              
+               color:rgb(32, 70, 197);
+               font-size: 17px;
+               
+           }
        </style>
 <table>
-    <tr>
+    <tr><div class="style:col-lg-3" width="1500px" >
         <td class="ftco-bg-dark" width=800px colspan="2">
-<div class="style:col-lg-3" width="1500px" >
+
 <h3><b class="text-white">DETAIL D'OFFRE</b></h3>
 
-</div>
-        </td>
+ 
+    
         <tr>
     <td>
       <div class="image-text">       
         <tr>
             <td>
-        <i class="fa fa-road">&nbsp;2012
+        <i class="fa fa-road">&nbsp;{{this.userlist2["annee"] }}
              </i> </td></tr> 
             </div>
             <div class="image2-text">
             <tr> 
                 <td>
-                <i class="fas fa-road">&nbsp;25000 KM
+                <i class="fas fa-road">&nbsp;{{this.userlist2["km"] }}
                   
 
 
@@ -98,10 +109,23 @@ cursor: pointer;
                      </i></td></tr>
     
            </div>
+              <div class="image2-text">
+            <tr> 
+                <td>
+                <i class="fas fa-road">&nbsp;{{this.userlist2["km"] }}
+                  
+
+
+                   
+                       
+                     </i></td></tr>
+    
+           </div>
+           <i class="bi bi-paint-bucket"></i>
            <div class="image4-text">
             <tr> 
                 <td>
-                <i class="fas fa-gas-pump">&nbsp;Diesel
+                <i class="fas fa-gas-pump">&nbsp;{{this.userlist2["type"] }}
                   
                 </i>
 
@@ -113,7 +137,7 @@ cursor: pointer;
            <div class="image5-text">
             <tr> 
                 <td>
-                <i class="fas fa-gears">&nbsp;Auto
+                <i class="fas fa-gears">&nbsp;{{this.userlist2["boite"] }}
                   
                 </i>
 
@@ -125,7 +149,19 @@ cursor: pointer;
            <div class="image6-text">
             <tr> 
                 <td>
-                <i class="fas fa-calendar">&nbsp;2012
+                <i class="fas fa-calendar">&nbsp;{{this.userlist2["annee"] }}
+                  
+                </i>
+
+                
+                       
+                      </td></tr>
+    
+           </div>
+           <div class="image7-text">
+            <tr> 
+                <td>
+               <i class="fas fa-paint-brush">&nbsp;{{this.userlist2["couleur"] }}
                   
                 </i>
 
@@ -135,14 +171,9 @@ cursor: pointer;
     
            </div>
  </td>
-
-<td class="ftco-degree-bg">
-
-
-   
- 
-</td>
-</tr>
+        
+</tr></td>
+</div>
 </table>
 <head>
 
@@ -287,7 +318,7 @@ padding: 18px 12px;
 <img class="img-fluid w100"  src="{{'http://localhost:8090/ImgProd/'+this.data.id}}"  id="main" alt="">
 <div class="img-small-group">
   <div class="small-img-col">
-  <img   src="{{'http://localhost:8090/ImgProd1/'+this.data.id}}" class="img-fluid" width="100%" class="smal-img" >
+  <img   src="{{'http://localhost:8090/ImgProd1/'+this.data.id}}" class="img-fluid" width="100%" class="-img" >
 </div>
 <div class="small-img-col">
   <img   src="{{'http://localhost:8090/ImgProd2/'+this.data.id}}" class="img-fluid" width="100%" class="smal-img" alt="">

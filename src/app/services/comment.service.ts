@@ -15,9 +15,9 @@ export class CommentService {
 
     return this.http.get<comment>("http://localhost:8090/AllComment");
   }
-  public AddComment(comm:comment){
+  public AddComment(comm:comment,id:number){
 
-    return this.http.post<comment>("http://localhost:8090/CreateComment",comm);
+    return this.http.post<comment>("http://localhost:8090/CreateComment/"+id,comm);
 
   }
 

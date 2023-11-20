@@ -10,7 +10,7 @@ export class commande{
    dateFin:any;
    client!: client;
    prix:any;
-   status!:status;
+   status!:String;
    prod!:produit;
    type!:string;
    paie!:paiement | null;

@@ -233,12 +233,12 @@ isAuthenticated(): boolean {
 {
       this.dial.open(BookComponent,{
         width:'800px',
-        height:'400px',
+        height:'500px',
         disableClose: true,  // Empêche la fermeture du modal lors d'un clic en dehors de celui-ci
 
        });
     }
-    console.log("param"+this.param)
+ 
 }
  
     logout(){
@@ -311,15 +311,15 @@ else   if(   this.selectedElement =="vente.png")
         });
    
   }
-  else   if(   this.selectedElement =="echange.png")
+  else   if(this.selectedElement =="echange.png")
   {
+   console.log(prix,id,prod,idUser)
 
     this.dial.open(EchangeComponent,{
       width:'600px',
       height:'470px',
       data: { prix: prix,id:id,prod:prod,idUser:this.idUser }
     });
-   
   }
 }
  
@@ -355,8 +355,8 @@ getAllOffre(  ){
  
 detail(id:number){
   this.dial.open(ProduitComponent,{
-    width:'500px',
-    height:'400',
+    width:'600px',
+    height:'500',
     data:{id:id}
   });
  }
@@ -460,17 +460,13 @@ AddCom(){
   this.Comm.rate=this.rate.valueOf()+1;
 
     this.Comm.commentText=this.commenTex;
-    this.Comm.username=this.username;
+    this.Comm.username=this.user;
     this.Comm.dateJour= new Date();
     console.log(this.DateAujou)
     if(this.rate==null)
     {
       Swal.fire("Selectionner rate!!")
-    }else if(this.username=="")
-    {
-      Swal.fire("veuillez saisir un username")
-    }
-    else if(this.commenTex=="")
+    }else if(this.commenTex=="")
     {
       Swal.fire("veuillez saisir un commentaire")
     }
@@ -478,7 +474,7 @@ AddCom(){
     else{    this.IsLoading=true;
 
   
-  this.comService.AddComment(this.Comm).subscribe();
+  this.comService.AddComment(this.Comm,this.idUser).subscribe();
   setTimeout(()=>{    
     this.IsLoading=false;
 

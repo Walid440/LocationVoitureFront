@@ -369,7 +369,7 @@ padding: 18px 12px;
 					          </div>
                    
 					        </div>
-					        <p><a href="username" class="btn btn-primary py-3 px-4">Reserve Your Perfect Car</a></p>
+					       
 	  						</div>
 	  					</div>
 	  				</div>
@@ -404,14 +404,14 @@ padding: 18px 12px;
                   </div>
                 </div>
                 <div class="text" width="100px">
-                  <h5 class="mb-11"><a href="username">{{ p.nomOffre }}</a></h5>
-                  <div class="align-items-left" width="500px">
+                   
+                  <div class="align-items-left" style="width: 500px;">
                     <tr>
-                      <td class="align-item-right" [width]="150">
+                      <td class="align-item-right" style="width: 150px;">
                         <span class="cat"> <i class="fas fa-map-marker"></i> {{ p.adresse }}</span>
                       </td>
                       <td class="align-items-right">
-                        <h6 class=""> <form [formGroup]="locationForm" > <a>{{ p.prix }}<span>/day</span></a></form> </h6>
+                        <h6 class=""> <form [formGroup]="locationForm" > <a>{{ p.prix }}<span></span></a></form> </h6>
                       </td>
                     </tr>
                   </div>
@@ -485,9 +485,7 @@ padding: 18px 12px;
         <div class="container mt-5">
         <div class="form-group">
           
-          <input type="text" class="form-control" placeholder="username"
-                 required
-                 [(ngModel)]="username" name="name">
+          
         </div> 
         <div class="form-group">
           <textarea class="form-control" id="commenTex" placeholder="Commentaire"  name="commenTex"  required

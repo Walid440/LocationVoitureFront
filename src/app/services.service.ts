@@ -9,8 +9,8 @@ import { User } from './Model';
 import { commande } from './Model/commande';
 import { offre } from './Model/offre';
 import { produit } from './Model/produit';
- 
- 
+import { location } from 'src/app/Model/location';
+import { vente } from 'src/app/Model/vente';
 @Injectable({
   providedIn: 'root'
 })
@@ -28,6 +28,11 @@ export class ServicesService {
     return this.http.get<offre>("http://localhost:8090/AllOffre");
     
   }
+  public VerifPass(email:string,pss:string){
+    return this.http.get<User>("http://localhost:8090/users/verif/"+email+"/"+pss);
+    
+  }
+
   public getOffreById(id:number){
     return this.http.get<offre>("http://localhost:8090/getIdOffre"+id);
     
@@ -36,7 +41,10 @@ export class ServicesService {
     return this.http.get<commande>("http://localhost:8090/getIdCommande/"+id);
     
   }
-  
+  public getProdById(id:number){
+    return this.http.get<any>("http://localhost:8090/getIdProd/"+id);
+    
+  }
  
   private stripeKey = 'pk_test_51OBGlIJPU0KIqXjAADPmh0AGwj8DxWJEP06T7Zph5SExhXGGfB2mqG8dkSuPzbOwYEIJUOZo6ErWvUO5DFkWoCXq00ln2a8Z2d'; // Remplacez par votre clé publique Stripe
 
@@ -54,7 +62,12 @@ export class ServicesService {
     this.isAuthenticatedSubject.next(false);
   }
 
-
+  createLocation(id:number,location:location) {
+    return this.http.post<any>("http://localhost:8090/CreateLocation/"+id,location);  
+  }
+  createVente(id:number,v:vente) {
+    return this.http.post<any>("http://localhost:8090/CreateVente/"+id,v);  
+  }
   
   create(id:number,start:string,end:string,offre: FormData) {
     return this.http.post<offre>("http://localhost:8089/SpringMVC/offre/CreateF/"+start+"/"+end+"/"+id,offre);  }

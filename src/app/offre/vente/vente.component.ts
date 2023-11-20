@@ -6,6 +6,8 @@ import { commande } from 'src/app/Model/commande';
 import { CommandeService } from 'src/app/services/commande.service';
 import { LocationComponent } from '../location/location.component';
 import { PaiementComponent } from 'src/app/paiement/paiement.component';
+import { ServicesService } from 'src/app/services.service';
+import { vente } from 'src/app/Model/vente';
  
  
 @Component({
@@ -15,13 +17,14 @@ import { PaiementComponent } from 'src/app/paiement/paiement.component';
 })
 export class VenteComponent implements OnInit  {
   editForm: any;  personl:commande=new commande(); 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any,private dial:MatDialog, private Person:CommandeService,private route: ActivatedRoute){}
+  ventes:vente=new vente();
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,private dial:MatDialog, private Person:CommandeService,private Com:ServicesService,private route: ActivatedRoute){}
   ngOnInit(): void {
     const initialData = this.route.snapshot.data['data']; // Obtenez la valeur initiale depuis les données de la route
     editForm:FormGroup;
     this.editForm=new FormGroup({
       dateDebut:new FormControl('',[Validators.required]),
-      dateFin:new FormControl('',[Validators.required]),
+      dateVente:new FormControl('',[Validators.required]),
       heure_Debut:new FormControl('',[Validators.required]),
       heure_Fin:new FormControl('',[Validators.required]),
       lieu:new FormControl('',[Validators.required]),
@@ -40,7 +43,7 @@ open() {
   const article = this.editForm.value;
   
   // Concaténez la date de début et l'heure de début au format ISO 8601
-  this.personl.dateDebut = null;
+  this.ventes.datevente= article.dateVente;
   
   // Concaténez la date de fin et l'heure de fin au format ISO 8601
   this.personl.dateFin = null;
@@ -55,10 +58,17 @@ open() {
   this.personl.type="vente"
   // Utilisez la différence en jours pour calculer le prix total
   this.personl.prix = this.data.prix;
-  this.Person.CreateCommande(this.personl,this.data.prod,this.data.idUser).subscribe( data => {   
-   this.userlist=data;
-    
-  });
+  
+  this.Com.createVente(this.data.id,this.ventes).subscribe( data => {   
+    this.Person.CreateCommande(this.personl,this.data.id,this.data.idUser).subscribe();
+   this.dial.open(PaiementComponent,{
+     width:'600px',
+     height:'470px',
+  
+   });
+   
+ 
+    });
 }
 paiement(){
   this.dial.open(PaiementComponent,{

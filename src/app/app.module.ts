@@ -47,6 +47,7 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthLoginComponent } from './usr/auth-login/auth-login.component';
 import { RegisterComponent } from './register/register.component';
 import { ResetPassComponent } from './reset-pass/reset-pass.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 const routes: Routes = [
   { path: 'reset', component: ResetPassComponent },
   // Other routes...
@@ -71,7 +72,7 @@ PaiementComponent,
       DecoteVoitureComponent,
   LocationComponent,
   AuthLoginV2Component,
-  AuthRegisterV2Component,EchangeComponent, AuthLoginComponent, RegisterComponent, ResetPassComponent
+  AuthRegisterV2Component,EchangeComponent, AuthLoginComponent, RegisterComponent, ResetPassComponent, ForgetPasswordComponent
   ],
   imports: [
     ReactiveFormsModule,

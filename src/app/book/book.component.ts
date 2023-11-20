@@ -9,6 +9,7 @@ import { ServicesService } from '../services.service';
 import { Subject } from 'rxjs';
 import { AuthRegisterV2Component } from '../User/authentication/auth-register-v2/auth-register-v2.component';
 import { RegisterComponent } from '../register/register.component';
+import { ForgetPasswordComponent } from '../forget-password/forget-password.component';
 
 @Component({
   selector: 'app-book',
@@ -73,6 +74,14 @@ constructor(  private Serv: ServicesService,public dialog: MatDialog,private rou
 
        });      
    
+    }
+    ForgotPass(){
+      this.dialog.open(ForgetPasswordComponent,{
+        width:'400px',
+        height:'500px',
+        disableClose: true,  // Empêche la fermeture du modal lors d'un clic en dehors de celui-ci
+
+       }); 
     }
     ngOnDestroy(): void {
       // Unsubscribe from all subscriptions
