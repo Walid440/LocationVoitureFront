@@ -8,7 +8,9 @@
   display: inline;
   margin: 0 10px;
 }
-
+.py-2 {
+cursor: pointer;
+}
 .nav-link {
   color: #fff;
   text-decoration: none;
@@ -21,6 +23,7 @@
 .dropdown-item {
   color: #fff;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .user-info {
@@ -95,9 +98,11 @@ width:350px;
 }
 .content2{
   max-height: 0 ;
+  max-width: min;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
- 
+  background-color: azure;
+
 }
 
 .full-chat-block {
@@ -109,6 +114,19 @@ width:350px;
    height: max-content;
   transition: max-height 0.2 ease-out;
   border: 15px;
+}
+.full-menu {
+  width: 350px;
+  background:rgb(241, 241, 241);
+  text-align: center;
+  overflow: auto;
+  scrollbar-width: none;
+   height: max-content;
+  transition: max-height 0.2 ease-out;
+  border: 15px;
+}
+.drop{
+  background-color: gray;
 }
 .full {
   width: 90px;
@@ -129,8 +147,11 @@ width:350px;
   position: relative;
   background-color: azure;
  
-}
-
+}.avatar {
+  clip-path:ellipse(50% 80%);
+  }
+  
+  
 .chat-container {
   background-color:azure;
   max-height: 500px;
@@ -228,13 +249,11 @@ justify-content:space-between;
 
   line-height: 1.5em;
   display: inline;
-  background: yellow;
+  background: rgb(146, 146, 124);
   padding: 10px;
   border-radius: 8px;
   max-width: 80%;
   margin-left: 10px;
- 
-   
   animation: floatup .5s forwards
 }
 @keyframes floatup {
@@ -248,7 +267,42 @@ opacity: .0;
   }
 }
  
+.avatar {
+  position: relative;
+  display: inline-block;
+}
+
+.round {
+  border-radius: 50%;
+}
+
+.avatar {
+  position: relative;
+  display: inline-block;
+}
+
+.premier-lettre {
+  font-size: 1em;
+  font-weight: bold;
+  border-radius: 50%; /* Applique une bordure arrondie pour créer une forme de cercle */
+  background-color: #dee0e2;
+  width: 40px; /* Largeur du cercle, ajustez selon vos préférences */
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.custom-blue-600 {
+  background-color: #4a0feb; /* Replace with your specific shade of blue */
+  color: #ffffff;
  
+   /* Set text color to contrast with the background */
+}.custom-green-600 {
+  background-color: #2db96c; /* Replace with your specific shade of blue */
+  color: #ffffff;
+  
+}
+
 .rating {
 
   display: inline;

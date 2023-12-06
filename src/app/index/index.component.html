@@ -12,7 +12,7 @@
     <script type="text/javascript" src="src\assets\chat.js"></script>
 
 
-    <title>Carbook - Free Bootstrap 4 Template by Colorlib</title>
+    <title>Transporteurs Françliens- Free Bootstrap 4 Template by Colorlib</title>
     <meta charset="utf-8" content="text/html" type="text/html">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -131,7 +131,7 @@ padding: 18px 12px;
 
 
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-	    <div class="container"class="col2">
+	    <div >
         <li ngbDropdown class="nav-item dropdown-user">
           <a
             class="nav-link dropdown-toggle dropdown-user-link"
@@ -140,46 +140,47 @@ padding: 18px 12px;
             id="navbarUserDropdown"
             aria-haspopup="true"
             aria-expanded="false"
-          >
-            <ng-container>
-              <div >
-                <span class="user-name font-weight-bolder"
-                  > {{user}}</span
-                ><span class="user-status">User</span>
-              </div>
-              <span class="avatar"
-                ><img
-                  class="round"
-                  src="assets/images/bg-1.jpg"
-                  alt="avatar"
-                  height="40"
-                  width="40" /><span class="avatar-status-online"></span
-              ></span>
-              <div class="content2">
-                <div class="full-chat-block">
-              <div   ngbDropdownMenu aria-labelledby="adminDropdownButton">
-                <button class="dropdown-item">{{user}}</button>
+          >&nbsp;
+           
               
-                <button (click)="logout()" class="dropdown-item">Logout</button>
-              </div>
-                </div>
+              &nbsp;&nbsp;
+          &nbsp;&nbsp;
+          <p></p>
+            <ng-container>
+              <div class="premier-lettre" (mouseenter)="affiche()">
+                {{ user | slice:0:1 }}
               </div>
             </ng-container>
           </a>
-           
         </li>
-  </div>
+      </div>
+           
+            
+        
 </nav>
 
-          <div ngbDropdownMenu aria-labelledby="navbarUserDropdown" class="dropdown-menu dropdown-menu-right">
-      
-            ><a ngbDropdownItem (click)="logout()"><span  [class]="'mr-50'"></span> Logout</a>
-          </div>
+         
        
-          
+         
+                                       
+                                     
+                                       
+                                        <div name="nb" id="nb" [hidden]="nb" (mouseleave)="ann()" aria-labelledby="navbarUserDropdown" class="dropdown-menu dropdown-menu-right show" x-placement="bottom-left" style="position: absolute; top: 0px; left: 0px; will-change: transform; transform: translate(0px, 40px);">
+                                                   <div class="dropdown-divider"></div><a ngbdropdownitem="" class="dropdown-item"  >
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><circle cx="12" cy="12" r="3"></circle>
+   </svg> 
+                                         
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-credit-card mr-50">
+                                                              <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                                                              <line x1="1" y1="10" x2="23" y2="10"></line></svg> 
        
-    <!-- END nav -->
-    
+                                                        <a (click)="logout()" ngbdropdownitem="" class="dropdown-item"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-power mr-50">
+                                                          <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg> Logout</a></a>
+                                        </div>
+                                     
+                              
+ 
+
     <div class="hero-wrap ftco-degree-bg" style="background-image: url('assets/images/car-1.pg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
@@ -343,7 +344,7 @@ padding: 18px 12px;
 				                </div>
 					            </div>       <div class="col-md-3 ">
                         <div class="services w-80 text-center">
-                          <div class="icon d-flex align-items-center justify-content-center"><span><a (click)="PrixVoitureAvantVente()"><img src="assets/images/EstimationVoiture.jpg" style="cursor: pointer;" width="80px"></a></span></div>
+                          <div class="icon d-flex align-items-center justify-content-center"><span><a (click)="PrixApproximative()"><img src="assets/images/EstimationVoiture.jpg" style="cursor: pointer;" width="80px"></a></span></div>
                           <div class="text w-100">
                             <h3 class="heading mb-2"><a (click)="PrixApproximative()" style="cursor: pointer;">Prix Approximative </a></h3>
                           </div>
@@ -383,7 +384,7 @@ padding: 18px 12px;
     	<div class="container" id="username">
     		<div class="row justify-content-center">
           <div class="col-12 heading-section text-center animate__animated animate__fadeInUp mb-5">
-          	<span class="subheading">What we offer</span>
+          
             <h2 class="mb-2">NOS OFFRES DU MOMENT</h2>
             <div class="prog">
               <div id="bar">
@@ -418,13 +419,14 @@ padding: 18px 12px;
                   <tr>
                     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                     <td>
-                      <p class=""><a (click)="open(i,p.photo2,p.id,p.prix,p.idProd,user,$event)" class="btn btn-primary py-2 mr-1" >Book now</a>
-                        <a (click)="detail(p.idProd)" class="btn btn-secondary py-2 ml-1">Details</a></p>
-                    </td>
+                      <p class=""><a (click)="open(i,p.photo2,p.id,p.prix,p.idProd,user,$event)" class="btn custom-blue-600" >Réserver</a>
+                        <a (click)="detail(p.idProd)" class="btn custom-green-600">Details</a></p>
+                    
+                      </td>
                   </tr>
                 </div>
               </div>
-            </ngx-slick-carousel>
+            </ngx-slick-carousel> 
           </div>
           
           
@@ -468,10 +470,7 @@ padding: 18px 12px;
              
                 
                  
-                <i class="fas fa-star" ></i></label>
-                <label    id="s5" >
-                  <input type="radio"  [hidden]="isHidden3" onclick="c()"  [(ngModel)]="star4" id="star5" name="star5"  class="ratin"    value="5" (change)="rating(5)" >
-               
+                 
                   
                   <i class="fas fa-star" ></i></label>
                    
@@ -589,183 +588,14 @@ padding: 18px 12px;
     </div>
    </div>
 </div>
-    <section class="ftco-section testimony-section bg-light">
-      <div class="container">
-        <div class="row justify-content-center mb-5">
-          <div class="col-md-7 text-center heading-section ftco-animate">
-          	<span class="subheading">Testimonial</span>
-            <h2 class="mb-3">Happy Clients</h2>
-          </div>
-        </div>
-        <div class="row ftco-animate">
-          <div class="col-md-12">
-            <div class="carousel-testimony owl-carousel ftco-owl">
-              <div class="item">
-                <div class="testimony-wrap rounded text-center py-4 pb-5">
-                  <div class="user-img mb-2" style="background-image: url(assets/images/person_1.jpg)">
-                  </div>
-                  <div class="text pt-4">
-                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Roger Scott</p>
-                    <span class="position">Marketing Manager</span>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap rounded text-center py-4 pb-5">
-                  <div class="user-img mb-2" style="background-image: url(assets/images/person_2.jpg)">
-                  </div>
-                  <div class="text pt-4">
-                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Roger Scott</p>
-                    <span class="position">Interface Designer</span>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap rounded text-center py-4 pb-5">
-                  <div class="user-img mb-2" style="background-image: url(assets/images/person_3.jpg)">
-                  </div>
-                  <div class="text pt-4">
-                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Roger Scott</p>
-                    <span class="position">UI Designer</span>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap rounded text-center py-4 pb-5">
-                  <div class="user-img mb-2" style="background-image: url(assets/images/person_1.jpg)">
-                  </div>
-                  <div class="text pt-4">
-                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Roger Scott</p>
-                    <span class="position">Web Developer</span>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap rounded text-center py-4 pb-5">
-                  <div class="user-img mb-2" style="background-image: url(assets/images/person_1.jpg)">
-                  </div>
-                  <div class="text pt-4">
-                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Roger Scott</p>
-                    <span class="position">System Analyst</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="ftco-section">
-      <div class="container">
-        <div class="row justify-content-center mb-5">
-          <div class="col-md-7 heading-section text-center ftco-animate">
-          	<span class="subheading">Blog</span>
-            <h2>Recent Blog</h2>
-          </div>
-        </div>
-        <div class="row d-flex">
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry justify-content-end">
-              <a href="blog-single.html" class="block-20" style="background-image: url('assets/images/image_1.jpg');">
-              </a>
-              <div class="text pt-4">
-              	<div class="meta mb-3">
-                  <div><a href="#">Oct. 29, 2019</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                </div>
-                <h3 class="heading mt-2"><a href="#">Why Lead Generation is Key for Business Growth</a></h3>
-                <p><a href="#" class="btn btn-primary">Read more</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry justify-content-end">
-              <a href="blog-single.html" class="block-20" style="background-image: url('');">
-              </a>
-              <div class="text pt-4">
-              	<div class="meta mb-3">
-                  <div><a href="#">Oct. 29, 2019</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                </div>
-                <h3 class="heading mt-2"><a href="#">Why Lead Generation is Key for Business Growth</a></h3>
-                <p><a href="#" class="btn btn-primary">Read more</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry">
-              <a href="blog-single.html" class="block-20" style="background-image: url('');">
-              </a>
-              <div class="text pt-4">
-              	<div class="meta mb-3">
-                  <div><a href="#">Oct. 29, 2019</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                </div>
-                <h3 class="heading mt-2"><a href="#">Why Lead Generation is Key for Business Growth</a></h3>
-                <p><a href="#" class="btn btn-primary">Read more</a></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>	
-
-    <section class="ftco-counter ftco-section img bg-light" id="section-counter">
-			<div class="overlay"></div>
-    	<div class="container">
-    		<div class="row">
-          <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
-            <div class="block-18">
-              <div class="text text-border d-flex align-items-center">
-                <strong class="number" data-number="60">0</strong>
-                <span>Year <br>Experienced</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
-            <div class="block-18">
-              <div class="text text-border d-flex align-items-center">
-                <strong class="number" data-number="1090">0</strong>
-                <span>Total <br>Cars</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
-            <div class="block-18">
-              <div class="text text-border d-flex align-items-center">
-                <strong class="number" data-number="2590">0</strong>
-                <span>Happy <br>Customers</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
-            <div class="block-18">
-              <div class="text d-flex align-items-center">
-                <strong class="number" data-number="67">0</strong>
-                <span>Total <br>Branches</span>
-              </div>
-            </div>
-          </div>
-        </div>
-    	</div>
-    </section>	
-
+  
     <footer class="ftco-footer ftco-bg-dark ftco-section">
       <div class="container">
         <div class="row mb-5">
           <div class="col-md">
             <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2"><a href="#" class="logo">Car<span>book</span></a></h2>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <h2 class="ftco-heading-2"><a href="#" class="logo">Transporteurs <span>Françliens</span></a></h2>
+              <p>Bien loin, derrière les montagnes de mots, loin des pays de Vokalia et de Consonantia, vivent les textes aveugles.</p>
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
                 <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                 <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
@@ -777,34 +607,26 @@ padding: 18px 12px;
             <div class="ftco-footer-widget mb-4 ml-md-5">
               <h2 class="ftco-heading-2">Information</h2>
               <ul class="list-unstyled">
-                <li><a href="#" class="py-2 d-block">About</a></li>
+                <li><a (click)="about()" class="py-2 d-block">About</a></li>
                 <li><a href="#" class="py-2 d-block">Services</a></li>
-                <li><a href="#" class="py-2 d-block">Term and Conditions</a></li>
-                <li><a href="#" class="py-2 d-block">Best Price Guarantee</a></li>
+                <li><a (click)="term()" class="py-2 d-block">Term and Conditions</a></li>
+                <li><a (click)="contact()" class="py-2 d-block">Contact Us</a></li>
                 <li><a href="#" class="py-2 d-block">Privacy &amp; Cookies Policy</a></li>
               </ul>
             </div>
           </div>
-          <div class="col-md">
-             <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Customer Support</h2>
-              <ul class="list-unstyled">
-                <li><a href="#" class="py-2 d-block">FAQ</a></li>
-                <li><a href="#" class="py-2 d-block">Payment Option</a></li>
-                <li><a href="#" class="py-2 d-block">Booking Tips</a></li>
-                <li><a href="#" class="py-2 d-block">How it works</a></li>
-                <li><a href="#" class="py-2 d-block">Contact Us</a></li>
-              </ul>
-            </div>
-          </div>
+         
+          
           <div class="col-md">
             <div class="ftco-footer-widget mb-4">
-            	<h2 class="ftco-heading-2">Have a Questions?</h2>
+            	<h2 class="ftco-heading-2">Avez-vous des questions ?</h2>
             	<div class="block-23 mb-3">
 	              <ul>
-	                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+	                <li><span class="icon icon-map-marker"></span><span class="text">Les Transporteurs Franciliens
+                    3 Rue JULES GUESDE
+                    91130 RIS-ORANGIS</span></li>
+	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+33 09 53 30 80 00</span></a></li>
+	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">transporteurFrancilien@info.com</span></a></li>
 	              </ul>
 	            </div>
             </div>
@@ -834,16 +656,14 @@ padding: 18px 12px;
 						<a class="nav-link" href="#">Home</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">About</a>
+						<a class="py-2 d-block"  (click)="about()" >About</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Services</a>
+						<a class="py-2 d-block"  >Services</a>
 					</li>
+					
 					<li class="nav-item">
-						<a class="nav-link" href="#">Destinations</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Contact</a>
+						<a class="py-2 d-block"  (click)="contact()">Contact</a>
 					</li>
 				</ul>
 			</div>
@@ -869,10 +689,7 @@ padding: 18px 12px;
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus, culpa.</p><a class="bg-warning text-white" href="#">Learn More</a>
 				</div>
 			</div>
-		</div><button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExampleCaptions" type="button"><span aria-hidden="true" class="carousel-control-prev-icon"></span> <span class="visually-hidden">Previous</span></button> <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExampleCaptions" type="button"><span aria-hidden="true" class="carousel-control-next-icon"></span> <span class="visually-hidden">Next</span></button> <!--thumbnails-->
-		<div class="carousel-indicators">
-			<button aria-label="Slide 1" class="active" data-bs-slide-to="0" data-bs-target="#carouselExampleCaptions" type="button"><img class="img-fluid" src="img/1.jpg"></button> <button aria-label="Slide 2" data-bs-slide-to="1" data-bs-target="#carouselExampleCaptions" type="button"><img class="img-fluid" src="img/2.jpg"></button> <button aria-label="Slide 3" data-bs-slide-to="2" data-bs-target="#carouselExampleCaptions" type="button"><img class="img-fluid" src="img/3.jpg"></button>
-		</div>
+		</div> 
      
 	</div>
   

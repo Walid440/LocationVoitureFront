@@ -165,6 +165,12 @@ export class ServicesService {
 
 
   }
+  public Devis(email:String,tel:String,nom:String,desc:String)
+  {
+    return this.http.get<any>("http://localhost:8090/contact/"+email+"/"+tel+"/"+nom+"/"+desc);
+
+
+  }
   public getType(id:number)
   {
     return this.http.get<offre>("http://localhost:8090/getType/"+id);

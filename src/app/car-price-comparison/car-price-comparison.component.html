@@ -1,33 +1,7 @@
-<div>
-    <form [formGroup]="form" (ngSubmit)="compareCars()">
-    <h2>Approximation de Voiture :</h2>
-   
-  
-      <label>Modele</label>
-    <input type="text" formControlName="model" class="form-control">
-    <label>Année Modele</label>
-    <input type="text" formControlName="Annee"   class="form-control">
-    <label>Date de mise en circulation</label>
-    <input type="date" formControlName="date"  class="form-control">
-    <label>KM</label>
-    <input type="text" formControlName="km"  class="form-control">
-    <label>Nombre de porte</label>
-    <input type="text" formControlName="porte"   class="form-control">
-    <label>Puissance fiscale</label>
-    <input type="text" formControlName="Puissance"   class="form-control">
-    <button (click)=" compareCars() ">Comparer</button>
+<!-- app.component.html -->
+<div *ngFor="let message of chatHistory" [ngClass]="{'user': message.role === 'user', 'chatbot': message.role === 'chatbot'}">
+  {{ message.content }}
+</div>
 
-   <div  class="alert alert-success" *ngIf="comparisonResult">
-    <ul class="list-group">
-    
-      <h3>Résultat de la Comparaison:</h3>
-     <li class="list-group-item" *ngFor="let choice of comparisonResult.choices">
-      <p>{{ choice.message.content }}</p>
-    
-    
-    </li>
-    
-</ul>
-    </div></form>
-  </div>
-  
+<input [(ngModel)]="userMessage" placeholder="Saisissez votre message..." />
+<button (click)="sendMessage()">Envoyer</button>

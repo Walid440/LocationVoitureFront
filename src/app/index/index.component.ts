@@ -30,6 +30,11 @@ import { DecoteVoitureComponent } from '../decote-voiture/decote-voiture.compone
 import { AuthLoginComponent } from '../usr/auth-login/auth-login.component';
 import { ServicesService } from '../services.service';
 import { ResetPassComponent } from '../reset-pass/reset-pass.component';
+import { AboutComponent } from '../about/about.component';
+import { TermsAndConditionsComponent } from '../terms-and-conditions/terms-and-conditions.component';
+import { ContactUsComponent } from '../contact-us/contact-us.component';
+import { ImageZoomComponent } from '../image-zoom/image-zoom.component';
+import { DemandeDevisComponent } from '../demande-devis/demande-devis.component';
  
 
 
@@ -37,7 +42,7 @@ import { ResetPassComponent } from '../reset-pass/reset-pass.component';
  
 
 declare const myFunction: any;
-
+ 
 
 export interface Rating {
   value: number;
@@ -70,6 +75,7 @@ response = [
 ]
 resp=[0,1,2,3,4];
    hoveredComment: any;
+nb: boolean=true;
  getStarArray(value: number): number[] {
   
   return Array(value).fill(0);
@@ -119,11 +125,10 @@ test!:string;
   ngValue: string | null = null;
   
 user!: string;
-idUser:any;rest:any;
+idUser:any;rest:any;premierNom:any;
      ngOnInit(): void {
 
-     
-    
+      this.premierNom = 'Ali';
       // Now 'ngValue' contains the value of the 'ng' parameter
      
       this.Route.queryParams.subscribe(params => {
@@ -170,7 +175,7 @@ idUser:any;rest:any;
        this.getAllOffre();
       
 
-this.rating(this.id);
+ 
 
 
 
@@ -199,8 +204,27 @@ this.rating(this.id);
       // Now that the script is loaded, you can call the JavaScript function.
       (window as any).myFunction();
     }
-    
+    about()
+{ this.dial.open(AboutComponent,{
+  width:'600px',
+  height:'470px',
   
+});
+}
+term()
+{ this.dial.open(TermsAndConditionsComponent,{
+  width:'600px',
+  height:'470px',
+  
+});
+}
+contact()
+{ this.dial.open(DemandeDevisComponent,{
+  width:'600px',
+  height:'470px',
+  
+});
+}
   getAllComments(){
  this.comService.getAll().subscribe(response => {
   this.userlist1 = response;
@@ -243,8 +267,14 @@ isAuthenticated(): boolean {
  
     logout(){
    var c=   this.rout.navigate(['/'], { queryParams: { username: '' } }); // Redirigez avec username vide
-
+ 
   
+  }affiche(){
+
+    this.nb=false;
+  }
+  ann(){
+    this.nb=true;
   }
   c(){
 
@@ -255,7 +285,12 @@ isAuthenticated(): boolean {
     }
    
   }
- 
+ // Remplacez par la première lettre de votre nom
+
+  generateImageLink(): string {
+    // Générez le lien de l'image en fonction de la première lettre de votre nom
+    return `assets/images/${this.premierNom.toLowerCase()}_image.png`;
+  }
 
   closeCompose(){
     this.isHidden=true;  }
@@ -355,7 +390,7 @@ getAllOffre(  ){
  
 detail(id:number){
   this.dial.open(ProduitComponent,{
-    width:'600px',
+    width:'800px',
     height:'500',
     data:{id:id}
   });
@@ -382,7 +417,7 @@ this.snackbar.open(this.response[i], '', {
 });
    this.rate=this.resp[i-1];
  
-   console.log("rates"+this.getStarArray(this.rate))
+  
 
 }
  

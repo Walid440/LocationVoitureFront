@@ -83,13 +83,18 @@ onSubmit() {
    if(res===null)
        {
         Swal.fire("mot de passe ou login incorrecte!!")
-      }else
+      }else if(this.userlist["enabled"]===true)
       {
+        
          // La réponse ne correspond pas à "oui", ce qui signifie une connexion réussie
-         this.rout.navigate(['/'], { queryParams: { username: this.loginForm.value.email,id:this.userlist['id'] } });
-         this.modal.close();
-      }
+        /* this.rout.navigate(['/'], { queryParams: { username: this.loginForm.value.email,id:this.userlist['id'] } });
+         this.modal.close();*/
+      console.log("code"+this.userlist['enabled'])
     
+      }  else{
+        Swal.fire("compte non activée veuillez activer votre compte!!")
+
+      }
     });
   
   

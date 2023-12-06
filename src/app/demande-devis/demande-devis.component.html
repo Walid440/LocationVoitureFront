@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <title>Demande de Devis - Voiture</title>
+</head>
+<body>
+    <a class="text-body" data-dismiss="modal" aria-label="Close" 
+    ><button type="button" class="btn-close" aria-label="Close" (click)="Annuler()"><b class="text-red">X</b></button></a>
+    <form    [formGroup]="editForm">
+        <!-- Informations Personnelles -->
+        <div class="form-group">
+            <label for="nomPrenom">Nom et Prénom :</label>
+            <input type="text" class="form-control" id="nomPrenom" required formControlName="nomPrenom" name="nomPrenom">
+        </div>
+    
+        <div class="form-group">
+            <label for="email">Adresse E-mail :</label>
+            <input type="email" class="form-control" id="email" required   formControlName="email"name="email"  >
+            <div class="text-danger">* Adresse e-mail est requise</div>
+<div  class="text-danger">* Adresse e-mail non valide</div>
+    </div>
+    
+        <div class="form-group">
+            <label for="telephone">Numéro de Téléphone :</label>
+            <input type="tel" class="form-control" id="telephone" formControlName="telephone" name="telephone">
+        </div>
+        <div class="form-group">
+            <label for="exampleTextarea">Message :</label>
+            <textarea class="form-control" formControlName="description" id="description" rows="3"></textarea>
+        </div>
+        
+        <!-- Ajoutez ici d'autres champs selon vos besoins -->
+    
+        <!-- Bouton de Soumission -->
+        <button type="submit" class="btn btn-primary mt-3" (click)="addData()">Soumettre</button>
+    </form>
+    
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<script>
+    function validateForm(form) {
+        if (form.invalid) {
+            alert("Veuillez remplir tous les champs obligatoires correctement.");
+            return false;
+        }
+
+        // Ajoutez d'autres validations au besoin, par exemple pour le numéro de téléphone.
+
+        return true;
+    }
+</script>
+
+</body>
+</html>

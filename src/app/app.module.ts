@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
  
 
 import { AppRoutingModule } from './app-routing.module';
@@ -48,6 +48,14 @@ import { AuthLoginComponent } from './usr/auth-login/auth-login.component';
 import { RegisterComponent } from './register/register.component';
 import { ResetPassComponent } from './reset-pass/reset-pass.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { AboutComponent } from './about/about.component';
+import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { NgxImageZoomModule } from 'ngx-image-zoom';
+import { ZoomDirective } from './zoom-directive.directive';
+import { ImageZoomComponent } from './image-zoom/image-zoom.component';
+import { DemandeDevisComponent } from './demande-devis/demande-devis.component';
+ 
 const routes: Routes = [
   { path: 'reset', component: ResetPassComponent },
   // Other routes...
@@ -72,7 +80,9 @@ PaiementComponent,
       DecoteVoitureComponent,
   LocationComponent,
   AuthLoginV2Component,
-  AuthRegisterV2Component,EchangeComponent, AuthLoginComponent, RegisterComponent, ResetPassComponent, ForgetPasswordComponent
+  ZoomDirective,
+  ImageZoomComponent,
+  AuthRegisterV2Component,EchangeComponent, AuthLoginComponent, RegisterComponent, ResetPassComponent, ForgetPasswordComponent, AboutComponent, TermsAndConditionsComponent, ContactUsComponent, DemandeDevisComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -94,10 +104,14 @@ SlickCarouselModule,
  ModalModule.forRoot(),
  NgbModalModule,   
   RouterModule.forRoot(routes),
+   NgxImageZoomModule
 
+  
     ],
     exports: [RouterModule],
-  
+    schemas: [
+      CUSTOM_ELEMENTS_SCHEMA // Add this line
+    ],
   providers: [{provide: MAT_DIALOG_DEFAULT_OPTIONS,
     useValue: { height: '1000px', width: '1000px', autoFocus: true }}],
   bootstrap: [AppComponent,ResetPassComponent],

@@ -7,6 +7,7 @@ import { commande } from 'src/app/Model/commande';
 import { echange } from 'src/app/Model/echange';
 import { CommandeService } from 'src/app/services/commande.service';
 import { OffresService } from 'src/app/services/offres.service';
+import Swal from 'sweetalert2';
  
 
 @Component({
@@ -77,6 +78,31 @@ open() {
     //console.log("cabin"+this.myGroup.value.cabins)
  // this.personl.cabins=article.cabin;*/
  // this.personl.cabins=article.cabin;*/
+ if(article.propritaire2==="")
+   {
+    Swal.fire("Veuillez entrer propritaire2 !!")
+   }
+  else if(article.modele2==="")
+   {
+    Swal.fire("Veuillez entrer modele2 !!")
+   }
+   else if(article.marque2==="")
+   {
+    Swal.fire("Veuillez entrer marque !!")
+   }
+   else if(article.annee2==="")
+   {
+    Swal.fire("Veuillez entrer Annee!!")
+   }
+   else if(article.prix==="")
+   {
+    Swal.fire("Veuillez entrer prix !!")
+   }
+   else if(article.lieu==="")
+   {
+    Swal.fire("Veuillez entrer lieu !!")
+   }  
+   else{
     this.Off.CreateEchange(this.data.id,this.personl1).subscribe(res=>{
 
   
@@ -86,7 +112,7 @@ open() {
      
     });
     })
-  
+   }
 }
   closeCompose(){
 

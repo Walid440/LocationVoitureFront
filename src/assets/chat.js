@@ -1,5 +1,7 @@
  
  
+   
+   
    var mainImg = document.getElementById('main');
    var smallImgs = document.getElementsByClassName('smal-img');
 
@@ -46,7 +48,7 @@ else if (val.toLowerCase().includes("recherche") || val.toLowerCase().includes("
 } else {
   ch = "Je suis désolé, je n'ai pas compris. Pouvez-vous reformuler votre question ?";
 }
-let value='<p style="background-color:blue; color:black;border-radius:2px  5px 5px 5px;"><span>'+val+'</span></p>';
+let value='<p style="background-color:white; color:black;border-radius:2px  5px 5px 5px;"><span>'+val+'</span></p>';
 let ch1='<p style="background-color:gray; color:white;border-radius:2px  5px 5px 5px;"><span>'+ch+'<span></span></p>';
 let load='<p class="spinner-border text-danger me-2">load </p>';
  

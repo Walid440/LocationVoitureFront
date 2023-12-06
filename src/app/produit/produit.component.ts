@@ -51,10 +51,46 @@ document.body.appendChild(this.myscriptElemnt);
      // console.log("ueser"+this.userlist)
     });
   }
+  zoom:boolean=false;
+  zoom1:boolean=false;
+  zoom2:boolean=false;
+  zoo1:boolean=false;
+  zoo:boolean=false;
   getallProd(){
     this.serv.GeIdProd(this.data.id).subscribe(response => {
       this.userlist2 = response;
      // console.log("ueser"+this.userlist)
     });
-  }
+  }isHovered :boolean=false;
+   zoom1ImagePath: string = ''; // Variable pour stocker le chemin de l'image pour zoom1
+   button:boolean=false;
+  activateZoom(zoomNumber: number) {
+    // Désactiver toutes les instances de zoom
+    this.zoom1 = false;
+
+    // Activer l'instance de zoom correspondante
+    if (zoomNumber === 1) {
+      this.zoom = true;
+      this.zoom1 = false;
+      this.button=true;
+      this.zoom1ImagePath = "http://localhost:8090/ImgProd1/' + this.data.id";
+    } else if (zoomNumber === 2) {
+      this.zoom = false;
+      this.zoom1 = true;
+      this.button=true;
+      this.zoom1ImagePath = "http://localhost:8090/ImgProd2/' + this.data.id";
+    } else if (zoomNumber === 3) {
+      this.zoom1ImagePath = "http://localhost:8090/ImgProd3/' + this.data.id";
+      this.zoom1 = false;
+      this.zoom = false;
+      this.zoom2 = true;
+      this.button=true;
+    }
+   
+  } close(){
+    this.zoom = false;
+    this.zoom1 = false;
+    this.zoom2 = false;
+    this.button=false;
+    }
 }

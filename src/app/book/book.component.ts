@@ -51,13 +51,16 @@ constructor(  private Serv: ServicesService,public dialog: MatDialog,private rou
        this.userlist=res;
       
        if(res===null)
-           {
-            Swal.fire("mot de passe ou login incorrecte!!")
-          }else
-          {
+       {
+        Swal.fire("mot de passe ou login incorrecte!!")
+      }else if(this.userlist["enabled"]===true)
+      {
              // La réponse ne correspond pas à "oui", ce qui signifie une connexion réussie
              this.rout.navigate(['/'], { queryParams: { username: this.loginForm.value.email,id:this.userlist['id'] } });
              this.dialog.closeAll();
+          }else{
+            Swal.fire("compte non activée veuillez activer votre compte!!")
+    
           }
         
         });

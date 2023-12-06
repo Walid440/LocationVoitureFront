@@ -10,6 +10,7 @@ import { PaiementComponent } from 'src/app/paiement/paiement.component';
 import { ServicesService } from 'src/app/services.service';
 import { offre } from 'src/app/Model/offre';
 import { location } from 'src/app/Model/location';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-location',
@@ -32,11 +33,46 @@ export class LocationComponent  implements OnInit {
       prix:new FormControl(this.data.prix,[Validators.required]),
       
     });
-      
+    this.editForm.get('dateDebut').valueChanges.subscribe(() => this.validateDate());
+    this.editForm.get('dateFin').valueChanges.subscribe(() => this.validateDate());
  
 
   }
-
+  validateDate() {
+    const dateDebut = this.editForm.get('dateDebut').value;
+    const dateFin = this.editForm.get('dateFin').value;
+    
+    const currentDate = new Date();
+    const currentDateFormatted = currentDate.toLocaleDateString('fr-FR');
+    
+    const formattedDateDebut = new Date(dateDebut).toLocaleDateString('fr-FR');
+    
+     
+    if (formattedDateDebut && formattedDateDebut < currentDateFormatted) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Erreur',
+        text: 'La date de début ne peut pas être antérieure à la date actuelle.',
+      });
+     return;
+      // Réinitialiser la valeur de dateDebut à vide ou à une valeur par défaut si nécessaire
+      this.editForm.patchValue({ dateDebut: '' });
+   
+    }
+  
+    if (dateDebut && dateFin && dateDebut > dateFin) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Erreur',
+        text: 'La date de fin ne peut pas être antérieure à la date de début.',
+      });
+  
+      // Réinitialiser la valeur de dateFin à vide ou à une valeur par défaut si nécessaire
+      this.editForm.patchValue({ dateFin: '' });
+      return;
+    }
+  }
+  
  
  
 open() {
@@ -79,7 +115,31 @@ open() {
     //console.log("cabin"+this.myGroup.value.cabins)
  // this.personl.cabins=article.cabin;*/
  // this.personl.cabins=article.cabin;*/
-   
+   if(article.dateDebut==="")
+   {
+    Swal.fire("Veuillez entrer Date de debut !!")
+   }
+  else if(article.dateFin==="")
+   {
+    Swal.fire("Veuillez entrer Date de Fin !!")
+   }
+   else if(article.heure_Debut==="")
+   {
+    Swal.fire("Veuillez entrer Heure de Debut !!")
+   }
+   else if(article.heure_Fin==="")
+   {
+    Swal.fire("Veuillez entrer Heure de Fin !!")
+   }
+   else if(article.lieu==="")
+   {
+    Swal.fire("Veuillez entrer lieu !!")
+   }
+   else if(article.prix==="")
+   {
+    Swal.fire("Veuillez entrer prix !!")
+   }  
+   else{
 this.Person.createLocation(this.data.id,this.personl).subscribe( data => {   
    this.Com.CreateCommande(this.commande,this.data.id,this.data.idUser).subscribe();
   this.dial.open(PaiementComponent,{
@@ -90,7 +150,7 @@ this.Person.createLocation(this.data.id,this.personl).subscribe( data => {
   
 
    });
-  
+   }
   
 }
   closeCompose(){

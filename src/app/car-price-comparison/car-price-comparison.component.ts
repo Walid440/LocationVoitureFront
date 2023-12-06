@@ -3,6 +3,7 @@ import { IzomocarService } from '../services/izomocar.service';
 import { IzmoCarService } from '../services/izomocar.service.spec';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { CalendrierService } from '../services/calendrier.service';
 
 @Component({
   selector: 'app-car-price-comparison',
@@ -11,7 +12,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class CarPriceComparisonComponent implements OnInit {  
   form!:FormGroup; 
-  constructor(private chatGptService: IzmoCarService,private http:HttpClient,private fb:FormBuilder ) {}
+  constructor(private chatService: CalendrierService,private chatGptService: IzmoCarService,private http:HttpClient,private fb:FormBuilder ) {}
   Annee:any;
   model:any;
   porte:any;
@@ -31,6 +32,7 @@ export class CarPriceComparisonComponent implements OnInit {
        Puissance:this.fb.control("")
 
  })
+ this.sendMessage()
   }
 
  // Adjust the delay as needed
@@ -44,45 +46,43 @@ export class CarPriceComparisonComponent implements OnInit {
   comparisonResult :any;
  resultat="";
 
- compareCars() {
-  // Assurez-vous de ne pas dépasser les limites de taux en ajustant la fréquence des demandes
-  // Vérifiez votre plan OpenAI pour vous assurer que vous respectez les quotas
-  // Si nécessaire, envisagez une mise à niveau de votre plan
+ 
+  retries = 0;
+ 
+ 
+ 
 
-  this.resultat = "j'aimerais obtenir une estimation du coût d'une voiture d'occasion que je souhaite acheter. Aidez-moi s'il vous plaît avec une seule réponse approximative sous cette forme : prix: [valeur] avec les caractéristiques suivantes : voiture modèle " + this.form.value.model + ", Année de fabrication " + this.form.value.Annee + ", nombre de portes " + this.form.value.porte + ", kilométrage " + this.form.value.km + ", date de mise en circulation " + this.form.value.date + ", puissance " + this.form.value.Puissance;
+ 
+ 
+ 
+  userMessage: string = '';
+  chatHistory: any[] = [];
 
-  let apiUrl = "https://api.openai.com/v1/chat/completions";
-  let header = new HttpHeaders().set("Authorization", "Bearer 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");
-  
-  // Ajoutez une logique pour éviter de dépasser la limite de taux en ajustant la fréquence des demandes
-  setTimeout(() => {
-    this.messages.push({ role: "user", content: this.resultat })
+ 
+  private apiUrl = 'http://localhost:3000'; 
+   
 
-    let payload = {
-      model: "gpt-3.5-turbo",
-      messages: this.messages
+  sendMessage() {
+    if (this.userMessage.trim() === '') {
+      return;
     }
 
-    this.http.post(apiUrl, payload, { headers: header }).subscribe(
-      (res) => {
-        this.comparisonResult = res;
-        console.log(this.resultat);
+    // Ajoutez le message de l'utilisateur à l'historique
+    this.chatHistory.push({ role: 'user', content: this.userMessage });
+
+    // Appelez le service pour obtenir la réponse de ChatGPT
+    this.chatService.getChatResponse(this.userMessage).subscribe(
+      (response) => {
+        // Ajoutez la réponse à l'historique
+        this.chatHistory.push({ role: 'chatbot', content: response.message });
+
+        // Réinitialisez le champ de saisie
+        this.userMessage = '';
       },
       (error) => {
-        if (error.status === 429) {
-          // Gérez ici l'erreur 429 (Too Many Requests)
-          console.error("Erreur 429: Trop de demandes. Veuillez ajuster la fréquence des demandes ou mettre à niveau votre plan OpenAI.");
-        } else {
-          console.error("Erreur lors de la demande à l'API OpenAI:", error);
-        }
+        console.error('Erreur lors de la demande à l\'API ChatGPT:', error);
       }
     );
-  }, this.DELAY_IN_MS); // Ajoutez le délai ici
-}
+  }
 
-
-
-
-
-}
-
+}  
